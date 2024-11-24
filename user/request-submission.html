@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Past Requests</title>
+  <link rel="stylesheet" href="style 3.css">
+  <link rel="icon" href="white_logo.png" type="image/x-icon">
+  <script type="text/javascript" src="app.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="style 1.css" />
+  <link rel="stylesheet" type="text/css" href="style 2.css">
+  <script>
+    var fetchurl ="";
+    var reno = sessionStorage.getItem("reno");
+    console.log(reno);
+    var renoval = Number( reno) +1;
+    console.log(renoval);
+    function getOrdinal(n) {
+let ord = 'th';
+
+if (n % 10 == 1 && n % 100 != 11)
+{
+  ord = 'st';
+}
+else if (n % 10 == 2 && n % 100 != 12)
+{
+  ord = 'nd';
+}
+else if (n % 10 == 3 && n % 100 != 13)
+{
+  ord = 'rd';
+}
+
+return ord;
+}
+var ordd = getOrdinal(renoval)
+var renonam = renoval + ordd;
+      var name = sessionStorage.getItem("name");
+      var reid = sessionStorage.getItem("reid");
+      var ui ="";
+      var uids = [
+  "398",
+  "756",
+  "652",
+  "235",
+  "453",
+ "648",
+  "378",
+  "345",
+  "904",
+  "413",
+  "254",
+  "890",
+  "333",
+  "333",
+  "333"
+];
+var inames = [
+'Anandha Keerthy M',
+'Anindit Bizy Nair',
+'David Evander Jebson S',
+'Keerthika P',
+'Nitheesh R L',
+'Shivam Jha',
+'Srinithi C P',
+'Subbu Krishna Sharma GM ',
+'Yuvashreekantham R',
+'R B Ramyaa',
+'Anjali S',
+'Mathangi G',
+'Srivigneswar S',
+'Sathishwaran S',
+'Sample'
+]
+var iurls = [
+'https://script.google.com/macros/s/AKfycbyY5uJMDnishBzf6icu-_OVAdKQiBhT2oV_WoGmfBSzjqH8dxAqT2kGNwZMR9RjsJY/exec',
+'https://script.google.com/macros/s/AKfycbyZKQVXi8TkdKoG4qonwJA0PJdCMZ5Ib_ns4IEedhHguTDzwQmKzxdOXSqo295GXWA/exec',
+'https://script.google.com/macros/s/AKfycbxVcuWPUCFCpukyGyoresI-2qUf9Va9G-I6ha2swlVrjS0BBo_gW9IvmBJdc1lqazbBDw/exec',
+'https://script.google.com/macros/s/AKfycbxBwZInWnCaXIMELyDTWA-SSMkknn3ek_SmOAxrtDfRkb-3gYstXOS4x0JqokC34gqh/exec',
+'https://script.google.com/macros/s/AKfycbzQT8-vjtlzR-5wPvtRNGjCEUqIzZoQgmRH9qq4hQckYeZTX3hyVMvI159mOyV4-O81ZQ/exec',
+'https://script.google.com/macros/s/AKfycbwAcd8Ui8cA44t0qOns64CbAwF61MxRYwIsLNIWsqhPCR2_6eE8e66DFgtVSsYDdEp4/exec',
+'https://script.google.com/macros/s/AKfycbzoI0pbzFUzkxfHHrCsP2YPAmQ0netELz8LmwHGXcDhWyTKJ5xaGDCzoHAx77TBWYs8/exec',
+'https://script.google.com/macros/s/AKfycbyqlpVoPnFFW9_dK-8xlAOroB1CJvCjvm9NBoszdKF23lMV8mAFAwC7rtLlnbPwTj9IAQ/exec',
+'https://script.google.com/macros/s/AKfycbyfTA3cWB77lQjKOgW32OwbYhfJU3m3mqj9TL8POpAlSW777Kcm_t_C_HYJpyTfQcsD8g/exec',
+'https://script.google.com/macros/s/AKfycbyVImv2xrynIWep4_u1DOktQNPL67EXrfC8sUvvF7-OLtuiCLVVxJQJIbs4VMB4DWNS/exec',
+'https://script.google.com/macros/s/AKfycbyuex0X2uehyAP6R2rWzsF1PuYZ1wB8W7fxyVRFsT3vToVLF7tQmRznyJTwWtvZb9U4/exec',
+'https://script.google.com/macros/s/AKfycbxjHDmfdCq92WCjnqY9Auo9OLxqnpg9bVXpHZOSJ1xHQHpD7pcef3V4dE5Z0h9zM67rmw/exec',
+'https://script.google.com/macros/s/AKfycbwIhDjqIbJnEF2TEW7I33soxegaEZVtp-Nk76VBVuvaeDnrUGvGCUh4R-0dOpOQIV1F/exec',
+'https://script.google.com/macros/s/AKfycbzjgiGz9mv7f3ccGEssPgOA-j85n0hsNI-RDo9dIlsei-nvCESn62p9yKOy8nUd10mz/exec',
+'https://script.google.com/macros/s/AKfycbzb9ciAvtHAkc8y5vm6QwUJaLL9cJ5VS9fI1B_4P1_OFC27aKZn-sd1Xp-hUUn3a__3LA/exec'
+  ]
+for (var i = 0; i < uids.length; i++) {
+
+if (name == inames[i]){
+ui = uids[i];
+fetchurl = iurls[i];
+}
+console.log(fetchurl)
+}
+      
+      var rname = sessionStorage.getItem("rname");
+      console.log(ui)
+      console.log(formDataString)
+  </script>
+ <style>
+.tablebee{
+  width: 99%;
+display: nonge;
+}
+.btn{
+background-color:#182d8b;
+margin-right: 20px;
+text-decoration: none;
+color: white;
+border-radius: 20px;
+padding: 20px;
+cursor: pointer;
+}
+.btn1{
+background-color:#182d8b;
+height: 40px;
+text-decoration: none;
+color: white;
+border-radius: 20px;
+padding:12px;
+cursor: pointer;
+font-weight: bold;
+}
+</style>
+<script>
+  function logout(){
+    updatelogstatus("Offline");  
+    localStorage.removeItem("loggedname")
+    window.location="../logout.html";
+  }
+  function userPopup(){
+        console.log("ok")
+document.getElementById("popup-4").classList.toggle("active");
+}
+function logoutPopup(){
+        console.log("ok")
+document.getElementById("popup-3").classList.toggle("active");
+
+}
+</script>
+</head>
+<body>
+  <nav id="sidebar">
+    <ul>
+      <li class="indetails" id="insname">
+        <div style="width: 50px; display: flex;gap: 10px;">
+          <img style="width: 50px;" src="white_logo.png" alt="">
+          <span style="color: white;">NIFTEM-T <br> Placement Cell</span>
+        </div>
+        
+        <button onclick=toggleSidebar() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+      <li class="outdetails" id="outlogo" style="">
+        <button class="out-items" onclick=toggleSidebar1() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+        <img class="out-items" style="width: 50px;" src="white_logo.png" alt="">
+        <img id="profileimage1" style=" scale:90%;border-radius: 50px; width: 50px; height: 50px;object-fit: cover; " src=".//1.png" alt="" srcset="">
+       
+      </li>
+      <li class="indetails"  id="insprofile" style="left: 0px;">
+        <div class="log-items" style="flex-direction: column; gap: 0px; align-items: center;justify-content: center;">
+         <a onclick="userPopup()"><img id="profileimage" style=" scale:200%;border-radius: 50px; width: 50px; height: 50px; object-fit: cover;" src=".//1.png" alt="" srcset=""></a>
+       <div style="background-color: white; color: black; padding: 10px;border-radius: 40px;">
+        <p ><span id="mname">Nitheesh R L</span></p>
+       </div>
+       
+
+          </div>
+
+      </li>
+      <li>
+        <a onclick="notavailable()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M520-640v-160q0-17 11.5-28.5T560-840h240q17 0 28.5 11.5T840-800v160q0 17-11.5 28.5T800-600H560q-17 0-28.5-11.5T520-640ZM120-480v-320q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v320q0 17-11.5 28.5T400-440H160q-17 0-28.5-11.5T120-480Zm400 320v-320q0-17 11.5-28.5T560-520h240q17 0 28.5 11.5T840-480v320q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-360h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h207q16 0 30.5 6t25.5 17l57 57h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Zm400-160v40q0 17 11.5 28.5T600-320q17 0 28.5-11.5T640-360v-40h40q17 0 28.5-11.5T720-440q0-17-11.5-28.5T680-480h-40v-40q0-17-11.5-28.5T600-560q-17 0-28.5 11.5T560-520v40h-40q-17 0-28.5 11.5T480-440q0 17 11.5 28.5T520-400h40Z"/></svg>
+          <span>Brochure Update</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu show">
+          <div>
+            <li class="active"><a  href="request-form.html">Request Form</a></li>
+            <li><a href="past.html">Past Requests</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <a onclick="notavailable()" class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m221-313 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-228q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm0-320 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-548q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm339 353q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h280q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H560Zm0-320q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h280q17 0 28.5 11.5T880-640q0 17-11.5 28.5T840-600H560Z"/></svg>
+          <span>Forms</span>
+      
+        </a>
+    
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+          <span>Profile</span>
+ 
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="change-pass-1.html">Change Password</a></li>
+            <li><a onclick="passkey()">Create PassKey</a></li>
+            <li><a onclick="logoutPopup()" >Logout</a></li>
+          </div>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+  <main>
+    <div class="container" onclick="closeAllSubMenus()">
+      <div class="popup1" id="popup-3">
+ 
+        <div class="overlay"></div>
+    
+        <div class="content">
+    
+        <div class="close-btn" onclick="togglePopup3()">&times;</div>
+    
+        <h1 style="margin-top: 50px;">Are you sure to logout?</h1>
+    
+        <p style="margin-bottom: 40px;"> </p>
+        <div >
+            <input id="aid" type="hidden" value="">
+    <a class="btn" id="apbt" onclick="logout()">Yes</a>
+    <a class="btn" onclick="togglePopup3()">Cancel</a>
+        </div>
+        </div>
+    
+        </div>
+      <section class="msg" >
+
+        <h1 style="text-align: center;">Successfully Requested</h1>
+        <div   id="dfiled" style="align-content:normal; margin-left: 0px;margin-right: auto; margin-top: 30px;"><p style="text-align: left;">
+            <div ></div> <span id = "status"></span><br><br><span id = "status2"></span> </p></div>
+    
+            <div id="load" class="load" > 
+                <div class="loader" id="loader"> 
+              
+                  </div> 
+                  <div
+                    id="message"
+                  class="message"
+                  style="width: 350px;"
+                    ></div>
+                </div> 
+    
+    
+    </section>
+        
+
+   </div>
+  </main>
+  
+</body>
+<script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+<script>
+    var porfilepicback = sessionStorage.getItem("backprofilepic");
+  if (porfilepicback!==null){
+    document.getElementById("profileimage").src = porfilepicback;
+    document.getElementById("profileimage1").src = porfilepicback;
+  }
+    function notavailable(){
+    alert("Not Available")
+  }
+const  GetUniqueID = () =>{
+const uniqueID = localStorage.getItem("Passkey-uniqueID");
+if (uniqueID == undefined){
+const newUniqueID = crypto.randomUUID();
+
+return [newUniqueID, "New"];
+}
+else {
+return uniqueID;
+}
+}
+async function passkey(){
+           var passdevuniid =GetUniqueID();
+           console.log(passdevuniid);
+if (passdevuniid[1] ==  "New"){
+ document.getElementById("loader").style.display="block"; 
+           document.getElementById("load").style.display="initial";
+           document.getElementById("message").textContent="Registering PassKey....";
+         
+       var passkeysss ={};
+var fetchurl = "https://passkey-5ev6.onrender.com";
+       const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+           const url = new URL(window.location)
+           const username = localStorage.getItem("loggedname");
+           var weburl = location.hostname;
+           console.log(weburl)
+           const response = await fetch(fetchurl+'/register-challenge', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ username, weburl })
+           })
+
+           const challengeResult = await response.json()
+           const { options } = challengeResult // Server side challenge
+
+           const authenticationResult = await startRegistration({optionsJSON: options})
+           console.log(authenticationResult)
+
+           var urlorigin= location.protocol+"//"+location.host;
+           console.log(urlorigin)
+           var create_passkey = await fetch(fetchurl+'/register-verify', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ username, cred: authenticationResult, challenge: options.challenge, devUniId:passdevuniid[0], weburl,urlorigin })
+           })
+           const create_passkeyResult = await create_passkey.json();
+           console.log(create_passkeyResult.result)
+           
+           
+passkeysss = create_passkeyResult.info;
+console.log(create_passkeyResult.info);
+if (create_passkeyResult.info.userVerified){
+ localStorage.setItem("Passkey-uniqueID",passdevuniid[0]);
+ document.getElementById("loader").style.display="none"; 
+document.getElementById("message").textContent="PassKey Registered Successfully";
+setTimeout(function () { 
+ document.getElementById("load").style.display="none";
+},2000);
+}
+
+
+}
+else{
+alert("PassKey is already created for this Device")
+}
+}
+       function approvePopup(id){
+           console.log("ok")
+   document.getElementById("popup-1").classList.toggle("active");
+   document.getElementById("aid").value = id;
+   
+   }
+
+   function togglePopup(){
+   document.getElementById("popup-1").classList.toggle("active");
+   }
+   function declinePopup(id){
+       console.log("ok")
+   document.getElementById("popup-2").classList.toggle("active");
+   document.getElementById("did").value = id;
+   
+   }
+   function togglePopup2(){
+   document.getElementById("popup-2").classList.toggle("active");
+   }
+   function togglePopup3(){
+   document.getElementById("popup-3").classList.toggle("active");
+   }
+   function togglePopup4(){
+   document.getElementById("popup-4").classList.toggle("active");
+   }
+   var uorps = [
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'B.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'M.Tech',
+'B.Tech',
+'M.Tech'
+   ]
+   var inames = [
+'Aarthi A',
+'Aishwarya Lakshmi S',
+'Ajitesh S',
+'Akash B',
+'Amirtha Varshini A',
+'Anandha Keerthy M',
+'Anindit Bizy Nair',
+'Anusha R',
+'Archana P',
+'Avantika C',
+'Chandrika Devendrappa',
+'Chitturi Rohith',
+'Cubarani Η',
+'David Evander Jebson S',
+'Dhanaselvam KR',
+'Diana Celcia R',
+'Diya Dharshini S',
+'Ethaya D',
+'Gautam Nayak',
+'Ginu Robtus R',
+'Guberavishnu S',
+'Guguloth Sridhar',
+'Himavanth R',
+'Jegan P',
+'Jenish Daniel B',
+'Joshua Charles',
+'K Kabilan',
+'Karyamsetty Worship',
+'Keerthika P',
+'Kevin Francis',
+'Kisha M',
+'Kota Lakshmi Sanjana',
+'Lakshmi Narayanan S',
+'Lakshmi Sruthi L',
+'Lavudya Sai Kumar',
+'Mahabir Prasad Swain',
+'Merla A P',
+'Mohamed Tharif N J',
+'Mohannath Shroff J',
+'MA Monesh Ram',
+'Mudavath Anjali',
+'Muthuraja K',
+'Nitheesh R L',
+'Nithish J P',
+'Padmaja M',
+'Pranav Nanda Kishore',
+'Punithavathi D',
+'Rakshithapriya S',
+'J Sanjeeth',
+'Santhoshkumar P',
+'Shivam Jha',
+'Sivashree ',
+'Sri Harini S',
+'Srinithi C P',
+'Srivatsan V',
+'Subbu Krishna Sharma GM',
+'Suman Kumar',
+'Surendar S',
+'Tippaleti Srujana',
+'Vemula Uharika',
+'Vishnu Varthan T',
+'Yadla Ganesh Babu',
+'Yuvashreekantham R',
+'Anjali S',
+'Anshida P K',
+'Hari Priya J',
+'Harish S',
+'Hayanthika M S',
+'Irfana Z',
+'Kadimi Lakshmi Devi',
+'Karthick Ajay B',
+'Kolli Venkata Naga Mallikarjuna Reddy',
+'Nandana M',
+'Shaliha A',
+'Sruti Chandra',
+'Sushmithasri R',
+'Abhijith K',
+'Ishwarya Lakshmi S',
+'Joseph P J',
+'Mani Bharathi G',
+'Manikandan T',
+'Mathangi G',
+'Mulukuri Naveena',
+'Muthumeena J',
+'Rajasri C',
+'Shanmugapriya R',
+'Srivigneswar S',
+'Sujithra M',
+'Trivedi Nidhi Deepak',
+'Bommi Durga Naga Sai Sri Sruthileena',
+'Damini H S',
+'Gokul Raj R',
+'Midhuna Kurian',
+'Parkhe Prajwal Anilkumar',
+'Praveena B',
+'R B Ramyaa',
+'Sathishwaran S',
+'Vidhyadharan A',
+'Yogesh M A',
+'B.Tech Admin',
+'M.Tech Admin'
+   ]
+   var photourls =[
+'profiles/Aarthi A.JPG',
+'profiles/Aishwarya Lakshmi S.JPG',
+'profiles/Ajitesh S.JPG',
+'profiles/Akash B.JPG',
+'profiles/Amirtha Varshini A.JPG',
+'profiles/Anandha Keerthy M.JPG',
+'profiles/Anindit Bizy Nair.JPG',
+'profiles/Anusha R.JPG',
+'profiles/Archana P.JPG',
+'profiles/Avantika C.JPG',
+'profiles/Chandrika Devendrappa.JPG',
+'profiles/Chitturi Rohith.JPG',
+'profiles/Cubarani Η.JPG',
+'profiles/David Evander Jebson S.JPG',
+'profiles/Dhanaselvam KR.JPG',
+'profiles/Diana Celcia R.JPG',
+'profiles/Diya Dharshini S.JPG',
+'profiles/Ethaya D.JPG',
+'profiles/Gautam Nayak.JPG',
+'profiles/Ginu Robtus R.JPG',
+'profiles/Guberavishnu S.JPG',
+'profiles/Guguloth Sridhar.JPG',
+'profiles/Himavanth R.JPG',
+'profiles/Jegan P.JPG',
+'profiles/Jenish Daniel B.JPG',
+'profiles/Joshua Charles.JPG',
+'profiles/K Kabilan.JPG',
+'profiles/Karyamsetty Worship.JPG',
+'profiles/Keerthika P.JPG',
+'profiles/Kevin Francis.JPG',
+'profiles/Kisha M.JPG',
+'profiles/Kota Lakshmi Sanjana.JPG',
+'profiles/Lakshmi Narayanan S.JPG',
+'profiles/Lakshmi Sruthi L.JPG',
+'profiles/Lavudya Sai Kumar.JPG',
+'profiles/Mahabir Prasad Swain.JPG',
+'profiles/Merla A P.JPG',
+'profiles/Mohamed Tharif N J.JPG',
+'profiles/Mohannath Shroff J.JPG',
+'profiles/MA Monesh Ram.JPG',
+'profiles/Mudavath Anjali.JPG',
+'profiles/Muthuraja K.JPG',
+'profiles/Nitheesh R L.JPG',
+'profiles/Nithish J P.JPG',
+'profiles/Padmaja M.JPG',
+'profiles/Pranav Nanda Kishore.JPG',
+'profiles/Punithavathi D.JPG',
+'profiles/Rakshithapriya S.JPG',
+'profiles/J Sanjeeth.JPG',
+'profiles/Santhoshkumar P.JPG',
+'profiles/Shivam Jha.JPG',
+'profiles/Sivashree .JPG',
+'profiles/Sri Harini S.JPG',
+'profiles/Srinithi C P.JPG',
+'profiles/Srivatsan V.JPG',
+'profiles/Subbu Krishna Sharma GM.JPG',
+'profiles/Suman Kumar.JPG',
+'profiles/Surendar S.JPG',
+'profiles/Tippaleti Srujana.JPG',
+'profiles/Vemula Uharika.JPG',
+'profiles/Vishnu Varthan T.JPG',
+'profiles/Yadla Ganesh Babu.JPG',
+'profiles/Yuvashreekantham R.JPG',
+'profiles/FPT - Anjali S.JPG',
+'profiles/FPT - Anshida P K.JPG',
+'profiles/FPT - Hari Priya J.JPG',
+'profiles/FPT - Harish S.JPG',
+'profiles/FPT - Hayanthika M S.JPG',
+'profiles/FPT - Irfana Z.JPG',
+'profiles/FPT - Kadimi Lakshmi Devi.JPG',
+'profiles/FPT - Karthick Ajay B.JPG',
+'profiles/FPT - Kolli Venkata Naga Mallikarjuna Reddy.JPG',
+'profiles/FPT - Nandana M.JPG',
+'profiles/FPT - Shaliha A.JPG',
+'profiles/FPT - Sruti Chandra.JPG',
+'profiles/FPT - Sushmithasri R.JPG',
+'profiles/FSQA - Abhijith K.JPG',
+'profiles/FSQA - Ishwarya Lakshmi S.JPG',
+'profiles/FSQA - Joseph P J.JPG',
+'profiles/FSQA - Mani Bharathi G.JPG',
+'profiles/FSQA - Manikandan T.JPG',
+'profiles/FSQA - Mathangi G.JPG',
+'profiles/FSQA - Mulukuri Naveena.JPG',
+'profiles/FSQA - Muthumeena J.JPG',
+'profiles/FSQA - Rajasri C.JPG',
+'profiles/FSQA - Shanmugapriya R.JPG',
+'profiles/FSQA - Srivigneswar S.JPG',
+'profiles/FSQA - Sujithra M.JPG',
+'profiles/FSQA - Trivedi Nidhi Deepak.JPG',
+'profiles/FPE - Bommi Durga Naga Sai Sri Sruthileena.JPG',
+'profiles/FPE - Damini H S.JPG',
+'profiles/FPE - Gokul Raj R.JPG',
+'profiles/FPE - Midhuna Kurian.JPG',
+'profiles/FPE - Parkhe Prajwal Anilkumar.JPG',
+'profiles/FPE - Praveena B.JPG',
+'profiles/FPE - R B Ramyaa.JPG',
+'profiles/FPE - Sathishwaran S.JPG',
+'profiles/FPE - Vidhyadharan A.JPG',
+'profiles/FPE - Yogesh M A.JPG',
+'profiles/b.jpeg',
+'profiles/b.jpeg'
+ ]
+var uname ;
+for (var i = 0; i < inames.length; i++) {
+     uname = localStorage.getItem("loggedname");
+     console.log(uname)
+     if (uname == inames[i]){
+       
+
+   console.log(document.getElementById("profileimage"));
+   sessionStorage.setItem("backprofilepic",photourls[i]);
+   document.getElementById("profileimage").src = photourls[i];
+   document.getElementById("profileimage1").src = photourls[i];
+   console.log(document.getElementById("profileimage").src,photourls[i])
+
+     }
+   }
+   console.log(uname)
+
+   document.getElementById("mname").innerHTML = uname;
+   if (uname==null){
+     alert("You are not logged in. Please log in");
+     window.location="../index.html";
+   }
+   
+
+  
+   </script>
+    <script>
+      function updatelogstatus(status){
+        var updatestring = localStorage.getItem("loggedname")+"/"+status;
+   
+             
+         fetch(
+      
+      "https://script.google.com/macros/s/AKfycbxEoNGPxEXxwtSXqRvPhgGK_btTmbVO4Tq6ZW002Q7Olap6cyoi5hmNAwYTS3OfLJCLug/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: updatestring,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+     )
+     
+      .then(function (response) {
+     
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to fetch.");
+        }
+      })
+      .then(async function (data) {
+     const result1 = await data.json();
+     
+     var r = result1.data2;
+    
+     
+     })
+     
+     .catch(function (error) {
+     // Handle errors, you can display an error message here
+     console.error(error);
+  
+     });
+     }
+     setInterval(() => {
+  
+  fetchd ();
+  }, 1000)
+  
+  setTimeout(() => {
+  
+  updatelogstatus("Online");
+  
+  }, 2000)
+  window.addEventListener("blur", () => {
+    updatelogstatus("Offline");   
+    });
+    window.addEventListener("focus", () => {
+    updatelogstatus("Online");   
+    });
+  //window.unblur = colse();
+  const beforeUnloadHandler = (event) => {  
+    updatelogstatus("Offline");  
+  };
+  window.addEventListener("beforeunload", beforeUnloadHandler);
+     </script>
+<script>
+  
+  var stat = sessionStorage.getItem("stat");
+
+    var status = document.getElementById("status");
+    console.log(status)
+    document.getElementById("status").innerHTML = "<span>The details are submitted to your alloted member: "+name+" for the verfication.<br> <br> Once, it is approved or declined you will recieve the mail. So, kindly check your mail. <br> <br> The Request ID is <b>"+reid+"</b><br><br> Use this ID for checking status.<br> <br>This is "+renonam+" request today. Only 5 requests are allowed per day.</span>";
+    console.log("start")
+    var uorp = sessionStorage.getItem("uorp");
+    if (stat !=="sent"){
+    document.getElementById("load").style.display="initial";
+        document.getElementById("loader").style.display="block"; 
+        document.getElementById("message").textContent = "Sending Mail to "+name+"...";
+        
+        
+          console.log("in")
+          var uilink = "https://niftemt-placementcell-forms.pages.dev/B2K21%20Brochure%20Details%20Update/?ui="+ui;
+          var formDataString = name+"/valls/"+rname+"/valls/"+reid+"/valls/"+uilink+"/uorp/"+uorp;
+          console.log(formDataString)
+         
+fetch(
+ 
+              fetchurl,
+              {
+                redirect: "follow",
+                method: "POST",
+                body: formDataString,
+                headers: {
+                  "Content-Type": "text/plain;charset=utf-8",
+                },
+              }
+            )
+    
+              .then(function (response) {
+    
+                // Check if the request was successful
+                if (response) {
+             
+                  return response; // Assuming your script returns JSON response
+                } else {
+                  throw new Error("Failed to send the mail. Inform your alloted member to review your request");
+                }
+              })
+              .then(async function (data) {
+        const result1 = await data.json();
+  
+        var r = result1.data2;
+console.log(r);
+if(r == "sent"){
+    document.getElementById("loader").style.display="none"; 
+                document.getElementById("message").textContent =
+                 "Mail Sent to "+name;
+                document.getElementById("message").style.display = "block";
+                setTimeout(function () { document.getElementById("load").style.display="none"; },2000);
+                document.getElementById("status2").textContent = "Mail Sent to "+name;
+                sessionStorage.setItem("stat","sent");
+}
+
+
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("loader").style.display="none"; 
+        document.getElementById("message").innerHTML =
+          "Failed to Send the Mail. <br>Inform your alloted member to review your request";
+          setTimeout(function () { document.getElementById("load").style.display="none"; },2000);
+          document.getElementById("status2").textContent = "Failed to Send the Mail. Inform your alloted member to review your request";
+        document.getElementById("message").style.display = "block";
+      });
+    }
+             
+</script>
+</html>

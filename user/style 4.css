@@ -1,0 +1,324 @@
+@import url( 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+font-family: 'Inter';
+background: #eee;
+}
+form, .login{
+background: white;
+padding: 60px; 
+width: 550px; 
+max-width: calc (100% - 60px);
+border-radius: 5px;
+margin-top: 20px;
+}
+.formb-container{
+background-color: white;
+  padding: 60px; 
+color: #000;
+  width: 100%;
+  max-width: calc (100% - 60px);
+  border-radius: 5px;
+  margin-top: 50px;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.formb-container button{
+  
+  width: 100%;
+  padding: 10px;
+  color:white;
+  background:#182d8b;
+  border-radius:5px;
+  border: none; 
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  text-align: center;
+
+  text-decoration: none;
+}
+.btn-text{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container{
+margin: auto;
+display: flex;
+justify-content: center;
+}
+.form-element { 
+    display: flex; 
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.form-element
+span{
+margin-bottom:10px;
+}
+input, textarea {
+    border: 1px solid #d0d2e2;
+  width: 50%;
+    line-height: 2; 
+    padding: 5px; 
+    border-radius: 5px;
+}
+.form-element label { 
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+form button, .step3 a,.msg a {
+    width: 150px;
+    padding: 10px;
+    color:white;
+    background:#182d8b;
+    border-radius:5px;
+    border: none; 
+    font-size: 18px;
+
+
+    
+}
+.buttonclick{
+    width: 150px;
+    padding: 10px;
+    color:white;
+    background:#182d8b;
+    border-radius:5px;
+    border: none; 
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+.q{
+    font-weight: bold;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 20px 10px;
+
+    height: 150px;
+    width: 100%;
+    background: #182d8b;
+
+    color: white;
+
+}
+.header img{
+    object-fit: contain;
+    height: 150px;
+    padding: 20px;
+}
+.header h1{
+    font-size: 30px;
+}
+.header1{
+    height: 150px;
+    width: 100%;
+    background: #182d8b;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+.header1 img{
+    object-fit: contain;
+    height: 150px;
+    padding: 20px;
+}
+.header1 h1{
+    font-size: 30px;
+}
+
+.logname {
+    background-color: white;
+    color: #000;
+ margin-right: 0px;
+ padding: 10px;
+ border-radius: 50px;
+}
+.msg{
+background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+@keyframes loading {
+    from{
+        transform: rotate(0turn);
+    }
+    to{
+        transform: rotate(1turn);
+    }
+}
+.bt{
+    display: initial;
+}
+
+.step3{
+    display: none;
+    background: white;
+
+    flex-direction: column;
+
+
+}
+.confirm_details img{
+    max-width: 100px;
+    height: 100px;
+    object-fit: contain;
+
+}
+.load{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.424);
+
+    transition: opacity 0,75s, visibility 0.75s;
+}
+.message{
+    
+    margin-left: auto;
+margin-right: auto;
+text-align: center;
+margin-top: 20px;
+background-color: #182d8b;
+border-radius: 50px;
+color: white;
+padding: 20px;
+max-width: 500px;
+width: calc(100% - 40px);
+
+box-shadow: 5px 5px 10px 1px #000000;
+font-weight: bold;
+
+}
+.loader {
+margin-left: auto;
+margin-right: auto;
+
+
+    width: 48px;
+    height: 48px;
+    background:#182d8b;
+    --c:no-repeat linear-gradient(#000 0 0);
+    --s:18px 18px;
+    -webkit-mask:
+      var(--c) left  4px top    4px,
+      var(--c) right 4px top    4px,
+      var(--c) right 4px bottom 4px,
+      var(--c) left  4px bottom 4px,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+    animation: l5 1.5s infinite;
+  }
+  @keyframes l5 {
+    0%    {-webkit-mask-size:0    0  ,0    0  ,0    0  ,0    0  ,auto}
+    12.5% {-webkit-mask-size:var(--s),0    0  ,0    0  ,0    0  ,auto}
+    25%   {-webkit-mask-size:var(--s),var(--s),0    0  ,0    0  ,auto}
+    37.5% {-webkit-mask-size:var(--s),var(--s),var(--s),0    0  ,auto}
+    50%   {-webkit-mask-size:var(--s),var(--s),var(--s),var(--s),auto}
+    62.5% {-webkit-mask-size:0    0  ,var(--s),var(--s),var(--s),auto}
+    75%   {-webkit-mask-size:0    0  ,0    0  ,var(--s),var(--s),auto}
+    87.5% {-webkit-mask-size:0    0  ,0    0  ,0   0   ,var(--s),auto}
+    100%  {-webkit-mask-size:0    0  ,0    0  ,0   0   ,0   0   ,auto}
+  }
+ table .approve{
+    background-color: green;
+    margin-right: 20px;
+    text-decoration: none;
+  }
+ table .decline{
+    background-color: red;
+    margin-right: 20px;
+    text-decoration: none;
+  }
+  .btn{
+    background-color:#182d8b;
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  @media (max-width: 1000px) {
+    .header {
+  flex-direction: column;
+  height: 200px;
+  align-content: center;
+  justify-content: center;
+  
+    
+    }
+    .logname {
+        width: 100%;
+        margin-right: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+margin-bottom: 20px;
+        
+    }
+}
+
+.topics {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	max-height: 200px;
+	line-height: 3.5;
+  height: 50px;
+	font-family: "Arial";
+	align-content: center;
+	width: 100%;
+  max-width: 200px;
+	text-align : center;
+	background-color: #182d8b;
+	border-radius: 20px;
+  color: white;
+}
+.topics a, .topice a{
+  color: white;
+  text-decoration: none;
+}
+.horline {
+  width: 100%; 
+  text-align: center; 
+  border-bottom: 1px solid #000; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+  margin-top: 60px;
+} 
+
+.horline span { 
+   background:#fff; 
+   padding:0 10px; 
+}

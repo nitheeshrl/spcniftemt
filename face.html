@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+    <title>Face Recognition</title>  
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      var oldname = localStorage.getItem("loggedname");
+      console.log(oldname)
+      if(oldname !== null){
+        window.location="f&r/index.html"
+      }
+    </script>
+</head>    
+<body>
+<section class="header1">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section id="login" name="login">
+  <div class="formb-container">
+    <h1 style="text-align: center;"> Face Recognition </h1>
+    <div class="form-element">
+      <span class="q">Name</span>
+      <select aria-readonly="true" name="Username" id="Username"  required placeholder="Select your name">
+      <option value="">Select your name</option>
+      <option value='Anandha Keerthy M'>Anandha Keerthy M</option>
+      <option value='Anindit Bizy Nair'>Anindit Bizy Nair</option>
+      <option value='David Evander Jebson S'>David Evander Jebson S</option>
+      <option value='Keerthika P'>Keerthika P</option>
+      <option value='Nitheesh R L'>Nitheesh R L</option>
+      <option value='Shivam Jha'>Shivam Jha</option>
+      <option value='Srinithi C P'>Srinithi C P</option>
+      <option value='Subbu Krishna Sharma GM'>Subbu Krishna Sharma GM</option>
+      <option value='Yuvashreekantham R'>Yuvashreekantham R</option>
+      </select>
+      
+      </div>
+      <button name="btl" type="submit" onclick="login()" type="button" ><div class="btn-text">Verify Face</div></button>
+      <span class="horline"><span>Or Login using</span></span>
+    <div class="topic-in">
+      
+      <a  href="index.html" >
+        <div class="topics 1">
+          <img style="width: 30px;  filter: invert(1);" src="pass.svg" alt="" srcset="">
+       <span><b>Password</b></span> 
+      </div>
+      </a>
+    </div>
+    <div class="topic-in">
+      
+      <a  onclick="passkey()" >
+        <div class="topics 1">
+        <img style=" width: 30px; filter: invert(1);" src="passkey.webp" alt="" srcset="">
+       <span><b>Passkey</b></span> 
+      </div>
+      </a>
+    </div>
+  </div>
+ 
+</section>
+<div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+  <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+<script>
+const  GetUniqueID = () =>{
+const uniqueID = localStorage.getItem("Passkey-uniqueID");
+if (uniqueID == undefined){
+const newUniqueID = "Not"
+return newUniqueID;
+}
+else {
+return uniqueID;
+}
+}
+  async  function passkey(){
+        var passkeysss ={};
+        const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+ var fetchurl = "https://passkey-5ev6.onrender.com";
+    const userId = document.getElementById("Username").value;
+if (userId ==""){
+    alert("Select the Name")
+}
+else{
+          var passdevuniid =GetUniqueID();
+           console.log(passdevuniid);
+if (passdevuniid !== "Not"){
+    document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Verifying PassKey....";
+           
+           var weburl = location.hostname;
+           console.log(weburl)
+           const response = await fetch(fetchurl+'/login-challenge', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ userId, weburl })
+           })
+
+           const challengeResult = await response.json()
+           const { options } = challengeResult // Server side challenge
+       
+           var urlorigin= location.protocol+"//"+location.host;
+            console.log(urlorigin)
+           const authenticationResult = await startAuthentication({optionsJSON: options})
+           console.log(authenticationResult)
+
+           var veruser = await fetch(fetchurl+'/login-verify', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ userId:userId, cred: authenticationResult, challenge: options.challenge, devUniId:passdevuniid, weburl, urlorigin})
+           })
+           const verifyuserResult = await veruser.json()
+           console.log(verifyuserResult)
+if (verifyuserResult.success){
+  localStorage.setItem("loggedname", username);
+  var  uname = localStorage.getItem("loggedname");
+  console.log(uname)
+document.getElementById("loader").style.display="none"; 
+document.getElementById("message").textContent="Logged in Successful";
+setTimeout(function () { 
+  document.getElementById("load").style.display="none";
+  var enusername = document.getElementById("Username").value;
+  
+
+  window.location="f&r/index.html"
+ },2000);
+}
+else{
+  alert("Wrong PassKey. Try Again")
+  document.getElementById("load").style.display="none";
+}
+       }
+else {
+    alert("PassKey is Not Available in this Device")
+  }
+}
+
+  }
+  function login(){
+    var enusername = document.getElementById("Username").value;
+sessionStorage.setItem("checkname",enusername)
+window.location ="check face/index.html";
+  }
+</script>
+<script src="scriptform.js"></script>
+</body>
+</html>

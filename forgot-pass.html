@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+    <title>Forgot Password</title>  
+    <link rel="stylesheet" href="style.css" />
+</head>    
+<body>
+<section class="header1">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section id="detail" name="login">
+  <div class="formb-container">
+    <h1 style="text-align: center;"> Forget Password </h1>
+    <div class="formb-container">
+      <div class="form-element">
+        <span class="q">Username</span>
+          <input style="width: 100%;" type="text" name="Username" id="Username" required placeholder="Enter your Username"/> 
+        </div>
+        
+      <button name="btl" type="submit" onclick="sendotp()" type="button" id="otp-btn"><div class="btn-text">Send OTP</div></button>
+    </div>
+</section>
+<section id="verify" name="login" style="display: none;">
+  <div class="formb-container">
+    <h1 style="text-align: center;"> Forget Password </h1>
+    <div class="formb-container">
+
+      <span id="emailstatus" style="margin-bottom: 20px;font-size: 12px;"></span>
+      <div class="form-element" style="margin-top: 20px;">
+        <span class="q">Enter the OTP</span>
+        <input type="password" name="otp" id="otp" required placeholder="Enter your OTP"/>
+        </div>
+        
+      <button name="btl" type="submit" onclick="verifyotp()" type="button" id="sub-btn" ><div class="btn-text">Verify</div></button>
+    </div>
+</section>
+<div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+  <script>
+    var input = document.getElementById("Username");
+    input.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("otp-btn").click();
+      }
+    });
+    var input1 = document.getElementById("otp");
+    input1.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("sub-btn").click();
+      }
+    });
+    </script>
+<script>
+  var otp;
+  var name;
+  var vname;
+  function verifyotp(){
+var subotp = document.getElementById("otp").value;
+if (subotp == otp){
+sessionStorage.setItem("setname",vname);
+window.location="set-pass.html";
+}
+else if (subotp == ""){
+    alert("Enter the OTP");
+}
+else{
+    alert("Invaild OTP");
+}
+}
+function onuploadcomplete (){
+
+document.getElementById("loader").style.display="none"; 
+document.getElementById("message").textContent="OTP Sent Successful";
+setTimeout(function () { 
+  document.getElementById("detail").style.display="none";
+  document.getElementById("load").style.display="none";
+  document.getElementById("verify").style.display="block";
+ 
+ },2000);
+}
+function sendotp(){
+  name = document.getElementById("Username").value;
+    if(name == ""){
+    alert("Enter the Username");
+  }
+
+  else{
+    otp= Math.floor(Math.random() * 10000);
+    var formDataString = document.getElementById("Username").value +"/"+otp;
+    console.log(formDataString)
+    document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Sending OTP....";
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxRLck1yY3cKIbxy_2a6eXwP9RpjVqRdmt4Y3gNuSDuTSyji4ShS-L1Ndg8jt6IAA0/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: formDataString,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to set password");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+var userdetails = result1.data2;
+
+
+console.log(userdetails)
+if (userdetails[0]!=="Not Found"){
+  document.getElementById("emailstatus").textContent = "OTP is sent to " + userdetails[0];
+  vname = userdetails[1];
+  onuploadcomplete ()
+}
+else if (userdetails[0]=="Not Found"){
+  alert("User not found")
+  document.getElementById("load").style.display="none";
+}
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("message").textContent =
+          "An error occurred while set password";
+        document.getElementById("message").style.display = "block";
+      });
+    }
+}
+</script>
+<script src="scriptform.js"></script>
+</body>
+</html>

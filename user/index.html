@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Requests</title>
+  <link rel="icon" href="white_logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="style 3.css">
+  <script type="text/javascript" src="app.js" defer></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="style 1.css" />
+  <link rel="stylesheet" type="text/css" href="style 2.css">
+ <style>
+    table .approve{
+       border-radius: 20px;
+       padding: 10px;
+       color: white;
+       font-weight: bolder;
+background-color: green;
+margin-right: 20px;
+text-decoration: none;
+cursor: pointer;
+}
+table .decline{
+border-radius: 20px;
+padding: 10px;
+color: white;
+font-weight: bolder;
+background-color: red;
+margin-right: 20px;
+text-decoration: none;
+cursor: pointer;
+}
+.tablebee{
+display: nonef;
+}
+.btn{
+background-color:#182d8b;
+margin-right: 20px;
+text-decoration: none;
+color: white;
+border-radius: 20px;
+padding: 20px;
+cursor: pointer;
+}
+.btn1{
+background-color:#182d8b;
+height: 40px;
+text-decoration: none;
+color: white;
+border-radius: 20px;
+padding:12px;
+cursor: pointer;
+font-weight: bold;
+}
+</style>
+<script>
+  function logout(){
+    updatelogstatus("Offline");  
+    localStorage.removeItem("loggedname")
+    window.location="../logout.html";
+  }
+  function userPopup(){
+        console.log("ok")
+document.getElementById("popup-4").classList.toggle("active");
+}
+function logoutPopup(){
+        console.log("ok")
+document.getElementById("popup-3").classList.toggle("active");
+
+}
+</script>
+</head>
+<body>
+  <nav id="sidebar">
+    <ul>
+      <li class="indetails" id="insname">
+        <div style="width: 50px; display: flex;gap: 10px;">
+          <img style="width: 50px;" src="white_logo.png" alt="">
+          <span style="color: white;">NIFTEM-T <br> Placement Cell</span>
+        </div>
+        
+        <button onclick=toggleSidebar() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+      <li class="outdetails" id="outlogo" style="">
+        <button class="out-items" onclick=toggleSidebar1() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+        <img class="out-items" style="width: 50px;" src="white_logo.png" alt="">
+        <img id="profileimage1" style=" scale:90%;border-radius: 50px; width: 50px; height: 50px; " src=".//1.png" alt="" srcset="">
+       
+      </li>
+      <li class="indetails"  id="insprofile" style="left: 0px;">
+        <div class="log-items" style="flex-direction: column; gap: 0px; align-items: center;justify-content: center;">
+         <a onclick="userPopup()"><img id="profileimage" style=" scale:200%;border-radius: 50px; width: 50px; height: 50px; " src=".//1.png" alt="" srcset=""></a>
+       <div style="background-color: white; color: black; padding: 10px;border-radius: 40px;">
+        <p ><span id="mname">Nitheesh R L</span></p>
+       </div>
+       
+
+          </div>
+
+      </li>
+      <li>
+        <a  onclick="notavailable()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M520-640v-160q0-17 11.5-28.5T560-840h240q17 0 28.5 11.5T840-800v160q0 17-11.5 28.5T800-600H560q-17 0-28.5-11.5T520-640ZM120-480v-320q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v320q0 17-11.5 28.5T400-440H160q-17 0-28.5-11.5T120-480Zm400 320v-320q0-17 11.5-28.5T560-520h240q17 0 28.5 11.5T840-480v320q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-360h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h207q16 0 30.5 6t25.5 17l57 57h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Zm400-160v40q0 17 11.5 28.5T600-320q17 0 28.5-11.5T640-360v-40h40q17 0 28.5-11.5T720-440q0-17-11.5-28.5T680-480h-40v-40q0-17-11.5-28.5T600-560q-17 0-28.5 11.5T560-520v40h-40q-17 0-28.5 11.5T480-440q0 17 11.5 28.5T520-400h40Z"/></svg>
+          <span>Brochure Update</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu show">
+          <div>
+            <li class="active"><a href="index.html">Active Requests</a></li>
+            <li><a href="past.html">Past Requests</a></li>
+            <li><a  target="_blank" href="https://niftemt-placementcell-forms.pages.dev/B2K21%20Brochure%20Details%20Update/user">Request Form</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m221-313 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-228q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm0-320 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-548q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm339 353q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h280q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H560Zm0-320q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h280q17 0 28.5 11.5T880-640q0 17-11.5 28.5T840-600H560Z"/></svg>
+          <span>Forms</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a  href="past-forms.html">Forms</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+       
+          <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+            <span>Profile</span>
+   
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+          </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="change-pass-1.html">Change Password</a></li>
+            <li><a onclick="passkey()">Create PassKey</a></li>
+            <li><a onclick="logoutPopup()" >Logout</a></li>
+          </div>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+  <main>
+    <div class="container" onclick="closeAllSubMenus()">
+      <main style="" class="table" id="customers_table">
+        <section class="table__header">
+
+        <div class="input-group">
+                <input  type="search" placeholder="Search...">
+                <img src="images/search.png" alt="">
+            </div>
+
+        </section>
+
+       <section id="tablebee" class="tablebee">         
+        <section  class="table__body" >
+            <table>
+          
+          
+                <table  id="tabdetails">
+              </table>
+            </table>
+
+        </section>
+    </section> 
+
+    <section class="msg" >
+
+        <h1 style="text-align: center;"></h1>
+        <div   id="dfiled" style="align-content:normal; margin-left: 0px;margin-right: auto; margin-top: 30px;"><p style="text-align: left;">
+            <div ></div> <span id = "status" style="color: black;"></span></p></div>
+            </p>
+            </section>
+            <section style="height: 100px; display: flex;justify-content: center;">
+      
+            </section>
+    </main>
+    <div id="load" class="load" > 
+        <div class="loader" id="loader"> 
+      
+          </div> 
+          <div
+            id="message"
+          class="message"
+          style="width: 350px;"
+            ></div>
+        </div>      
+        <div class="popup1" id="popup-3">
+ 
+          <div class="overlay"></div>
+      
+          <div class="content">
+      
+          <div class="close-btn" onclick="togglePopup3()">&times;</div>
+      
+          <h1 style="margin-top: 50px;">Are you sure to logout?</h1>
+      
+          <p style="margin-bottom: 40px;"> </p>
+          <div >
+              <input id="aid" type="hidden" value="">
+      <a class="btn" id="apbt" onclick="logout()">Yes</a>
+      <a class="btn" onclick="togglePopup3()">Cancel</a>
+          </div>
+          </div>
+      
+          </div>
+          <div class="popup" id="popup-1">
+ 
+            <div class="overlay"></div>
+        
+            <div class="content">
+        
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
+        
+            <h1 style="margin-top: 50px;">Confirm Update Approval</h1>
+        
+            <p style="margin-bottom: 40px;color: black;margin-top: 10px;">Are you sure you wish to approve the Brochure details update? </p>
+            <div >
+                <input id="aid" type="hidden" value="">
+        <a class="btn" id="apbt" onclick="approve()">Confirm</a>
+        <a class="btn" onclick="togglePopup()">Cancel</a>
+            </div>
+            </div>
+        
+            </div>
+      <div class="popup" id="popup-2">
+  
+          <div class="overlay"></div>
+      
+          <div class="content" style="height:400px;">
+      
+          <div class="close-btn" onclick="togglePopup2()">&times;</div>
+      
+          <h1 style="margin-top: 50px;">Confirm Update Decline</h1>
+      
+          <p style="margin-bottom: 40px;color: black;margin-top: 10px;">Are you sure you wish to decline the Brochure details update? </p>
+          <div >
+              <div class="form-element" style=" flex-direction: column;align-items: flex-start; width: 100%;margin-bottom: 40px;">
+                  <span class="q" >Reason for decline</span>
+                  <input type="text" name="Reason" id="Reason" style="width: 100%;" placeholder="Enter the reason" />
+                  </div>
+                  <input id="did" type="hidden" value="">
+      <a class="btn" id="decbt" onclick="decline()" style="background-color: red;">Decline</a>
+      <a class="btn" onclick="togglePopup2()">Cancel</a>
+          </div>
+          </div>
+      
+          </div>
+    </div>
+   
+  </main>
+  
+</body>
+<script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+<script>
+    var porfilepicback = sessionStorage.getItem("backprofilepic");
+  if (porfilepicback!==null){
+    document.getElementById("profileimage").src = porfilepicback;
+    document.getElementById("profileimage1").src = porfilepicback;
+  }
+var ustatus ;
+  function notavailable(){
+    alert("Not Available")
+  }
+const  GetUniqueID = () =>{
+const uniqueID = localStorage.getItem("Passkey-uniqueID");
+if (uniqueID == undefined){
+const newUniqueID = crypto.randomUUID();
+
+return [newUniqueID, "New"];
+}
+else {
+return uniqueID;
+}
+}
+async function passkey(){
+           var passdevuniid =GetUniqueID();
+           console.log(passdevuniid);
+if (passdevuniid[1] ==  "New"){
+ document.getElementById("loader").style.display="block"; 
+           document.getElementById("load").style.display="initial";
+           document.getElementById("message").textContent="Registering PassKey....";
+         
+       var passkeysss ={};
+var fetchurl = "https://passkey-5ev6.onrender.com";
+       const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+           const url = new URL(window.location)
+           const username = localStorage.getItem("loggedname");
+           var weburl = location.hostname;
+           console.log(weburl)
+           const response = await fetch(fetchurl+'/register-challenge', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ username, weburl })
+           })
+
+           const challengeResult = await response.json()
+           const { options } = challengeResult // Server side challenge
+
+           const authenticationResult = await startRegistration({optionsJSON: options})
+           console.log(authenticationResult)
+
+           var urlorigin= location.protocol+"//"+location.host;
+           console.log(urlorigin)
+           var create_passkey = await fetch(fetchurl+'/register-verify', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ username, cred: authenticationResult, challenge: options.challenge, devUniId:passdevuniid[0], weburl,urlorigin })
+           })
+           const create_passkeyResult = await create_passkey.json();
+           console.log(create_passkeyResult.result)
+           
+           
+passkeysss = create_passkeyResult.info;
+console.log(create_passkeyResult.info);
+if (create_passkeyResult.info.userVerified){
+ localStorage.setItem("Passkey-uniqueID",passdevuniid[0]);
+ document.getElementById("loader").style.display="none"; 
+document.getElementById("message").textContent="PassKey Registered Successfully";
+setTimeout(function () { 
+ document.getElementById("load").style.display="none";
+},2000);
+}
+
+
+}
+else{
+alert("PassKey is already created for this Device")
+}
+}
+       function approvePopup(id){
+           console.log("ok")
+   document.getElementById("popup-1").classList.toggle("active");
+   document.getElementById("aid").value = id;
+   
+   }
+
+   function togglePopup(){
+   document.getElementById("popup-1").classList.toggle("active");
+   }
+   function declinePopup(id){
+       console.log("ok")
+   document.getElementById("popup-2").classList.toggle("active");
+   document.getElementById("did").value = id;
+   
+   }
+   function togglePopup2(){
+   document.getElementById("popup-2").classList.toggle("active");
+   }
+   function togglePopup3(){
+   document.getElementById("popup-3").classList.toggle("active");
+   }
+   function togglePopup4(){
+   document.getElementById("popup-4").classList.toggle("active");
+   }
+   var fetchurl ="";
+         var uname ;
+         var uorp ;
+         const keyvalues = window.location.search;
+     const value = new URLSearchParams(keyvalues);
+     var idvalue = value.get('ui');
+     
+  
+ 
+     var uids = [
+       "398",
+       "756",
+       "652",
+       "235",
+       "453",
+      "648",
+       "378",
+       "345",
+       "904",
+       "413",
+       "254",
+       "890",
+       "333",
+       "333",
+       "333",
+       
+   ];
+   var uorps = [
+    "B.Tech",
+    "B.Tech",
+    "B.Tech",
+    "B.Tech",
+    "B.Tech",
+    "B.Tech",
+    "B.Tech",
+    "B.Tech",
+    "B.Tech",
+    "M.Tech",
+    "M.Tech",
+    "M.Tech",
+    "M.Tech",
+    "M.Tech",
+    "M.Tech"
+   ]
+   var inames = [
+   'Anandha Keerthy M',
+   'Anindit Bizy Nair',
+   'David Evander Jebson S',
+   'Keerthika P',
+   'Nitheesh R L',
+   'Shivam Jha',
+   'Srinithi C P',
+   'Subbu Krishna Sharma GM',
+   'Yuvashreekantham R',
+   'R B Ramyaa',
+   'Anjali S',
+   'Mathangi G',
+   'Srivigneswar S',
+   'Sathishwaran S',
+   'Sample'
+   ]
+   var photourls =[
+ 'https://npics.pages.dev/1.jpg',
+'https://npics.pages.dev/2.jpg',
+'https://npics.pages.dev/3.jpg',
+'https://npics.pages.dev/4.jpg',
+'https://npics.pages.dev/5.jpg',
+'https://npics.pages.dev/6.jpg',
+'https://npics.pages.dev/7.jpg',
+'https://npics.pages.dev/8.jpg',
+'https://npics.pages.dev/9.jpg',
+'https://npics.pages.dev/10.jpg',
+'https://npics.pages.dev/11.jpg',
+'https://npics.pages.dev/12.jpg',
+'https://npics.pages.dev/13.jpg',
+'https://npics.pages.dev/14.jpg',
+'https://npics.pages.dev/0.jpg'
+
+ ]
+   var iurls = [
+'https://script.google.com/macros/s/AKfycbxzHeGu3z7ChHoOQf4Lw1qgvY1kUL8lAs0mQAmTkwYaELXnCVy6gUm3nmUNHfhh0EGsOQ/exec',
+'https://script.google.com/macros/s/AKfycbw6wbhOcrcyoOFuRn8RPSgZxdLnFbROVG2C6gu033ep9l6kk8GRFg6fKJQVX-yvzaOyrA/exec',
+'https://script.google.com/macros/s/AKfycby0bpezZTGSTIBGxkSa4LymvbBYP68ro7LJ_aeL-TpRwoUtgq7J9jGtlNrPrpSFtLdMPw/exec',
+'https://script.google.com/macros/s/AKfycbyPmVOKmWhJLFSSrXJucIFWn4HLqE5R-YaFy7fUfgd65GvuodABle1vHoQyK-idGYlq/exec',
+'https://script.google.com/macros/s/AKfycbxEp-AGZgECifFXwbKOWXrVlKItShDBaqlQy1nNGXElI6BR6SJVeHntpWOBvT4GvkJFOA/exec',
+'https://script.google.com/macros/s/AKfycbwXeCVS5KRLG_-fivdhmhV3Gj8mRPEDkDnqXeSsJFglqDmSHOeEk5snIeq3ujxGrUM/exec',
+'https://script.google.com/macros/s/AKfycbyJ1XeGgRqAjR44TB_hTjLEyCMA7XHhv5hASQdRp2LqnAYxcfUm3NmYeHTZP7MwJRea/exec',
+'https://script.google.com/macros/s/AKfycbx6MTdLho6wKtsbAZYfTym8KS_3NdNTzhyQD29Ls8Ww9Bk1Nuw40-kF1KWSTAJY90d2/exec',
+'https://script.google.com/macros/s/AKfycby_oUg1_sTnZF5kTyG70JaA0DN_fSwhmFfnqph-Wnc-EU1UuvRxDahY_acAlwt9udo/exec',
+'https://script.google.com/macros/s/AKfycbzQNai3ZVI_FxloADEK1zaj1KfzIxi-916CK1GgdWVYSWYPsTOkvTqhDcaDWw1AMG6flg/exec',
+'https://script.google.com/macros/s/AKfycbxj_gCuRgJZ-Yu5QJAd-wMlvNonVPXHQV-mnGjr4d5Hz-a0x47brR-9byzQT8eyZSRS/exec',
+'https://script.google.com/macros/s/AKfycbyVtGzaKOxucJJkHbNPjPHQvRV-PirSwetae8B2He_zgh9TnbKvHKKAgIzXzOy03-cS/exec',
+'https://script.google.com/macros/s/AKfycbyD2RB2ak-oFcJgzF6J_AyV7D3hk4sp6V7H835NbL22S0kxCFJt1A16HW059pBmJOMj/exec',
+'https://script.google.com/macros/s/AKfycbzGzDbJnrdaAQswQY05tvv8WWG6I6gI9TKbq-HP0QF6-N-Ko2v78v97euY6erkOKw/exec',
+'https://script.google.com/macros/s/AKfycbw2vmyE-I2iQHjOS3BQHdqaNBjHlPdJ9sIPwyQgH8pZMQO2gpilLcOIvKJG-N067LbG/exec'
+   ]
+   for (var i = 0; i < uids.length; i++) {
+     uname = localStorage.getItem("loggedname");
+     console.log(uname)
+     if (uname == inames[i]){
+       idvalue = uids[i];
+   fetchurl = iurls[i];
+   uorp = uorps[i];
+   console.log(document.getElementById("profileimage"));
+   sessionStorage.setItem("backprofilepic",photourls[i]);
+   document.getElementById("profileimage").src = photourls[i];
+   document.getElementById("profileimage1").src = photourls[i];
+   console.log(document.getElementById("profileimage").src,photourls[i])
+
+     }
+   }
+   console.log(uname)
+   console.log(fetchurl)
+
+   document.getElementById("mname").innerHTML = uname;
+   if (idvalue == undefined||uname==undefined){
+     alert("You are not logged in. Please log in");
+     window.location="../index.html";
+   }
+   document.getElementById("load").style.display="initial";
+           document.getElementById("loader").style.display="block"; 
+           document.getElementById("message").textContent = "Fetching requests....";
+      function fetchd (){
+       console.log("fetch")
+       var details ="";
+       fetch(
+    
+    "https://script.google.com/macros/s/AKfycby-UyjL65XZQwdTF8zxr9imkNypLpqeP-PZ6RMLPlnbzGQY8M7PLF0Mqj6cZV3ZZ_OP/exec",
+    {
+      redirect: "follow",
+      method: "POST",
+      body: uname,
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    }
+   )
+   
+    .then(function (response) {
+   
+      // Check if the request was successful
+      if (response) {
+   
+        return response; // Assuming your script returns JSON response
+      } else {
+        throw new Error("Failed to fetch.");
+      }
+    })
+    .then(async function (data) {
+   const result1 = await data.json();
+   
+   var r = result1.data2[0];
+   var userrole =result1.data2[1];
+console.log(r)
+   if(userrole=="Admin"){
+    var tabheadsdetail =
+    `<thead>
+    <th><b>Request ID</b></th>
+    <th><b>Alloted Member</b></th>
+<th><b>Name of the Student</b></th>
+<th><b>Content to be changed</b></th>
+<th><b>Old Data</b></th>
+<th><b>New Data</b></th>
+<th class="arp"><b>Approve or Decline</b></th>
+</thead>
+`
+
+   }
+   else if (userrole=="User"){
+    var tabheadsdetail =
+`<thead>
+<th><b>Request ID</b></th>
+<th><b>Name of the Student</b></th>
+<th><b>Content to be changed</b></th>
+<th><b>Old Data</b></th>
+<th><b>New Data</b></th>
+<th class="arp"><b>Approve or Decline</b></th>
+</thead>
+`
+    
+   }
+   
+   for(var k=0; k<r.length;k++){
+    const searchdata = document.querySelector('.input-group input');
+    if(searchdata.value==""){
+      var detail = createtable(r[k]);
+      details = details + detail;
+    }
+    else{
+var tabledata = r[k].join("");
+var tdata =tabledata.toLowerCase();
+var sdata =searchdata.value.toLowerCase();
+if (tdata.includes(sdata)){
+ var detail = createtable(r[k]);
+  details = details + detail;
+}
+    }
+    
+    function createtable(r){
+      var detail ="";
+   
+       var head = r[2].split("<br>");
+       var olddata = r[3].split("<br>");
+       var newdata = r[4].split("<br>");
+       var spanno1 = head.length ;
+       var spanno = spanno1 -1;
+       var formowner="";
+       if(userrole=="Admin"){
+        formowner = '<td rowspan="'+spanno+'">'+r[5]+'</td>';
+       }
+       for(var j=1; j<head.length;j++){
+         if (j==head.length-1 && j==1){
+
+               
+               if(head[j].includes("CV") || head[j].includes("Files")){
+             
+             detail += '<tbody class="hoverrowt"><tr class="lasttr"><td rowspan="'+spanno+'">'+r[0]+'</td>'+formowner+'<td rowspan="'+spanno+'">'+r[1]+'</td> <td><b>'+head[j]+'</b></td><td><a class="btn1" href="'+olddata[j]+'" target="_blank">View</a></td><td><a class="btn1" href="'+newdata[j]+'" target="_blank">View</a>'+'</td><td rowspan="'+spanno+'"><a class="approve" onclick="approvePopup(`'+r[0]+"/"+r[1]+'`)" >Approve</a><a class="decline" onclick="declinePopup(`'+r[0]+"/"+r[1]+'`)" >Decline</a></td> </tr></tbody>';
+           }
+
+           else{
+               detail += '<tbody class="hoverrowt"><tr class="lasttr"><td rowspan="'+spanno+'">'+r[0]+'</td>'+formowner+'<td rowspan="'+spanno+'">'+r[1]+'</td> <td><b>'+head[j]+'</b></td><td>'+olddata[j]+'</td><td>'+newdata[j]+'</td><td rowspan="'+spanno+'"><a class="approve" onclick="approvePopup(`'+r[0]+"/"+r[1]+'`)" >Approve</a><a class="decline" onclick="declinePopup(`'+r[0]+"/"+r[1]+'`)" >Decline</a></td> </tr></tbody>';
+           } 
+         }
+           else   if (j==1){
+               var spanno1 = head.length ;
+               var spanno = spanno1 -1;
+               
+               if(head[j].includes("CV") || head[j].includes("Files")){
+             
+             detail += '<tbody class="hoverrowt"><tr><td rowspan="'+spanno+'">'+r[0]+'</td>'+formowner+'<td rowspan="'+spanno+'">'+r[1]+'</td> <td><b>'+head[j]+'</b></td><td><a class="btn1" href="'+olddata[j]+'" target="_blank">View</a></td><td><a class="btn1" href="'+newdata[j]+'" target="_blank">View</a>'+'</td><td rowspan="'+spanno+'"><a class="approve" onclick="approvePopup(`'+r[0]+"/"+r[1]+'`)" >Approve</a><a class="decline" onclick="declinePopup(`'+r[0]+"/"+r[1]+'`)" >Decline</a></td> </tr>';
+           }
+
+           else{
+               detail += '<tbody class="hoverrowt"><tr><td rowspan="'+spanno+'">'+r[0]+'</td>'+formowner+'<td rowspan="'+spanno+'">'+r[1]+'</td> <td><b>'+head[j]+'</b></td><td>'+olddata[j]+'</td><td>'+newdata[j]+'</td><td rowspan="'+spanno+'"><a class="approve" onclick="approvePopup(`'+r[0]+"/"+r[1]+'`)" >Approve</a><a class="decline" onclick="declinePopup(`'+r[0]+"/"+r[1]+'`)" >Decline</a></td> </tr>';
+          
+           }
+         }
+         else if (j==head.length-1){
+           var spanno1 = head.length ;
+               var spanno = spanno1 -1;
+               
+               if(head[j].includes("CV") || head[j].includes("Files")){
+             
+             detail +='<tr class="lasttr"><td><b>'+head[j]+'</b></td> <td><a class="btn1" href="'+olddata[j]+'" target="_blank">View</a></td><td><a class="btn1" href="'+newdata[j]+'" target="_blank">View</a></td></tr></tbody>';
+           }
+
+           else{
+             detail +='<tr class="lasttr"><td><b>'+head[j]+'</b></td> <td>'+olddata[j]+'</td><td>'+newdata[j]+'</td></tr></tbody>';
+           }
+               }
+
+           else{
+             
+           if(head[j].includes("CV") || head[j].includes("Files")){
+             
+             detail +='<tr><td><b>'+head[j]+'</b></td> <td><a class="btn1" href="'+olddata[j]+'" target="_blank">View</a></td><td><a class="btn1" href="'+newdata[j]+'" target="_blank">View</a></td></tr>';
+           }
+   else{
+              detail +='<tr><td><b>'+head[j]+'</b></td> <td>'+olddata[j]+'</td><td>'+newdata[j]+'</td></tr>';
+   }
+           }
+
+       }
+       console.log(detail)
+       return detail;
+      }
+      
+
+   }
+console.log(details)
+   if(ustatus!=="Going"){
+   if (details!==""){
+ console.log(details)
+   document.getElementById("tabdetails").innerHTML = tabheadsdetail + details;
+   document.getElementById("tablebee").style.display = "initial";
+   document.getElementById("status").style.display = "none";
+   }
+   else{
+     document.getElementById("tablebee").style.display = "none";
+       document.getElementById("status").style.display = "initial";
+       document.getElementById("status").textContent = "No Active Update Requests";
+
+   }
+   document.getElementById("loader").style.display="none"; 
+                   document.getElementById("message").textContent = "";
+                   document.getElementById("load").style.display = "none";
+
+  }
+   })
+   
+   .catch(function (error) {
+   // Handle errors, you can display an error message here
+   console.error(error);
+   document.getElementById("loader").style.display="none"; 
+   document.getElementById("message").textContent =
+   "Failed to fetch.";
+   document.getElementById("message").style.display = "block";
+   });
+      }
+   fetchd ();
+   
+   function approve(){
+     var id =  document.getElementById("aid").value;
+     id = id.split("/");
+     
+       console.log(id);
+       togglePopup();
+       var updatede = id[0]+"/"+"Approve"+"/"+""+"/"+uorp;
+      
+       updatedetails(updatede,id[0],id[1]);
+   }
+   function decline(){
+       var id =  document.getElementById("did").value;
+       id = id.split("/");
+       var Reason =  document.getElementById("Reason").value;
+       console.log(id);
+       console.log(Reason);
+       if(Reason!==""){
+       togglePopup2();
+       var updatede = id[0]+"/"+"Decline"+"/"+Reason+"/"+uorp;
+       updatedetails(updatede,id[0],id[1]);
+       }
+       else{
+           alert("Enter the reason for decline")
+       }
+   }
+   
+   function sendmail (name,id){
+    ustatus="Going";
+     document.getElementById("load").style.display="initial";
+           document.getElementById("loader").style.display="block"; 
+           document.getElementById("message").textContent = "Sending Mail to "+name+"...";
+           
+           
+             console.log(id)
+
+   fetch(
+    
+                 fetchurl,
+                 {
+                   redirect: "follow",
+                   method: "POST",
+                   body: id+"/"+uorp,
+                   headers: {
+                     "Content-Type": "text/plain;charset=utf-8",
+                   },
+                 }
+               )
+       
+                 .then(function (response) {
+       
+                   // Check if the request was successful
+                   if (response) {
+                
+                     return response; // Assuming your script returns JSON response
+                   } else {
+                     throw new Error("Failed to send the mail.");
+                   }
+                 })
+                 .then(async function (data) {
+           const result1 = await data.json();
+     
+           var r = result1.data2;
+   console.log(r);
+   if(r == "sent"){
+       document.getElementById("loader").style.display="none"; 
+                   document.getElementById("message").textContent =
+                    "Mail Sent to "+name;
+                   document.getElementById("message").style.display = "block";
+                   setTimeout(function () { document.getElementById("load").style.display="none"; 
+                   ustatus="";
+                   },2000);
+   
+                 
+   }
+   
+   
+         })
+   
+         .catch(function (error) {
+           // Handle errors, you can display an error message here
+           console.error(error);
+           document.getElementById("loader").style.display="none"; 
+           document.getElementById("message").textContent =
+             "Failed to Send the Mail.";
+           document.getElementById("message").style.display = "block";
+         });
+   }
+   function updatedetails(updatestring,id,name){
+    ustatus="Going";
+    console.log(updatestring)
+       document.getElementById("load").style.display="initial";
+           document.getElementById("loader").style.display="block"; 
+           document.getElementById("message").textContent = "Proceesing the request....";
+           
+       fetch(
+    
+    "https://script.google.com/macros/s/AKfycbxnl13iMMpRvTpLJW0I5JzGq5jkk4v2f1N7YyjCUVVYAdbrlrLdDjP5Mr517_fG2QOn/exec",
+    {
+      redirect: "follow",
+      method: "POST",
+      body: updatestring,
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    }
+   )
+   
+    .then(function (response) {
+   
+      // Check if the request was successful
+      if (response) {
+   
+        return response; // Assuming your script returns JSON response
+      } else {
+        throw new Error("Failed to fetch.");
+      }
+    })
+    .then(async function (data) {
+   const result1 = await data.json();
+   
+   var r = result1.data2;
+   console.log(r);
+   fetchd ();
+   document.getElementById("loader").style.display="none"; 
+     document.getElementById("message").textContent = "Processed";
+    document.getElementById("message").style.display = "block";
+     setTimeout(function () { document.getElementById("load").style.display="none";
+   sendmail (name,id);
+  
+   },2000);
+   
+   })
+   
+   .catch(function (error) {
+   // Handle errors, you can display an error message here
+   console.error(error);
+   document.getElementById("loader").style.display="none"; 
+   document.getElementById("message").textContent =
+   "Failed to fetch.";
+   document.getElementById("message").style.display = "block";
+   });
+   }
+
+   </script>
+   <script>
+    function updatelogstatus(status){
+      var updatestring = localStorage.getItem("loggedname")+"/"+status;
+ 
+           
+       fetch(
+    
+    "https://script.google.com/macros/s/AKfycbxEoNGPxEXxwtSXqRvPhgGK_btTmbVO4Tq6ZW002Q7Olap6cyoi5hmNAwYTS3OfLJCLug/exec",
+    {
+      redirect: "follow",
+      method: "POST",
+      body: updatestring,
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    }
+   )
+   
+    .then(function (response) {
+   
+      // Check if the request was successful
+      if (response) {
+   
+        return response; // Assuming your script returns JSON response
+      } else {
+        throw new Error("Failed to fetch.");
+      }
+    })
+    .then(async function (data) {
+   const result1 = await data.json();
+   
+   var r = result1.data2;
+  
+   
+   })
+   
+   .catch(function (error) {
+   // Handle errors, you can display an error message here
+   console.error(error);
+
+   });
+   }
+   setInterval(() => {
+
+fetchd ();
+}, 1000)
+
+setTimeout(() => {
+
+updatelogstatus("Online");
+
+}, 2000)
+window.addEventListener("blur", () => {
+  updatelogstatus("Offline");   
+  });
+  window.addEventListener("focus", () => {
+  updatelogstatus("Online");   
+  });
+//window.unblur = colse();
+const beforeUnloadHandler = (event) => {  
+  updatelogstatus("Offline");  
+};
+window.addEventListener("beforeunload", beforeUnloadHandler);
+   </script>
+
+</html>

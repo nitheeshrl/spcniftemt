@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+    <title>Set Password</title>  
+    <link rel="stylesheet" href="style.css" />
+</head>    
+<body>
+<section class="header1">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section id="login" name="login">
+  <div class="formb-container">
+    <h1 style="text-align: center;"> Set Password </h1>
+    <div class="form-element" style="margin-top: 20px;">
+      <span class="q">Set New Password</span>
+      <div style="display: flex; gap: 20px;align-items: center;">
+      <input style="width: 100%;" type="password" name="Password" id="Password" required placeholder="Enter your New Password"/>
+      <a onclick="showpass()">
+        <img id="pass-show" style="width: 30px; scale: 130%; filter: invert(0);" src="pass vis.png" alt="" srcset="">
+        <img id="pass-hide" style=" width: 30px; scale: 150%; filter: invert(0); display: none;" src="pass hide.png" alt="" srcset="">
+      </a> 
+    </div>
+  </div>
+      <div class="form-element" style="margin-top: 20px;">
+        <span class="q">Confirm New Password</span>
+        <div style="display: flex; gap: 20px;align-items: center;">
+        <input style="width: 100%;" type="password" name="conPassword" id="conPassword" required placeholder="Enter your Confirm Password"/>
+        <a onclick="showconpass()">
+          <img id="conpass-show" style="width: 30px; scale: 130%; filter: invert(0);" src="pass vis.png" alt="" srcset="">
+          <img id="conpass-hide" style=" width: 30px; scale: 150%; filter: invert(0); display: none;" src="pass hide.png" alt="" srcset="">
+        </a>
+      </div>
+    </div>
+      <button name="btl" type="submit" onclick="login()" type="button" ><div class="btn-text">Set Password</div></button>
+    </div>
+</section>
+<div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+
+<script>
+    function showpass(){
+    var btn = document.getElementById("Password").type ;
+
+    if (btn == "password"){
+      document.getElementById("Password").type = "text";
+      document.getElementById("pass-show").style.display="none";
+      document.getElementById("pass-hide").style.display="initial";
+
+    }
+    else if(btn == "text"){
+      document.getElementById("Password").type = "password";
+      document.getElementById("pass-show").style.display="initial";
+      document.getElementById("pass-hide").style.display="none";
+    }
+  }
+  function showconpass(){
+    var btn = document.getElementById("conPassword").type ;
+
+    if (btn == "password"){
+      document.getElementById("conPassword").type = "text";
+      document.getElementById("conpass-show").style.display="none";
+      document.getElementById("conpass-hide").style.display="initial";
+
+    }
+    else if(btn == "text"){
+      document.getElementById("conPassword").type = "password";
+      document.getElementById("conpass-show").style.display="initial";
+      document.getElementById("conpass-hide").style.display="none";
+    }
+  }
+function checklogdetails(realhash,checkhash){
+  console.log("hgf")
+if (realhash == checkhash){
+  onuploadcomplete ()
+
+  }
+  else{
+    alert("Wrong Password")
+  }
+
+}
+function onuploadcomplete (){
+
+document.getElementById("loader").style.display="none"; 
+document.getElementById("message").textContent="Password Set Successful";
+setTimeout(function () { 
+  document.getElementById("load").style.display="none";
+  var setname = sessionStorage.getItem("setname");
+  if (setname !== null){
+  localStorage.setItem("loggedname", setname);
+  }
+  sessionStorage.removeItem("setname");
+  window.location="user/past.html"
+ },2000);
+}
+function getuserdetails(user,pass,salt){
+    var formDataString =user;
+    console.log(formDataString)
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbw6HLM5MbrYYq6uotXraXc9JvSlfAVRlU9Ynbh_9nHQiKBJ--E9tAhOBjVQZeWthwSd/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify({
+                password: pass,
+                user: user,
+                salt: salt
+        }),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to set password");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+var userdetails = result1.data2;
+
+
+console.log(userdetails)
+if (userdetails[0]!=="Not Found"){
+  onuploadcomplete ()
+
+}
+else if (userdetails[0]=="Not Found"){
+  alert("User not found")
+  document.getElementById("load").style.display="none";
+}
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("message").textContent =
+          "An error occurred while set password";
+        document.getElementById("message").style.display = "block";
+      });
+    }
+  
+function login(){
+
+  function getusername(){
+    var loggedname = localStorage.getItem("loggedname");
+    if (loggedname !== null){
+      return loggedname;
+    }
+    else{
+      return sessionStorage.getItem("setname");
+    }
+  }
+  var enusername = getusername();
+  console.log(enusername)
+  var enpassword = document.getElementById("Password").value;
+  var enpassword1 = document.getElementById("conPassword").value;
+  if (enpassword ==""||enpassword =="Niftem@iac" ){
+    alert("Enter the new password");
+    document.getElementById("load").style.display="none";
+  }
+  else   if (enpassword1 =="" ){
+    alert("Enter the confirm password");
+    document.getElementById("load").style.display="none";
+  }
+  else if (enpassword == enpassword1){
+    document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Setting Password....";
+  var Username = "iacadmin";
+  var password = "Niftem@iac";
+
+  async  function getdehash(){
+    var url ="https://passkey-5ev6.onrender.com";
+    const res = await fetch(url+"/hash",
+        {
+            method: "POST",
+            headers:{
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify({
+                password: enpassword
+        })
+        }
+    )
+    .then(res=>res.json())
+          
+     .then(data=>console.log(data)&getuserdetails(enusername,data.hash,data.salt))
+}
+getdehash();
+;
+
+  }
+else{
+  alert("New Password and Confirm Password is not same")
+}
+}
+</script>
+<script src="scriptform.js"></script>
+</body>
+</html>
