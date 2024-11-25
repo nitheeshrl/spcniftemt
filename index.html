@@ -143,7 +143,7 @@ var userdetails = result1.data2;
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
-passkey(userdetails[2]);
+passkey(userdetails[2],passdevuniid);
 }
 else if (userdetails[0]=="Not Found"){
   alert("User not found")
@@ -166,7 +166,7 @@ else if (userdetails[0]=="Not Found"){
   } 
 
 
- async function passkey(userId){
+ async function passkey(userId,passdevuniid){
         var passkeysss ={};
         const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
  var fetchurl = "https://passkey-5ev6.onrender.com";
