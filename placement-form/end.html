@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+    <title>Form Closed</title>  
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        window.onload=getstatus();
+         function getstatus(){
+     const url = "https://script.google.com/macros/s/AKfycbxR9JjLW-_xKlNmW7-2OmoqYeHLkfZn45DJL-kazZ4Nl_gGqbUNwJk96DmvpyGzxAPp/exec" 
+     var val = "HACCP Training Preference Form";
+     console.log(val)
+     fetch(`${url}?header=${val}`)
+         .then((response) => response.json())
+         .then(({ data }) => {
+             if (data == "Live"){
+     
+                window.location='index.html';
+     
+                 }
+                 else if (data == "Inactive"){
+   
+                   
+                 }
+         })
+         .catch((error) => console.error('!!!!!!!!', error));
+     }
+     setInterval(() => {
+      getstatus();
+  }, 1000);
+     </script>
+</head>    
+<body>
+<section class="header">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section class="msg" >
+<h1>Form has been closed</h1>
+<p>The responses submitted only through this form will be considered as final</p>
+
+</section>
+</body>
+</html>

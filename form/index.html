@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+
+    <title id="formtitle">Form</title>  
+    <script>
+      const keyvalues = window.location.search;
+const value = new URLSearchParams(keyvalues);
+const idvalue = value.get('form');
+
+
+console.log(idvalue)
+
+
+</script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      var owner;
+      var formstatus ;
+      var sheetname ; 
+      window.onload=getstatus();
+
+      function getstatus(){
+   const url = "https://script.google.com/macros/s/AKfycbxR9JjLW-_xKlNmW7-2OmoqYeHLkfZn45DJL-kazZ4Nl_gGqbUNwJk96DmvpyGzxAPp/exec" 
+
+   val = idvalue;
+   val = val.split(" ");
+   val = val.join("%20")
+   sessionStorage.setItem("formname",val)
+   console.log(val)
+   fetch(`${url}?header=${val}`)
+       .then((response) => response.json())
+       .then(({ data }) => {
+        console.log(data)
+        if (data == "Not Found"){
+          alert("Form not found")
+        }
+           if (data == "Live"){
+   console.log("ok")
+   if(formstatus=="Form Fetched"){
+   document.getElementById("frqa").style.display="initial";
+   document.getElementById("ll").textContent="";
+   document.getElementById("previewlink").style.display="none";
+   }
+               }
+               else if (data == "Inactive"){
+                 document.getElementById("frqa").style.display="none";
+                 window.location='end.html';
+               }
+               else if (data == "Created"){
+                document.getElementById("ll").textContent="Form is not published till now";
+                document.getElementById("previewlink").href="https://pcniftemt.pages.dev/preview-form/?form="+idvalue
+                document.getElementById("previewlink").style.display="initial";
+                document.getElementById("frqa").style.display="none";
+               }
+               else if (data == "Not Found"){
+    alert("Form not found")
+  }
+       })
+       .catch((error) => console.error('!!!!!!!!', error));
+   }
+   setInterval(() => {
+    getstatus();
+  
+}, 1000);
+   </script>
+   <script>
+    function fetchq(){
+            fetch(
+          "https://script.google.com/macros/s/AKfycbwBKrmx61rNpYFhGmUrYKhKEvkZeHffij3XEp8twQFRUYfc-56AV6apwwqXrpliSt4p/exec",
+          
+          {
+            redirect: "follow",
+            method: "POST",
+            body: idvalue+"/Forms",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+
+          .then(async function (response) {
+
+            // Check if the request was successful
+            if (response) {
+              const result1 = await response.json();
+            console.log(result1.data2);
+            var data = result1.data2;
+            if(data[0]!==null){
+document.getElementById("formquestions").innerHTML=data[1];
+document.getElementById("Form Name").textContent=data[2];
+document.getElementById("formtitle").textContent=data[2]
+console.log(data[3])
+data[3] = data[3].split("\n");
+data[3] = data[3].join("<br>");
+console.log(data[3])
+document.getElementById("Form Description").innerHTML=data[3];
+sheetname=data[4];
+formstatus = "Form Fetched";
+owner = data[5];
+  }
+  else{
+    alert("Form not found")
+  }
+
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to load the form.");
+            }
+          })
+         /* .then(async function (data) {
+            const result1 = await data.json();
+            console.log(result1.data2);
+            var data = result1.data2;
+            if(data[0]!==null){
+document.getElementById("formquestions").innerHTML=data[1];
+document.getElementById("Form Name").textContent=data[2];
+document.getElementById("formtitle").textContent=data[2]
+console.log(data[3])
+data[3] = data[3].split("\n");
+data[3] = data[3].join("<br>");
+console.log(data[3])
+document.getElementById("Form Description").innerHTML=data[3];
+sheetname=data[4];
+formstatus = "Form Fetched";
+owner = data[5];
+  }
+  else{
+    alert("Form not found")
+  }
+
+          })*/
+
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+    }
+    fetchq()
+   </script>
+</head>    
+<body>
+<section class="header">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section >
+<div class="form-container">
+<script type="text/javascript">var submitted=false </script>
+
+    <form id="form" class="container m-4 pl-4" method="POST">
+      <h3 id="ll" style="text-align: center;">Form Loading....</h3>
+      <div style="display: flex;align-items: center;justify-content: center;">
+        <a id="previewlink" class="btn" style="display: none;" target="_blank" href="">See Preview</a>
+        </div>
+      <div id="frqa" class="frqa">
+<h3 id="Form Name"></h3>
+<p id="Form Description"></p>
+
+
+
+
+
+  <section id="namesection">
+<div id="formquestions">
+
+  </div>
+
+<button style="margin-top: 20px;" type="submit" id="bt"> 
+Submit
+</button> 
+</section>
+<div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+  </div> 
+</div>
+<script>
+  let form = document.querySelector("form");
+form.addEventListener('submit',()=>{ {
+  document.getElementById("load").style.display="initial";
+  document.getElementById("loader").style.display="block"; 
+  document.getElementById("bt").style.display="none";
+}})
+  
+document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("bt").disabled = true;
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) { 
+     
+          if (pair[0] !== "file"){
+            
+          
+          keyValuePairs.push(pair[0] + "=val=" + pair[1]);
+console.log(pair[0])
+        }}
+
+        var formDataString = keyValuePairs.join("=namff=");
+console.log(formDataString)
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbyKwgo9KpuGCu6Y11WimoMTU0QsoV-VzXuAJXj98qmXGYyvkophCFCSnM2KU1z3Wd_rNA/exec",
+          
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString+"=sheetid="+sheetname,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+
+          .then(function (response) {
+
+            // Check if the request was successful
+            if (response) {
+         
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(async function (data) {
+            const result1 = await data.json();
+            console.log(result1.data2);
+            if (result1.data2 == "accept"){
+            // Display a success message
+            document.getElementById("bt").disabled = false;
+            document.getElementById("form").reset();
+            window.location='submission.html';
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);}
+            else if (result1.data2 == "reject"){
+              window.location='reject.html';
+            }
+          })
+
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+      });
+
+
+
+      function refreshwin(){
+        console.log("ok")
+        window.location = window.location.href;
+      }
+
+
+</script>
+<script src="script.js  "></script>
+<script>
+  function checkboxvalue(button){
+    var value ="";
+    var checks = button.parentElement.parentElement.children;
+    for(var i= 2; i<checks.length-1;i++){
+      if(checks[i].children[0].checked==false&&checks[i].children[0].required){
+        for(var f= 2; f<checks.length-1;f++){
+        if(checks[f].children[0].checked){
+        checks[i].children[0].required=false;
+        checks[f].children[0].required=true;
+        }
+      }
+      }
+      
+      if(checks[i].children[0].checked){
+        if (value ==""){
+     
+          if(checks[i].children[0].value == "Other"&&button.type=="checkbox"){
+       
+            if(checks[i].children[4].type=="hidden"){
+              console.log(checks[i].children[0].value)
+              checks[i].children[4].type="text";
+              checks[i].children[4].required = true;
+            }
+
+        }
+        else if (checks[i].children[0].value !== "Other"){
+          value += checks[i].children[0].value;
+        }
+    
+        if( checks[i].children.length==5){
+        if(checks[i].children[4].type=="text"&&checks[i].children[4].value!==""){
+          value +=checks[i].children[4].value;
+          checks[i].children[0].checked = true
+        }
+      }
+        }
+        else{
+     
+          if(checks[i].children[0].value == "Other"&&button.type=="checkbox"){
+ 
+            if(checks[i].children[4].type=="hidden"){
+              console.log(checks[i].children[0].value)
+              checks[i].children[4].type="text";
+              checks[i].children[4].required = true;
+            }
+
+         
+        }
+        else if (checks[i].children[0].value !== "Other"){
+          value += ", "+checks[i].children[0].value;
+        }
+ 
+        if( checks[i].children.length==5){
+        if(checks[i].children[4].type=="text"&&checks[i].children[4].value!==""){
+          value += ", "+checks[i].children[4].value;
+          checks[i].children[0].checked = true
+        }
+        }
+      }
+
+      }
+      else if(checks[i].children[0].value == "Other"&&button.type=="checkbox"){
+        
+        checks[i].children[4].type="hidden";
+        checks[i].children[4].value="";
+      }
+    }
+    console.log( checks[checks.length-1])
+    console.log(checks[checks.length-1].value)
+    checks[checks.length-1].value = value
+    console.log(checks[checks.length-1].value)
+  }
+  </script>
+  <script>
+    function formfileupload(button){
+    let file1 = button;
+
+    let fileurl1 = button.parentElement.children[3];
+    var fol = fileurl1.className;
+    file1.addEventListener('change',()=>{
+    let fr = new FileReader();
+    console.log(file1.value)
+    var rawformats = file1.accept;
+    console.log(rawformats)
+var formats = rawformats.split(",");
+console.log(formats)
+var supformat ="";
+for(var i=0;i<formats.length;i++){
+  if(i==formats.length-1){
+    supformat+=`file1.value.includes("`+formats[i]+`")`;
+  }
+  else{
+    supformat+=`file1.value.includes("`+formats[i]+`")||`;
+  }
+}
+console.log(supformat)
+    if (supformat){
+            document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Uploading....";
+            fr.addEventListener('loadend',()=>{
+                let res = fr.result;
+                let v = fileurl1.value.replace("/"+fol,"");
+                let folder = "15GgsPpNztp41g7Sw7s7LOT0vhnYnViei";
+        
+                let spt = res.split("base64,")[1];
+                let obj = {
+                    base64:spt,
+                    type:file1.files[0].type,
+                    name:file1.files[0].name,
+                    folder,
+                    v
+        
+                }
+                fetch("https://script.google.com/macros/s/AKfycbzjsZZ7VB5r1_XZUhWvkyDUDIvQM7qVQYu7gtZhChTMhiAyjfXGuHAQg21flXWsg-IOSg/exec",{
+                    method:"POST",
+                    body:JSON.stringify(obj)
+                })
+                .then(r=>r.text())
+          
+                .then(data=>fileurl1.value=(data+"/"+fol))
+                .then(data=>console.log(fileurl1.value)&(onuploadcomplete ()))
+                .then(console.log(v) )
+            })
+            fr.readAsDataURL(file1.files[0])
+                 
+    }
+    else{
+        alert("Upload the file in correct format");
+        button.value="";
+    }
+    }
+) 
+
+}
+
+function onuploadcomplete (){
+
+    document.getElementById("loader").style.display="none"; 
+    document.getElementById("message").textContent="Upload Successful";
+    setTimeout(function () { document.getElementById("load").style.display="none"; },2000);
+}
+</script>
+</section>
+</body>
+</html>

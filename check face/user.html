@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+    <title>Update Brochure Details</title>  
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style1.css" />
+    <script defer src="face-api.min.js"></script>
+    <script defer src="script1.js"></script>
+
+</head>    
+<body>
+  <video id="video" width="600" height="450" autoplay>
+ <script>
+ var serverstatus ="";
+ window.onload=getserverstatus();
+  function getserverstatus(){
+    var formDataString ="";
+    console.log("checking")
+    fetch(
+      "https://script.google.com/macros/s/AKfycbwZF3NBQBxrKmA2sFFLnE5yKafCxFUvB0hHeOlNzpVWdEDpfH0HpLbev7D_Dmt83ggF/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: formDataString,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to submit the form.");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+  
+var cr = result1.data2;
+serverstatus = cr
+if (cr=="Updating"){
+  window.location='maintenance.html';
+}
+else{
+
+}
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("message").textContent =
+          "An error occurred while updating.";
+        document.getElementById("message").style.display = "block";
+      });
+    }
+   
+setInterval(() => {
+getserverstatus();
+}, 1000);
+  // Set the target date and time for the countdown
+const targetDate = new Date("September 11, 2024 10:00:00").getTime();
+
+// Update the countdown every second
+const countdownInterval = setInterval(() => {
+  // Get the current date and time
+  const now = new Date().getTime();
+  timeDifference = targetDate - now;
+
+  if (timeDifference > 0) {
+window.location ="end.html";
+  }
+}, 1000);
+
+ </script>
+<section class="header1">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section >
+<div class="form-container">
+<script type="text/javascript">var submitted=false </script>
+<form id="form" class="container m-4 pl-4" name="form"  >
+<h1 style="text-align: center;"> Update Brochure Details </h1>
+
+<div id="frqa" class="frqa">
+  <section class="step1" id="step1">
+
+  
+<div class="form-element">
+<span class="q">Name</span>
+<select name="Name" id="Name" onchange="matchnameid()" required placeholder="Select your name">
+<option value="">Select your name</option>
+<option value='Aarthi A'>Aarthi A</option>
+<option value='Aishwarya Lakshmi S'>Aishwarya Lakshmi S</option>
+<option value='Ajitesh S'>Ajitesh S</option>
+<option value='Akash B'>Akash B</option>
+<option value='Amirtha Varshini A'>Amirtha Varshini A</option>
+<option value='Anandha Keerthy M'>Anandha Keerthy M</option>
+<option value='Anindit Bizy Nair'>Anindit Bizy Nair</option>
+<option value='Anusha R'>Anusha R</option>
+<option value='Archana P'>Archana P</option>
+<option value='Avantika C'>Avantika C</option>
+<option value='Chandrika Devendrappa'>Chandrika Devendrappa</option>
+<option value='Chitturi Rohith'>Chitturi Rohith</option>
+<option value='Cubarani Η'>Cubarani Η</option>
+<option value='David Evander Jebson S'>David Evander Jebson S</option>
+<option value='Dhanaselvam KR'>Dhanaselvam KR</option>
+<option value='Diana Celcia R'>Diana Celcia R</option>
+<option value='Diya Dharshini S'>Diya Dharshini S</option>
+<option value='Ethaya D'>Ethaya D</option>
+<option value='Gautam Nayak'>Gautam Nayak</option>
+<option value='Ginu Robtus R'>Ginu Robtus R</option>
+<option value='Guberavishnu S'>Guberavishnu S</option>
+<option value='Guguloth Sridhar'>Guguloth Sridhar</option>
+<option value='Himavanth R'>Himavanth R</option>
+<option value='Jegan P'>Jegan P</option>
+<option value='Jenish Daniel B'>Jenish Daniel B</option>
+<option value='Joshua Charles'>Joshua Charles</option>
+<option value='K Kabilan'>K Kabilan</option>
+<option value='Karyamsetty Worship'>Karyamsetty Worship</option>
+<option value='Keerthika P'>Keerthika P</option>
+<option value='Kevin Francis'>Kevin Francis</option>
+<option value='Kisha M'>Kisha M</option>
+<option value='Kota Lakshmi Sanjana'>Kota Lakshmi Sanjana</option>
+<option value='Lakshmi Narayanan S'>Lakshmi Narayanan S</option>
+<option value='Lakshmi Sruthi L'>Lakshmi Sruthi L</option>
+<option value='Lavudya Sai Kumar'>Lavudya Sai Kumar</option>
+<option value='Mahabir Prasad Swain'>Mahabir Prasad Swain</option>
+<option value='Merla A P'>Merla A P</option>
+<option value='Mohamed Tharif N J'>Mohamed Tharif N J</option>
+<option value='Mohannath Shroff J'>Mohannath Shroff J</option>
+<option value='MA Monesh Ram'>MA Monesh Ram</option>
+<option value='Mudavath Anjali'>Mudavath Anjali</option>
+<option value='Muthuraja K'>Muthuraja K</option>
+<option value='Nitheesh R L'>Nitheesh R L</option>
+<option value='Nithish J P'>Nithish J P</option>
+<option value='Padmaja M'>Padmaja M</option>
+<option value='Pranav Nanda Kishore'>Pranav Nanda Kishore</option>
+<option value='Punithavathi D'>Punithavathi D</option>
+<option value='Rakshithapriya S'>Rakshithapriya S</option>
+<option value='J Sanjeeth'>J Sanjeeth</option>
+<option value='Santhoshkumar P'>Santhoshkumar P</option>
+<option value='Shivam Jha'>Shivam Jha</option>
+<option value='Sivashree '>Sivashree </option>
+<option value='Sri Harini S'>Sri Harini S</option>
+<option value='Srinithi C P'>Srinithi C P</option>
+<option value='Srivatsan V'>Srivatsan V</option>
+<option value='Subbu Krishna Sharma GM '>Subbu Krishna Sharma GM </option>
+<option value='Suman Kumar'>Suman Kumar</option>
+<option value='Surendar S'>Surendar S</option>
+<option value='Tippaleti Srujana'>Tippaleti Srujana</option>
+<option value='Vemula Uharika'>Vemula Uharika</option>
+<option value='Vishnu Varthan T'>Vishnu Varthan T</option>
+<option value='Yadla Ganesh Babu'>Yadla Ganesh Babu</option>
+<option value='Yuvashreekantham R'>Yuvashreekantham R</option>
+</select>
+
+</div>
+<div class="form-element">
+<span class="q">ID Number</span>
+<input readonly type="text" name="ID Number" id="ID Number" required placeholder="Enter your ID number" />
+</div>
+<div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+  <input type="checkbox" class="Check" value="Email address" oninput="checken()">
+   <span style="margin-left: 20px;">Update Email address</span>
+</div>
+<div class="form-element"id="Email address V" style="display: none; flex-direction: column;">
+<span class="q">Email address</span>
+<input  type="email" name="Email address" id="Email address"  placeholder="Enter your email"/>
+</div>
+
+<div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+  <input type="checkbox" class="Check" value="Skills" oninput="checken()">
+   <span style="margin-left: 20px;">Edit Skills</span>
+</div>
+<div id="Skills V" style="display: none; flex-direction: column;">
+<div class="form-element"  >
+<span class="q">Skill Set 1</span>
+<input type="text" id="Skill Set 1" name="Skills"  placeholder="Enter your Skills" />
+</div>
+<div class="form-element"  >
+<span class="q">Skill Set 2</span>
+<input type="text" id="Skill Set 2" name="Skills"  placeholder="Enter your Skills" />
+</div>
+<div class="form-element"  >
+<span class="q">Skill Set 3</span>
+<input type="text" id="Skill Set 3" name="Skills"  placeholder="Enter your Skills" />
+</div>
+<div class="form-element"  >
+<span class="q">Skill Set 4</span>
+<input type="text" id="Skill Set 4" name="Skills"  placeholder="Enter your Skills" />
+</div>
+<div class="form-element"  >
+<span class="q">Skill Set 5</span>
+<input type="text" id="Skill Set 5" name="Skills"  placeholder="Enter your Skills" />
+</div>
+</div>
+<div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+  <input type="checkbox" class="Check" value="Trainings and certifications" oninput="checken()">
+   <span style="margin-left: 20px;">Edit Trainings and certifications</span>
+</div>
+<div id="Trainings and certifications V" style="display: none; flex-direction: column;">
+<div class="form-element">
+<span class="q">Trainings and certifications</span>
+<input type="text" name="Trainings and certifications" id="Trainings and certifications" onchange="checktupload()"  placeholder="Enter your Trainings and certifications" />
+</div>
+
+<div class="form-element">
+<span class="q">Upload your Trainings and certifications Files</span>
+<div id="Trainings and certifications Files N"></div>
+<input id="i2" type="file" accept=".pdf,.PDF" name="file" width="10" height="100"/>
+<input id="Trainings and certifications File" type="hidden" name="Trainings and certifications Files Link" value=""/>
+<span style="color: red;font-size: 12px;">Compile all files in one pdf</span>
+</div>
+</div>
+<div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+  <input type="checkbox" class="Check" value="Internships" oninput="checken()">
+   <span style="margin-left: 20px;">Edit Internships</span>
+</div>
+<div id="Internships V" style="display: none; flex-direction: column;">
+<div class="form-element">
+<span class="q">Internship 1</span>
+<input type="text" name="Internships" id="Internship 1" onchange="checkiupload()"  placeholder="Enter your Internships" />
+</div>
+<div class="form-element">
+<span class="q">Internship 2</span>
+<input type="text" name="Internships" id="Internship 2" onchange="checkiupload()"  placeholder="Enter your Internships" />
+</div>
+<div class="form-element">
+<span class="q">Internship 3</span>
+<input type="text" name="Internships" id="Internship 3" onchange="checkiupload()"  placeholder="Enter your Internships" />
+</div>
+<div class="form-element">
+<span class="q">Internship 4</span>
+<input type="text" name="Internships" id="Internship 4" onchange="checkiupload()"  placeholder="Enter your Internships" />
+</div>
+<div class="form-element">
+<span class="q">Internship 5</span>
+<input type="text" name="Internships" id="Internship 5" onchange="checkiupload()"  placeholder="Enter your Internships" />
+</div>
+<div class="form-element" >
+<span class="q">Upload your Internships Files</span>
+<div id="Internships Files N"></div>
+<input id="i3" type="file" accept=".pdf,.PDF" name="file" width="10" height="100"/>
+<input id="Internships File" type="hidden" name="Internships Files Link" value=""/>
+<span style="color: red;font-size: 12px;">Compile all files in one pdf</span>
+</div>
+</div>
+<div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+  <input type="checkbox" class="Check" value="Known Languages" oninput="checken()">
+   <span style="margin-left: 20px;">Edit Known Languages</span>
+</div>
+<div class="form-element"id="Known Languages V" style="display: none; flex-direction: column;">
+<span class="q">Known Languages</span>
+<input type="text" name="Known Languages" id="Known Languages"  placeholder="Enter your Known Language" />
+</div>
+<div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+  <input type="checkbox" class="Check" value="Project title" oninput="checken()">
+   <span style="margin-left: 20px;">Edit Project title</span>
+</div>
+<div class="form-element"id="Project title V" style="display: none; flex-direction: column;">
+<span class="q">Project title</span>
+<input type="text" name="Project title" id="Project title"  placeholder="Enter your Project title" />
+</div>
+<div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+  <input type="checkbox" class="Check" value="CV" oninput="checken()">
+   <span style="margin-left: 20px;">Update CV</span>
+</div>
+<div class="form-element"id="CV V" style="display: none; flex-direction: column;">
+<span class="q">Upload the CV</span>
+<div id="CV N"></div>
+<input id="i1" type="file" accept=".pdf,.PDF" name="file" width="10" height="100" onchange="chc"/>
+<input id="CV File" type="hidden" name="CV D.link" value=""/>
+
+</div>
+<button style="margin-top: 20px; width: 100%;" type="button" id="bt" onclick="submitentry()"> 
+Submit Request
+</button> 
+<a href=""></a>
+    <div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+
+</section>
+</div>
+    </form>
+</div>
+</section>
+<script>
+  var hvalues ;
+  var hheads;
+  var uname ;
+  var ent = "";
+  var qent ="";
+  function alname(){
+  let name = document.getElementById('Name').value;
+  sessionStorage.setItem("rname",name);
+  var uids = [
+  'Nitheesh R L',
+'Nitheesh R L',
+'Nitheesh R L',
+'Nitheesh R L',
+'Nitheesh R L',
+'Nitheesh R L',
+'Nitheesh R L',
+'Shivam Jha',
+'Shivam Jha',
+'Shivam Jha',
+'Shivam Jha',
+'Shivam Jha',
+'Shivam Jha',
+'Shivam Jha',
+'Subbu Krishna Sharma GM ',
+'Subbu Krishna Sharma GM ',
+'Subbu Krishna Sharma GM ',
+'Subbu Krishna Sharma GM ',
+'Subbu Krishna Sharma GM ',
+'Subbu Krishna Sharma GM ',
+'Subbu Krishna Sharma GM ',
+'Keerthika P',
+'Keerthika P',
+'Keerthika P',
+'Keerthika P',
+'Keerthika P',
+'Keerthika P',
+'Keerthika P',
+'Anandha Keerthy M',
+'Anandha Keerthy M',
+'Anandha Keerthy M',
+'Anandha Keerthy M',
+'Anandha Keerthy M',
+'Anandha Keerthy M',
+'Anandha Keerthy M',
+'Yuvashreekantham R',
+'Yuvashreekantham R',
+'Yuvashreekantham R',
+'Yuvashreekantham R',
+'Yuvashreekantham R',
+'Yuvashreekantham R',
+'Yuvashreekantham R',
+'Srinithi C P',
+'Srinithi C P',
+'Srinithi C P',
+'Srinithi C P',
+'Srinithi C P',
+'Srinithi C P',
+'Srinithi C P',
+'David Evander Jebson S',
+'David Evander Jebson S',
+'David Evander Jebson S',
+'David Evander Jebson S',
+'David Evander Jebson S',
+'David Evander Jebson S',
+'David Evander Jebson S',
+'Anindit Bizy Nair',
+'Anindit Bizy Nair',
+'Anindit Bizy Nair',
+'Anindit Bizy Nair',
+'Anindit Bizy Nair',
+'Anindit Bizy Nair',
+'Anindit Bizy Nair',
+];
+var inames = [
+'Aarthi A',
+'Nitheesh R L',
+'Dhanaselvam KR',
+'K Kabilan',
+'Lakshmi Sruthi L',
+'Nithish J P',
+'Sri Harini S',
+'Amirtha Varshini A',
+'Anusha R',
+'Cubarani Η',
+'Guguloth Sridhar',
+'Karyamsetty Worship',
+'Lavudya Sai Kumar',
+'Shivam Jha',
+'Avantika C',
+'Diya Dharshini S',
+'Joshua Charles',
+'Mohannath Shroff J',
+'Punithavathi D',
+'Subbu Krishna Sharma GM ',
+'Vemula Uharika',
+'Ajitesh S',
+'Ethaya D',
+'Keerthika P',
+'Muthuraja K',
+'Santhoshkumar P',
+'Surendar S',
+'Vishnu Varthan T',
+'Akash B',
+'Chitturi Rohith',
+'Himavanth R',
+'Kota Lakshmi Sanjana',
+'Mohamed Tharif N J',
+'Padmaja M',
+'Anandha Keerthy M',
+'Archana P',
+'Diana Celcia R',
+'Jegan P',
+'Kevin Francis',
+'MA Monesh Ram',
+'Sivashree ',
+'Yuvashreekantham R',
+'Ginu Robtus R',
+'Mahabir Prasad Swain',
+'Mudavath Anjali',
+'J Sanjeeth',
+'Srinithi C P',
+'Suman Kumar',
+'Tippaleti Srujana',
+'Aishwarya Lakshmi S',
+'David Evander Jebson S',
+'Guberavishnu S',
+'Kisha M',
+'Merla A P',
+'Pranav Nanda Kishore',
+'Yadla Ganesh Babu',
+'Anindit Bizy Nair',
+'Chandrika Devendrappa',
+'Gautam Nayak',
+'Jenish Daniel B',
+'Lakshmi Narayanan S',
+'Rakshithapriya S',
+'Srivatsan V',
+]
+for (var i = 0; i < uids.length; i++) {
+
+  if (name == inames[i]){
+uname = uids[i];
+}
+  }
+console.log(uname);
+sessionStorage.setItem("name",uname);
+
+    
+}
+function submitentry(){
+  console.log(serverstatus)
+  var nametab = document.getElementById("Name").value;
+  if(nametab == ""){
+      console.log("name")
+    alert("Select the name");
+  }
+  else if (serverstatus =="Updating" ){
+    console.log("serverstatus")
+    document.getElementById("message").textContent =
+          "Unable to submit request due to server maintainence. Try after 10 minutes";
+    
+        document.getElementById("message").style.display = "block";
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("load").style.display = "block";
+  }
+  else   if (serverstatus ==""){
+    console.log("serverstatus")
+    document.getElementById("message").textContent =
+          "Checking Sever....";
+    
+        document.getElementById("message").style.display = "block";
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("load").style.display = "block";
+        setTimeout(function () { document.getElementById("load").style.display="none"; },2000);
+  }
+  else{
+
+var nnnnaamme = document.getElementById("Name").value;
+
+  var fils = document.getElementsByClassName("Check");
+  var che = "nott ok";
+
+  for (var i = 0; i<fils.length;i++){
+    console.log(fils[i])
+    if (fils[i].checked){
+      var che = "ok";
+    var nam = fils[i].value;
+    console.log(nam)
+    var cnam;
+    if (nam == "CV"){
+      cnam = "i1";
+    }
+    else if (nam == "Internships"){
+      cnam = "Internship 1";
+    }
+    else if (nam == "Skills"){
+      cnam = "Skill Set 1";
+    }
+    else{
+      cnam = nam;
+    }
+
+    console.log(cnam)
+    var vnam = document.getElementById(cnam).value;
+    console.log(vnam)
+
+    if (vnam !== ""){
+    if (nam == "Trainings and certifications"){
+      var innum = hheads.indexOf(cnam);
+        console.log(innum);
+        console.log(hvalues[innum]);
+        var newvalue = document.getElementById(cnam).value;
+        if (hvalues[innum] == newvalue){
+          alert("Enter the "+cnam);
+          che = "no ok";
+        }
+        else{
+      var valup = "/iiff/"+document.getElementById(cnam).value;
+    ent = ent + valup; 
+    var head = "/ssww/"+nam;
+    qent = qent + head;
+    console.log(valup)
+    if (document.getElementById(nam+" File").value == ""){
+      alert("Upload the "+nam+' Files');
+      che = "not ok"
+    }
+    else{
+    var valup1 = "/iiff/"+document.getElementById(nam+" File").value;
+    ent = ent + valup1; 
+    var head1 = "/ssww/"+nam+" Files";
+    qent = qent + head1;
+    console.log(valup1)
+    }
+  }
+    }
+    else if (nam == "Internships"||nam == "Skills"){
+      var nos = document.getElementsByName(nam);
+      for(var j=0;j<nos.length;j++){  
+        var innum = hheads.indexOf(nos[j].id);
+        console.log(innum);
+        console.log(hvalues[innum]);
+        var newvalue = document.getElementById(nos[j].id).value;
+        var loopch ;
+        if (hvalues[innum] !== newvalue){   
+          loopch = "done";
+    var valup = "/iiff/"+nos[j].value;
+    ent = ent + valup; 
+    var head = "/ssww/"+nos[j].id;
+    qent = qent + head;
+    console.log(valup)}
+      }
+      if (loopch !== "done"){
+        alert("Enter the "+nam);
+        che = "no ok";
+      }
+      else{
+      if (nam == "Internships"){
+    if (document.getElementById(nam+" File").value == ""){
+      alert("Upload the "+nam+' Files');
+      che = "not ok"
+    }
+    else{
+    var valup1 = "/iiff/"+document.getElementById(nam+" File").value;
+    ent = ent + valup1; 
+    var head1 = "/ssww/"+nam+" Files";
+    qent = qent + head1;
+    console.log(valup1)
+    }
+  }
+}
+    }
+    else if (nam == "CV"){
+      if (document.getElementById(nam+" File").value == ""){
+      alert("Upload the "+nam+' Files');
+      che = "not ok"
+    }
+    else{
+    var valup = "/iiff/"+document.getElementById(nam+" File").value;
+    ent = ent + valup; 
+    var head = "/ssww/"+nam;
+    qent = qent + head;
+    console.log(valup)
+    }
+}  
+else{
+  console.log(hheads)
+  console.log(hvalues)
+  console.log(cnam)
+  console.log("cnam")
+  var innum = hheads.indexOf(cnam);
+        console.log(innum);
+        console.log(hvalues[innum]);
+        var newvalue = document.getElementById(cnam).value;
+        if (hvalues[innum] == newvalue){
+          alert("Enter the "+cnam);
+          che = "no ok";
+        }
+        else{
+    var valup = "/iiff/"+document.getElementById(cnam).value;
+    ent = ent + valup; 
+    var head = "/ssww/"+nam;
+    qent = qent + head;
+    console.log(valup)
+        }
+}
+        var name = document.getElementById("Name").value;
+        var id = document.getElementById("ID Number").value;
+        console.log(name)
+
+}
+else{
+  alert("Enter the "+nam);
+  che = "not ok";
+}
+}
+  }
+if (che == "nott ok"){
+  alert("Select the detail to update")
+
+}
+  
+else if (che == "ok"){
+
+
+document.getElementById("load").style.display="initial";
+document.getElementById("loader").style.display="block"; 
+document.getElementById("message").textContent = "Submitting...";
+var formDataString = name+"%"+id+"%"+ent+"%"+qent+"%"+uname;
+console.log(formDataString);
+sessionStorage.setItem("datastring",formDataString);
+
+    // Send a POST request to your Google Apps Script
+    fetch(
+      "https://script.google.com/macros/s/AKfycbwyKKzv-CYxlGV5-AgeGHcpK49_QlkqOXkdH4LoEk1yuzmxmLcZyKp7NMEBvboiPOq6JQ/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: formDataString,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to submit the form.");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+  
+var cr = result1.data2;
+var spilcr = cr.split("/");
+sessionStorage.setItem("reno",spilcr[2]);
+console.log(spilcr)
+if (spilcr[2]=="Exceeded"){
+  window.location='exceed.html';
+}
+else if (spilcr[2]=="Updating"){
+  window.location='maintenance.html';
+}
+else{
+sessionStorage.setItem("reid",spilcr[1]);
+console.log(spilcr)
+sessionStorage.setItem("stat","not sent");
+document.getElementById("bt").disabled = false;
+    document.getElementById("form").reset();
+    window.location='submission.html';
+}
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("message").textContent =
+          "An error occurred while updating.";
+        document.getElementById("message").style.display = "block";
+      });
+    }
+
+  }  
+        }
+
+          function matchnameid(){
+  let id = document.getElementById('ID Number');
+  let name = document.getElementById('Name').value;
+  var names =['Aarthi A',
+'Aishwarya Lakshmi S',
+'Ajitesh S',
+'Akash B',
+'Amirtha Varshini A',
+'Anandha Keerthy M',
+'Anindit Bizy Nair',
+'Anusha R',
+'Archana P',
+'Avantika C',
+'Chandrika Devendrappa',
+'Chitturi Rohith',
+'Cubarani Η',
+'David Evander Jebson S',
+'Dhanaselvam KR',
+'Diana Celcia R',
+'Diya Dharshini S',
+'Ethaya D',
+'Gautam Nayak',
+'Ginu Robtus R',
+'Guberavishnu S',
+'Guguloth Sridhar',
+'Himavanth R',
+'Jegan P',
+'Jenish Daniel B',
+'Joshua Charles',
+'K Kabilan',
+'Karyamsetty Worship',
+'Keerthika P',
+'Kevin Francis',
+'Kisha M',
+'Kota Lakshmi Sanjana',
+'Lakshmi Narayanan S',
+'Lakshmi Sruthi L',
+'Lavudya Sai Kumar',
+'Mahabir Prasad Swain',
+'Merla A P',
+'Mohamed Tharif N J',
+'Mohannath Shroff J',
+'MA Monesh Ram',
+'Mudavath Anjali',
+'Muthuraja K',
+'Nitheesh R L',
+'Nithish J P',
+'Padmaja M',
+'Pranav Nanda Kishore',
+'Punithavathi D',
+'Rakshithapriya S',
+'J Sanjeeth',
+'Santhoshkumar P',
+'Shivam Jha',
+'Sivashree ',
+'Sri Harini S',
+'Srinithi C P',
+'Srivatsan V',
+'Subbu Krishna Sharma GM ',
+'Suman Kumar',
+'Surendar S',
+'Tippaleti Srujana',
+'Vemula Uharika',
+'Vishnu Varthan T',
+'Yadla Ganesh Babu',
+'Yuvashreekantham R',
+'Bommi Durga Naga Sai Sri Sruthileena',
+'Damini H S',
+'Gokul Raj R',
+'Midhuna Kurian',
+'Parkhe Prajwal Anilkumar',
+'Praveena B',
+'R B Ramyaa',
+'Sathishwaran S',
+'Vidhyadharan A',
+'Yogesh M A',
+'Anjali S',
+'Anshida P K',
+'Hari Priya J',
+'Harish S',
+'Hayanthika M S',
+'Irfana Z',
+'Kadimi Lakshmi Devi',
+'Karthick Ajay B',
+'Kolli Venkata Naga Mallikarjuna Reddy',
+'Nandana M',
+'Shaliha A',
+'Sruti Chandra',
+'Sushmithasri R',
+'Abhijith K',
+'Ishwarya Lakshmi S',
+'Joseph P J',
+'Mani Bharathi G',
+'Manikandan T',
+'Mathangi G',
+'Mulukuri Naveena',
+'Muthumeena J',
+'Rajasri C',
+'Shanmugapriya R',
+'Srivigneswar S',
+'Sujithra M',
+'Trivedi Nidhi Deepak'
+]
+var ids = ['2021U1001',
+'2021U1002',
+'2021U1003',
+'2021U1004',
+'2021U1005',
+'2021U1007',
+'2021U1008',
+'2021U1009',
+'2021U1010',
+'2021U1011',
+'2021U1012',
+'2021U1014',
+'2021U1015',
+'2021U1016',
+'2021U1017',
+'2021U1018',
+'2021U1019',
+'2021U1020',
+'2021U1021',
+'2021U1022',
+'2021U1024',
+'2021U1025',
+'2021U1027',
+'2021U1028',
+'2021U1029',
+'2021U1030',
+'2021U1031',
+'2021U1032',
+'2021U1033',
+'2021U1034',
+'2021U1035',
+'2021U1036',
+'2021U1037',
+'2021U1038',
+'2021U1039',
+'2021U1040',
+'2021U1041',
+'2021U1042',
+'2021U1043',
+'2021U1044',
+'2021U1046',
+'2021U1048',
+'2021U1049',
+'2021U1050',
+'2021U1052',
+'2021U1053',
+'2021U1054',
+'2021U1055',
+'2021U1056',
+'2021U1057',
+'2021U1058',
+'2021U1059',
+'2021U1060',
+'2021U1061',
+'2021U1062',
+'2021U1063',
+'2021U1064',
+'2021U1065',
+'2021U1067',
+'2021U1068',
+'2021U1069',
+'2021U1070',
+'2021U1071',
+'2023P1001',
+'2023P1002',
+'2023P1003',
+'2023P1004',
+'2023P1005',
+'2023P1006',
+'2023P1007',
+'2023P1008',
+'2023P1011',
+'2023P1012',
+'2023P2001',
+'2023P2002',
+'2023P2004',
+'2023P2005',
+'2023P2006',
+'2023P2007',
+'2023P2009',
+'2023P2010',
+'2023P2011',
+'2023P2012',
+'2023P2013',
+'2023P2014',
+'2023P2016',
+'2023P3001',
+'2023P3004',
+'2023P3005',
+'2023P3006',
+'2023P3007',
+'2023P3008',
+'2023P3009',
+'2023P3010',
+'2023P3012',
+'2023P3013',
+'2023P3014',
+'2023P3015',
+'2023P3016'
+]
+for (var i = 0; i < names.length; i++) {
+  
+if (name == names[i])
+id.value = ids[i];
+id.placeholder = ids[i];
+
+}
+alname();
+var formDataString = id.value;
+document.getElementById("load").style.display="initial";
+        document.getElementById("loader").style.display="block"; 
+        document.getElementById("message").textContent = "Fetching Data...";
+fetch(
+              "https://script.google.com/macros/s/AKfycbzS99i1aZnx-0C-wlxc7E80QZ8maGwtTl5PCe-FBTYW_YGsXSKOxrnaxNBKRB5OV0QrvA/exec",
+              {
+                redirect: "follow",
+                method: "POST",
+                body: formDataString,
+                headers: {
+                  "Content-Type": "text/plain;charset=utf-8",
+                },
+              }
+            )
+    
+              .then(function (response) {
+    
+                // Check if the request was successful
+                if (response) {
+             
+                  return response; // Assuming your script returns JSON response
+                } else {
+                  throw new Error("Failed to submit the form.");
+                }
+              })
+              .then(async function (data) {
+                const result1 = await data.json();
+          
+var head = result1.data2[0];
+hheads = head[0];
+console.log(hheads)
+var datas = result1.data2[1];
+hvalues = datas[0];
+console.log(hvalues)
+console.log(head)
+console.log(datas)
+for(i=0;i<head[0].length;i++){
+
+  var namw = head[0][i];
+  var t = document.getElementById(namw);
+
+
+
+    if (head[0][i] == "Trainings and certifications Files" || head[0][i] == "Internships Files"|| head[0][i] == "CV"){
+      console.log("ok")
+      document.getElementById(head[0][i]+" N").innerHTML = '<a target="_blank"'+" href='"+datas[0][i]+"''>"+"Click here to view the old "+head[0][i]+"</a>"
+    }
+    else  if (t == null){
+    continue;
+    }
+    else{
+      document.getElementById(namw).value = datas[0][i];
+    }
+ 
+
+}
+document.getElementById("bt").disabled = false;
+document.getElementById("load").style.display="none";
+           
+
+              })
+    
+              .catch(function (error) {
+                // Handle errors, you can display an error message here
+                console.error(error);
+                document.getElementById("message").textContent =
+                  "An error occurred while fetching. Try refreshing the site";
+                document.getElementById("message").style.display = "block";
+              });
+            }
+  
+    </script>
+
+  
+
+    <script>
+function checken(){
+  console.log("click");
+  var fils = document.getElementsByClassName("Check");
+  console.log(fils)
+  for (var i = 0; i<fils.length;i++){
+    console.log(fils[i])
+    if (fils[i].checked){
+    var nam = fils[i].value + " V";
+    console.log(nam)
+    document.getElementById(nam).style.display="flex"; 
+  }
+  else if (fils[i].checked == false){
+    var nam = fils[i].value + " V";
+    console.log(nam)
+    document.getElementById(nam).style.display="none"; 
+  }
+  }
+}
+
+function checkiupload(){
+  let detail = document.getElementById('Internship 1');
+  let up = document.getElementById('i3');
+  let lup = document.getElementById('Internships File');
+  if (detail.value !== ""){
+    up.required = true; 
+    lup.name = "Internships Files Link";
+    console.log(lup.name);
+   }
+   else{
+    up.required = false;
+    lup.name = "Internships Files Link";
+    console.log(lup.name);
+   }
+}
+function checktupload(){
+  let detail = document.getElementById('Trainings and certifications');
+  let up = document.getElementById('i2');
+  let lup = document.getElementById('Trainings and certifications File');
+  if (detail.value !== ""){
+    up.required = true; 
+    lup.name = "Trainings and certifications Files Link";
+    console.log(lup.name);
+   }
+   else{
+    up.required = false;
+    lup.name = "Trainings and certifications Files Link";
+    console.log(lup.name);
+   }
+}
+      
+      </script>
+      <script src="script.js"></script>
+    </body>
+    </html>

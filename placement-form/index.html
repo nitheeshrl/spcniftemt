@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+
+    <title id="formtitle">Placement Form</title>  
+    <script>
+      const keyvalues = window.location.search;
+const value = new URLSearchParams(keyvalues);
+const idvalue = value.get('form');
+document.getElementById("formtitle").textContent=idvalue
+</script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      var sheetname ; 
+      window.onload=getstatus();
+
+      function getstatus(){
+   const url = "https://script.google.com/macros/s/AKfycbxR9JjLW-_xKlNmW7-2OmoqYeHLkfZn45DJL-kazZ4Nl_gGqbUNwJk96DmvpyGzxAPp/exec" 
+   var val = "Common Form Entry";
+   val = idvalue;
+   console.log(val)
+   fetch(`${url}?header=${val}`)
+       .then((response) => response.json())
+       .then(({ data }) => {
+        console.log(data)
+        if (data == "Not Found"){
+          alert("Form not found")
+        }
+        if (data == "Live"){
+   console.log("ok")
+   if(formstatus=="Form Fetched"){
+   document.getElementById("frqa").style.display="initial";
+   document.getElementById("ll").textContent="";
+   document.getElementById("previewlink").style.display="none";
+   }
+               }
+               else if (data == "Inactive"){
+                 document.getElementById("frqa").style.display="none";
+                 window.location='end.html';
+               }
+               else{
+                document.getElementById("ll").textContent="Form is not published till now";
+                document.getElementById("previewlink").href="https://pcniftemt.pages.dev/preview-placement-form/?form="+idvalue
+                document.getElementById("previewlink").style.display="initial";
+                document.getElementById("frqa").style.display="none";
+               }
+       })
+       .catch((error) => console.error('!!!!!!!!', error));
+   }
+   setInterval(() => {
+    getstatus();
+    fetchq();
+}, 1000);
+   </script>
+   <script>
+    function fetchq(){
+            fetch(
+          "https://script.google.com/macros/s/AKfycbz3wCtX8qDEgiHoJms0-1VUTw57TOXeen3R1KnSQbeWkUMR7_lWl8e4X1Q2r4K0WJ4v/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: idvalue+"/Placement Forms",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+
+          .then(async function (response) {
+            const result1 = await response.json();
+            console.log(result1.data2);
+            var data = result1.data2;
+            if(data[0]!==null){
+            sheetname = data[3];
+            document.getElementById("i1").className=data[4];
+          
+            document.getElementById("CompanyLogo").src="https://drive.google.com/thumbnail?id="+data[1][0]+"&sz=w1000";
+            for(var i = 1; i < 5;i++){
+            
+    if (data[1][i]!==""&&data[1][i]!==null){
+ 
+      document.getElementById(data[2][i]).textContent=data[2][i]+" : "+data[1][i];
+    }
+   }
+   for(var i = 5; i < data[2].length;i++){
+   
+    console.log(data[1][i])
+    if (data[1][i]!=="Not Required"&&data[1][i]!==""){
+      console.log("Done")
+      if(data[2][i] =="Role Preference" ||data[2][i] =="Location Preference" ){
+var optionsin = data[1][i].split(";");
+var qopttions = "";
+for(var f=0; f< optionsin.length;f++){
+  if(f==0){
+var optionformula = '<label for="'+optionsin[f]+'"> <input type="radio" name="'+data[2][i]+'" class="'+data[2][i]+'" required id="'+optionsin[f]+'" value="'+optionsin[f]+'" /> <span>'+optionsin[f]+'</span> </label><br>';
+qopttions = qopttions+optionformula;
+console.log(qopttions)
+  }
+  else{
+    var optionformula = '<label for="'+optionsin[f]+'"> <input type="radio" name="'+data[2][i]+'" class="'+data[2][i]+'" id="'+optionsin[f]+'" value="'+optionsin[f]+'" /> <span>'+optionsin[f]+'</span> </label><br>';
+qopttions =qopttions+optionformula;
+console.log(qopttions)
+  }
+}
+console.log(qopttions)
+document.getElementById("Options "+data[2][i]).innerHTML=qopttions;
+  document.getElementById("Value "+data[2][i]).style.display="flex"
+      }
+      else{
+      document.getElementById("Value "+data[2][i]).style.display="flex"
+      }
+    }
+    else{
+      console.log(i)
+      console.log(data[2][i])
+        document.getElementById("Value "+data[2][i]).style.display="none";
+        
+       var options =  document.getElementsByName(data[2][i])
+       if (options.length == 0 ){
+
+       }
+       else{
+        options[0].required = false;
+       }
+       console.log(options)
+
+       
+       
+    }
+   }
+   formstatus = "Form Fetched";
+owner = data[5];
+  }
+  else{
+    alert("Form not found")
+  }
+  
+            // Check if the request was successful
+            if (response) {
+         
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          /*.then(async function (data) {
+            const result1 = await data.json();
+            console.log(result1.data2);
+            var data = result1.data2;
+            if(data[0]!==null){
+            sheetname = data[3];
+            document.getElementById("i1").className=data[4];
+          
+            document.getElementById("CompanyLogo").src="https://drive.google.com/thumbnail?id="+data[1][0]+"&sz=w1000";
+            for(var i = 1; i < 5;i++){
+            
+    if (data[1][i]!==""&&data[1][i]!==null){
+ 
+      document.getElementById(data[2][i]).textContent=data[2][i]+" : "+data[1][i];
+    }
+   }
+   for(var i = 5; i < data[2].length;i++){
+   
+    console.log(data[1][i])
+    if (data[1][i]!=="Not Required"&&data[1][i]!==""){
+      console.log("Done")
+      if(data[2][i] =="Role Preference" ||data[2][i] =="Location Preference" ){
+var optionsin = data[1][i].split(";");
+var qopttions = "";
+for(var f=0; f< optionsin.length;f++){
+  if(f==0){
+var optionformula = '<label for="'+optionsin[f]+'"> <input type="radio" name="'+data[2][i]+'" class="'+data[2][i]+'" required id="'+optionsin[f]+'" value="'+optionsin[f]+'" /> <span>'+optionsin[f]+'</span> </label><br>';
+qopttions = qopttions+optionformula;
+console.log(qopttions)
+  }
+  else{
+    var optionformula = '<label for="'+optionsin[f]+'"> <input type="radio" name="'+data[2][i]+'" class="'+data[2][i]+'" id="'+optionsin[f]+'" value="'+optionsin[f]+'" /> <span>'+optionsin[f]+'</span> </label><br>';
+qopttions =qopttions+optionformula;
+console.log(qopttions)
+  }
+}
+console.log(qopttions)
+document.getElementById("Options "+data[2][i]).innerHTML=qopttions;
+  document.getElementById("Value "+data[2][i]).style.display="flex"
+      }
+      else{
+      document.getElementById("Value "+data[2][i]).style.display="flex"
+      }
+    }
+    else{
+      console.log(i)
+      console.log(data[2][i])
+        document.getElementById("Value "+data[2][i]).style.display="none";
+        
+       var options =  document.getElementsByName(data[2][i])
+       if (options.length == 0 ){
+
+       }
+       else{
+        options[0].required = false;
+       }
+       console.log(options)
+
+       
+       
+    }
+   }
+   formstatus = "Form Fetched";
+owner = data[5];
+  }
+  else{
+    alert("Form not found")
+  }
+  
+          })*/
+
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+    }
+   </script>
+</head>    
+<body>
+<section class="header">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section >
+<div class="form-container">
+<script type="text/javascript">var submitted=false </script>
+<iframe name="hiddenConfirm" id="hiddenConfirm" style="display: none;" onload="if(submitted){
+    window.location='submifssion.html'; }"></iframe>
+    <form id="form" class="container m-4 pl-4" method="POST">
+      <h3 id="ll" style="text-align: center;">Form Loading....</h3>
+      <div style="display: flex;align-items: center;justify-content: center;">
+        <a id="previewlink" class="btn" style="display: none;" target="_blank" href="">See Preview</a>
+        </div>
+      <div id="frqa" class="frqa">
+<h1 style="text-align: center;"> NIFTEM-T Placement Drive 2024 - 25</h1>
+<h1 style="text-align: center;"> Company Info </h1>
+<h3 style="text-align: center;" id="Company Name"></h3>
+<img id="CompanyLogo" style="width: 100%;height: 120px;object-fit: contain;" src="Company logo.png" alt="">
+<h4 style="text-align: center; " id="Location"></h4>
+<h4 style="text-align: center;" id="Role"></h4>
+<h4 style="text-align: center;" id="CTC"></h4>
+
+
+
+
+
+  <section id="namesection">
+<div class="form-element" id="Value Name" style="display: nonde;">
+<span class="q">Name</span>
+<select name="Name" id="Name" required placeholder="Select your name">
+<option value="">Select your name</option>
+<option value='Aarthi A'>Aarthi A</option>
+<option value='Aishwarya Lakshmi S'>Aishwarya Lakshmi S</option>
+<option value='Ajitesh S'>Ajitesh S</option>
+<option value='Akash B'>Akash B</option>
+<option value='Amirtha Varshini A'>Amirtha Varshini A</option>
+<option value='Anandha Keerthy M'>Anandha Keerthy M</option>
+<option value='Anindit Bizy Nair'>Anindit Bizy Nair</option>
+<option value='Anusha R'>Anusha R</option>
+<option value='Archana P'>Archana P</option>
+<option value='Avantika C'>Avantika C</option>
+<option value='Chandrika Devendrappa'>Chandrika Devendrappa</option>
+<option value='Chitturi Rohith'>Chitturi Rohith</option>
+<option value='Cubarani Η'>Cubarani Η</option>
+<option value='David Evander Jebson S'>David Evander Jebson S</option>
+<option value='Dhanaselvam KR'>Dhanaselvam KR</option>
+<option value='Diana Celcia R'>Diana Celcia R</option>
+<option value='Diya Dharshini S'>Diya Dharshini S</option>
+<option value='Ethaya D'>Ethaya D</option>
+<option value='Gautam Nayak'>Gautam Nayak</option>
+<option value='Ginu Robtus R'>Ginu Robtus R</option>
+<option value='Guberavishnu S'>Guberavishnu S</option>
+<option value='Guguloth Sridhar'>Guguloth Sridhar</option>
+<option value='Himavanth R'>Himavanth R</option>
+<option value='Jegan P'>Jegan P</option>
+<option value='Jenish Daniel B'>Jenish Daniel B</option>
+<option value='Joshua Charles'>Joshua Charles</option>
+<option value='K Kabilan'>K Kabilan</option>
+<option value='Karyamsetty Worship'>Karyamsetty Worship</option>
+<option value='Keerthika P'>Keerthika P</option>
+<option value='Kevin Francis'>Kevin Francis</option>
+<option value='Kisha M'>Kisha M</option>
+<option value='Kota Lakshmi Sanjana'>Kota Lakshmi Sanjana</option>
+<option value='Lakshmi Narayanan S'>Lakshmi Narayanan S</option>
+<option value='Lakshmi Sruthi L'>Lakshmi Sruthi L</option>
+<option value='Lavudya Sai Kumar'>Lavudya Sai Kumar</option>
+<option value='Mahabir Prasad Swain'>Mahabir Prasad Swain</option>
+<option value='Merla A P'>Merla A P</option>
+<option value='Mohamed Tharif N J'>Mohamed Tharif N J</option>
+<option value='Mohannath Shroff J'>Mohannath Shroff J</option>
+<option value='MA Monesh Ram'>MA Monesh Ram</option>
+<option value='Mudavath Anjali'>Mudavath Anjali</option>
+<option value='Muthuraja K'>Muthuraja K</option>
+<option value='Nitheesh R L'>Nitheesh R L</option>
+<option value='Nithish J P'>Nithish J P</option>
+<option value='Padmaja M'>Padmaja M</option>
+<option value='Pranav Nanda Kishore'>Pranav Nanda Kishore</option>
+<option value='Punithavathi D'>Punithavathi D</option>
+<option value='Rakshithapriya S'>Rakshithapriya S</option>
+<option value='J Sanjeeth'>J Sanjeeth</option>
+<option value='Santhoshkumar P'>Santhoshkumar P</option>
+<option value='Shivam Jha'>Shivam Jha</option>
+<option value='Sivashree '>Sivashree </option>
+<option value='Sri Harini S'>Sri Harini S</option>
+<option value='Srinithi C P'>Srinithi C P</option>
+<option value='Srivatsan V'>Srivatsan V</option>
+<option value='Subbu Krishna Sharma GM '>Subbu Krishna Sharma GM </option>
+<option value='Suman Kumar'>Suman Kumar</option>
+<option value='Surendar S'>Surendar S</option>
+<option value='Tippaleti Srujana'>Tippaleti Srujana</option>
+<option value='Vemula Uharika'>Vemula Uharika</option>
+<option value='Vishnu Varthan T'>Vishnu Varthan T</option>
+<option value='Yadla Ganesh Babu'>Yadla Ganesh Babu</option>
+<option value='Yuvashreekantham R'>Yuvashreekantham R</option>
+</select>
+
+</div>
+<div class="form-element"  id="Value Contact Number"  style="display: none;">
+<span class="q">Contact Number</span>
+<input type="number" minlength="10" name="Contact Number" required placeholder="Enter your contact number"/>
+</div>
+<div class="form-element" id="Value Contact Email Address"  style="display: none;">
+<span class="q">Contact Email address</span>
+<input type="email" name="Contact Email Address"  required placeholder="Enter your contact email"/>
+</div>
+<div class="form-element radio-buttons" id="Value Gender"  style="display: none;">
+<span class="q">Gender</span>
+<label for="Male">
+<input
+
+type="radio"
+name="Gender"
+class="Gender"
+required 
+id="Male"
+value="Male"
+
+/>
+<span>Male</span>
+</label>
+<label for="Female">
+
+<input
+
+type="radio"
+name="Gender"
+class="Gender"
+id="Female"
+value="Female"
+
+/>
+<span>Female</span>
+</label>
+</div>
+<div class="form-element" id="Value Home Town"  style="display: none;">
+<span class="q">Home Town</span>
+<input type="name" name="Home Town" required placeholder="Enter your home town"/>
+</div>
+<div class="form-element" id="Value Known Languages"  style="display: none;">
+<span class="q">Known Languages</span>
+<input type="name" name="Known Languages" required placeholder="Enter your known languages"/>
+</div>
+<div class="form-element radio-buttons" id="Value Location Preference"  style="display: none;">
+<span class="q">Location Preference</span>
+<div id="Options Location Preference">
+</div>
+</div>
+<div class="form-element radio-buttons" id="Value Role Preference"  style="display: none;">
+<span class="q">Role Preference</span>
+<div id="Options Role Preference">
+  </div>
+</div>
+<div class="form-element" id="Value Expected CTC"  style="display: none;">
+<span class="q">Expected CTC</span>
+<input type="name" name="Expected CTC" required placeholder="Enter your Expected CTC"/>
+</div>
+<div class="form-element" id="Value CGPA"  style="display: none;">
+<span class="q">CGPA</span>
+<input type="name" name="CGPA" required placeholder="Enter your CGPA"/>
+</div>
+<div class="form-element" id="Value CV"  style="display: none;">
+<span class="q">Upload your CV</span>
+<input id="i1" type="file" accept=".pdf,.doc,.docx" name="file" class="" required/>
+<input id="fileurl1" type="hidden" name="CV D.link" value=""/>
+</div>
+
+<button style="margin-top: 20px;" type="submit" id="bt"> 
+Submit
+</button> 
+</section>
+<div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+  </div> 
+</div>
+<script>
+  let form = document.querySelector("form");
+form.addEventListener('submit',()=>{ {
+  document.getElementById("load").style.display="initial";
+  document.getElementById("loader").style.display="block"; 
+  document.getElementById("bt").style.display="none";
+}})
+  
+document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("bt").disabled = true;
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) { 
+     
+          if (pair[0] !== "file"){
+            
+          
+          keyValuePairs.push(pair[0] + "=val=" + pair[1]);
+console.log(pair[0])
+        }}
+
+        var formDataString = keyValuePairs.join("=namff=");
+console.log(formDataString)
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbyKzJQDNpcQu3LzPIAoa9wMYrGo-X0affeGlA-5u6hTOI2iNtlGpU-pSwMoBsvRSs8-YQ/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString+"=sheetid="+sheetname,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+
+          .then(function (response) {
+
+            // Check if the request was successful
+            if (response) {
+         
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(async function (data) {
+            const result1 = await data.json();
+            console.log(result1.data2);
+            if (result1.data2 == "accept"){
+            // Display a success message
+            document.getElementById("bt").disabled = false;
+            document.getElementById("form").reset();
+            window.location='submission.html';
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);}
+            else if (result1.data2 == "reject"){
+              window.location='reject.html';
+            }
+          })
+
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+      });
+
+
+
+      function refreshwin(){
+        console.log("ok")
+        window.location = window.location.href;
+      }
+
+
+</script>
+<script src="script.js  "></script>
+
+</section>
+</body>
+</html>

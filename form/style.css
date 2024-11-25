@@ -1,0 +1,162 @@
+@import url( 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+font-family: 'Inter';
+background: #eee;
+}
+form {
+background: white;
+padding: 60px; 
+max-width: 550px; 
+width: 99%;
+border-radius: 5px;
+margin-top: 20px;
+}
+.form-container{
+margin: auto;
+display: flex;
+justify-content: center;
+}
+.form-element { 
+    display: flex; 
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.form-element
+span{
+margin-bottom:10px;
+}
+input, textarea,select {
+border: 1px solid #d0d2e2;
+line-height: 2; 
+padding: 5px; 
+border-radius: 5px;
+}
+.form-element label { 
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+form button {
+    width: 100%;
+    padding: 20px;
+    color:white;
+    background:#182d8b;
+    border-radius:5px;
+    border: none; 
+    font-size: 18px;
+    
+}
+.q{
+    font-weight: bold;
+}
+.header{
+    height: 150px;
+    width: 100%;
+    background: #182d8b;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+.header img{
+    object-fit: contain;
+    height: 150px;
+    padding: 20px;
+}
+.header h1{
+    font-size: 30px;
+}
+.msg{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+.load{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.424);
+
+    transition: opacity 0,75s, visibility 0.75s;
+}
+.message{
+    margin-left: auto;
+margin-right: auto;
+text-align: center;
+margin-top: 20px;
+background-color: #182d8b;
+border-radius: 50px;
+color: white;
+padding: 10px;
+width: 250px;
+
+box-shadow: 5px 5px 10px 1px #000000;
+font-weight: bold;
+
+}
+.loader {
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+        width: 48px;
+        height: 48px;
+        background:#182d8b;
+        --c:no-repeat linear-gradient(#000 0 0);
+        --s:18px 18px;
+        -webkit-mask:
+          var(--c) left  4px top    4px,
+          var(--c) right 4px top    4px,
+          var(--c) right 4px bottom 4px,
+          var(--c) left  4px bottom 4px,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite:xor;
+                mask-composite:exclude;
+        animation: l5 1.5s infinite;
+      }
+      @keyframes l5 {
+        0%    {-webkit-mask-size:0    0  ,0    0  ,0    0  ,0    0  ,auto}
+        12.5% {-webkit-mask-size:var(--s),0    0  ,0    0  ,0    0  ,auto}
+        25%   {-webkit-mask-size:var(--s),var(--s),0    0  ,0    0  ,auto}
+        37.5% {-webkit-mask-size:var(--s),var(--s),var(--s),0    0  ,auto}
+        50%   {-webkit-mask-size:var(--s),var(--s),var(--s),var(--s),auto}
+        62.5% {-webkit-mask-size:0    0  ,var(--s),var(--s),var(--s),auto}
+        75%   {-webkit-mask-size:0    0  ,0    0  ,var(--s),var(--s),auto}
+        87.5% {-webkit-mask-size:0    0  ,0    0  ,0   0   ,var(--s),auto}
+        100%  {-webkit-mask-size:0    0  ,0    0  ,0   0   ,0   0   ,auto}
+      }
+@keyframes loading {
+    from{
+        transform: rotate(0turn);
+    }
+    to{
+        transform: rotate(1turn);
+    }
+}
+.bt{
+    display: initial;
+}
+.frqa{
+    display: none;
+}
+.btn{
+    background-color:#182d8b;
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+border-color: transparent;
+
+  }
