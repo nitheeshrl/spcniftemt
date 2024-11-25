@@ -11,7 +11,7 @@
       var oldname = localStorage.getItem("loggedname");
       console.log(oldname)
       if(oldname !== null){
-        window.location="f&r/index.html"
+        window.location="user/past.html"
       }
     </script>
 </head>    
@@ -28,20 +28,8 @@
   <div class="formb-container">
     <h1 style="text-align: center;"> Face Recognition </h1>
     <div class="form-element">
-      <span class="q">Name</span>
-      <select aria-readonly="true" name="Username" id="Username"  required placeholder="Select your name">
-      <option value="">Select your name</option>
-      <option value='Anandha Keerthy M'>Anandha Keerthy M</option>
-      <option value='Anindit Bizy Nair'>Anindit Bizy Nair</option>
-      <option value='David Evander Jebson S'>David Evander Jebson S</option>
-      <option value='Keerthika P'>Keerthika P</option>
-      <option value='Nitheesh R L'>Nitheesh R L</option>
-      <option value='Shivam Jha'>Shivam Jha</option>
-      <option value='Srinithi C P'>Srinithi C P</option>
-      <option value='Subbu Krishna Sharma GM'>Subbu Krishna Sharma GM</option>
-      <option value='Yuvashreekantham R'>Yuvashreekantham R</option>
-      </select>
-      
+      <span class="q">Username</span>
+        <input style="width: 100%;" type="text" name="Username" id="Username" required placeholder="Enter your Username"/> 
       </div>
       <button name="btl" type="submit" onclick="login()" type="button" ><div class="btn-text">Verify Face</div></button>
       <span class="horline"><span>Or Login using</span></span>
@@ -141,7 +129,7 @@ setTimeout(function () {
   var enusername = document.getElementById("Username").value;
   
 
-  window.location="f&r/index.html"
+  window.location="user/past.html"
  },2000);
 }
 else{
@@ -155,10 +143,70 @@ else {
 }
 
   }
+  function getuserdetails(user){
+    var formDataString =user+"/2";
+    console.log(formDataString)
+    document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Verifying....";
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: formDataString,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to verify credentials");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+var userdetails = result1.data2;
+
+
+console.log(userdetails)
+
+if (userdetails[0]!=="Not Found"){
+  console.log(userdetails[2])
+  sessionStorage.setItem("checkname",userdetails[2])
+
+window.location ="check face/index.html";
+
+}
+else if (userdetails[0]=="Not Found"){
+  alert("User not found")
+  document.getElementById("load").style.display="none";
+}
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("message").textContent =
+          "An error occurred while verify credentials";
+        document.getElementById("message").style.display = "block";
+      });
+    }
   function login(){
     var enusername = document.getElementById("Username").value;
-sessionStorage.setItem("checkname",enusername)
-window.location ="check face/index.html";
+    if (enusername!==""){
+      getuserdetails(enusername);
+    }
+    else{
+      alert("Enter the username")
+    }
   }
 </script>
 <script src="scriptform.js"></script>
