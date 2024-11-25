@@ -1,7 +1,7 @@
 
 async function main() {
     var fs = require('fs');
-    const sharp = require("sharp");
+   /*  const sharp = require("sharp");
 var inames = [
     'Srivigneswar S',
     'Sathishwaran S',
@@ -16,12 +16,12 @@ for(var i =0;i<inames.length;i++){
     var ndir = './user/'+photourls[i];
     var dir = './labels/'+inames[i];
     var mdir = './labels/'+inames[i]+'/';
-  /*  fs.mkdirSync(dir, { recursive: true });
+   fs.mkdirSync(dir, { recursive: true });
     fs.copyFile(ndir, './labels/'+inames[i]+"/1.JPG", (err) => {
         if (err) 
             throw err;
         console.log('source.txt was copied to destination.txt');
-    });*/
+    });
       try {
         await sharp (mdir+"1.JPG")
         .rotate(180) // Rotate the image 90 degrees clockwise
@@ -33,6 +33,11 @@ for(var i =0;i<inames.length;i++){
         console.error ("Error modifying image:", error);
    
 }
-}
+}*/
+const testFolder = './user/profiles/';
+
+fs.readdirSync(testFolder).forEach(file => {
+  console.log("'profiles/"+file+"',");
+});
 }
 main();
