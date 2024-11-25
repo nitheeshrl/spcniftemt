@@ -105,12 +105,12 @@ console.log(document.getElementById("actbt").onclick)
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
         </button>
         <img class="out-items" style="width: 50px;" src="white_logo.png" alt="">
-        <img id="profileimage1" style=" scale:90%;border-radius: 50px; width: 50px; height: 50px; " src=".//1.png" alt="" srcset="">
+        <img id="profileimage1" style=" scale:90%;border-radius: 50px; width: 50px; height: 50px; object-fit: cover;" src=".//1.png" alt="" srcset="">
        
       </li>
       <li class="indetails"  id="insprofile" style="left: 0px;">
         <div class="log-items" style="flex-direction: column; gap: 0px; align-items: center;justify-content: center;">
-         <a onclick="userPopup()"><img id="profileimage" style=" scale:200%;border-radius: 50px; width: 50px; height: 50px; " src=".//1.png" alt="" srcset=""></a>
+         <a onclick="userPopup()"><img id="profileimage" style=" scale:200%;border-radius: 50px; width: 50px; height: 50px; object-fit: cover;" src=".//1.png" alt="" srcset=""></a>
        <div style="background-color: white; color: black; padding: 10px;border-radius: 40px;">
         <p ><span id="mname">Nitheesh R L</span></p>
        </div>
@@ -139,7 +139,7 @@ console.log(document.getElementById("actbt").onclick)
         </ul>
       </li>
       <li>
-        <a onclick="notavailable()" class="dropdown-btn">
+        <a href="forms.html" class="dropdown-btn">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m221-313 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-228q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm0-320 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-548q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm339 353q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h280q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H560Zm0-320q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h280q17 0 28.5 11.5T880-640q0 17-11.5 28.5T840-600H560Z"/></svg>
           <span>Forms</span>
      
@@ -539,6 +539,7 @@ alert("PassKey is already created for this Device")
     }
    }
   }
+  var uorp ;
   var uorps = [
 'B.Tech',
 'B.Tech',
@@ -853,7 +854,7 @@ for (var i = 0; i < inames.length; i++) {
      uname = localStorage.getItem("loggedname");
      console.log(uname)
      if (uname == inames[i]){
-       
+       uorp = uorps[i]
 
    console.log(document.getElementById("profileimage"));
    sessionStorage.setItem("backprofilepic",photourls[i]);
@@ -876,13 +877,14 @@ for (var i = 0; i < inames.length; i++) {
       function fetchd (){
        console.log("fetch")
        var details ="";
+       console.log(uorp)
        fetch(
     
-    "https://script.google.com/macros/s/AKfycbwwHB9VvJR94E55QmmMgxK22ZLjUcaMGjQEkfV_8mqkAvuEiIzj_skEImvAI7ULhQOI/exec",
+    "https://script.google.com/macros/s/AKfycbwk9MMzOjWW5uUswI56x_wzLHHILj29FImtBFoSxY4-E5TtabjTT8Dp76Qu8sic1yt-/exec",
     {
       redirect: "follow",
       method: "POST",
-      body: uorps,
+      body: uorp,
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
@@ -910,12 +912,12 @@ for (var i = 0; i < inames.length; i++) {
        var detail ="";
    
        var head = r[k][0]
-       var formlink = "https://niftemt-placementcell-forms.pages.dev/form/?form="+r[k][1]
+       var formlink = r[k][1]
        var expirytime = r[k][2]
      
 
 
-        detail += '<tr class="lasttr"><td >'+head+'</td><td  >'+expirytime+'</td><td>'+f+'</td><td>'+expirytime+'</td><td><button class="btn11"'+`onclick=" window.open('`+formlink+`', '_blank')"`+'>Apply</button></td></tr>';
+        detail += '<tr class="lasttr"><td >'+head+'</td><td>'+expirytime+'</td><td><button class="btn11"'+`onclick=" window.open('`+formlink+`', '_blank')"`+'>Apply</button></td></tr>';
        
       
        
