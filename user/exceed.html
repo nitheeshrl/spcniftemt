@@ -3,106 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Successfully Updated</title>
+  <title>Limit Exceeded</title>
   <link rel="stylesheet" href="style 3.css">
   <link rel="icon" href="white_logo.png" type="image/x-icon">
   <script type="text/javascript" src="app.js" defer></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="style 1.css" />
   <link rel="stylesheet" type="text/css" href="style 2.css">
-  <script>
-    var fetchurl ="";
-    var reno = sessionStorage.getItem("reno");
-    console.log(reno);
-    var renoval = Number( reno) +1;
-    console.log(renoval);
-    function getOrdinal(n) {
-let ord = 'th';
-
-if (n % 10 == 1 && n % 100 != 11)
-{
-  ord = 'st';
-}
-else if (n % 10 == 2 && n % 100 != 12)
-{
-  ord = 'nd';
-}
-else if (n % 10 == 3 && n % 100 != 13)
-{
-  ord = 'rd';
-}
-
-return ord;
-}
-var ordd = getOrdinal(renoval)
-var renonam = renoval + ordd;
-      var name = sessionStorage.getItem("name");
-      var reid = sessionStorage.getItem("reid");
-      var ui ="";
-      var uids = [
-  "398",
-  "756",
-  "652",
-  "235",
-  "453",
- "648",
-  "378",
-  "345",
-  "904",
-  "413",
-  "254",
-  "890",
-  "333",
-  "333",
-  "333"
-];
-var inames = [
-'Anandha Keerthy M',
-'Anindit Bizy Nair',
-'David Evander Jebson S',
-'Keerthika P',
-'Nitheesh R L',
-'Shivam Jha',
-'Srinithi C P',
-'Subbu Krishna Sharma GM ',
-'Yuvashreekantham R',
-'R B Ramyaa',
-'Anjali S',
-'Mathangi G',
-'Srivigneswar S',
-'Sathishwaran S',
-'Sample'
-]
-var iurls = [
-'https://script.google.com/macros/s/AKfycbyY5uJMDnishBzf6icu-_OVAdKQiBhT2oV_WoGmfBSzjqH8dxAqT2kGNwZMR9RjsJY/exec',
-'https://script.google.com/macros/s/AKfycbyZKQVXi8TkdKoG4qonwJA0PJdCMZ5Ib_ns4IEedhHguTDzwQmKzxdOXSqo295GXWA/exec',
-'https://script.google.com/macros/s/AKfycbxVcuWPUCFCpukyGyoresI-2qUf9Va9G-I6ha2swlVrjS0BBo_gW9IvmBJdc1lqazbBDw/exec',
-'https://script.google.com/macros/s/AKfycbxBwZInWnCaXIMELyDTWA-SSMkknn3ek_SmOAxrtDfRkb-3gYstXOS4x0JqokC34gqh/exec',
-'https://script.google.com/macros/s/AKfycbzQT8-vjtlzR-5wPvtRNGjCEUqIzZoQgmRH9qq4hQckYeZTX3hyVMvI159mOyV4-O81ZQ/exec',
-'https://script.google.com/macros/s/AKfycbwAcd8Ui8cA44t0qOns64CbAwF61MxRYwIsLNIWsqhPCR2_6eE8e66DFgtVSsYDdEp4/exec',
-'https://script.google.com/macros/s/AKfycbzoI0pbzFUzkxfHHrCsP2YPAmQ0netELz8LmwHGXcDhWyTKJ5xaGDCzoHAx77TBWYs8/exec',
-'https://script.google.com/macros/s/AKfycbyqlpVoPnFFW9_dK-8xlAOroB1CJvCjvm9NBoszdKF23lMV8mAFAwC7rtLlnbPwTj9IAQ/exec',
-'https://script.google.com/macros/s/AKfycbyfTA3cWB77lQjKOgW32OwbYhfJU3m3mqj9TL8POpAlSW777Kcm_t_C_HYJpyTfQcsD8g/exec',
-'https://script.google.com/macros/s/AKfycbyVImv2xrynIWep4_u1DOktQNPL67EXrfC8sUvvF7-OLtuiCLVVxJQJIbs4VMB4DWNS/exec',
-'https://script.google.com/macros/s/AKfycbyuex0X2uehyAP6R2rWzsF1PuYZ1wB8W7fxyVRFsT3vToVLF7tQmRznyJTwWtvZb9U4/exec',
-'https://script.google.com/macros/s/AKfycbxjHDmfdCq92WCjnqY9Auo9OLxqnpg9bVXpHZOSJ1xHQHpD7pcef3V4dE5Z0h9zM67rmw/exec',
-'https://script.google.com/macros/s/AKfycbwIhDjqIbJnEF2TEW7I33soxegaEZVtp-Nk76VBVuvaeDnrUGvGCUh4R-0dOpOQIV1F/exec',
-'https://script.google.com/macros/s/AKfycbzjgiGz9mv7f3ccGEssPgOA-j85n0hsNI-RDo9dIlsei-nvCESn62p9yKOy8nUd10mz/exec',
-'https://script.google.com/macros/s/AKfycbzb9ciAvtHAkc8y5vm6QwUJaLL9cJ5VS9fI1B_4P1_OFC27aKZn-sd1Xp-hUUn3a__3LA/exec'
-  ]
-for (var i = 0; i < uids.length; i++) {
-
-if (name == inames[i]){
-ui = uids[i];
-fetchurl = iurls[i];
-}
-console.log(fetchurl)
-}
-      
-      var rname = sessionStorage.getItem("rname");
-      console.log(ui)
-      console.log(formDataString)
-  </script>
  <style>
 .tablebee{
   width: 99%;
@@ -163,7 +70,7 @@ document.getElementById("popup-3").classList.toggle("active");
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
         </button>
         <img class="out-items" style="width: 50px;" src="white_logo.png" alt="">
-        <img id="profileimage1" style=" scale:90%;border-radius: 50px; width: 50px; height: 50px; object-fit: cover;" src=".//1.png" alt="" srcset="">
+        <img id="profileimage1" style=" scale:90%;border-radius: 50px; width: 50px; height: 50px;object-fit: cover; " src=".//1.png" alt="" srcset="">
        
       </li>
       <li class="indetails"  id="insprofile" style="left: 0px;">
@@ -191,7 +98,7 @@ document.getElementById("popup-3").classList.toggle("active");
         </button>
         <ul class="sub-menu show">
           <div>
-            <li class="active"><a id="form-btn-side" href="request-form.html">Request Form</a></li>
+            <li class="active"><a  id="form-btn-side" href="request-form.html">Request Form</a></li>
             <li><a href="past.html">Past Requests</a></li>
           </div>
         </ul>
@@ -244,26 +151,17 @@ document.getElementById("popup-3").classList.toggle("active");
         </div>
     
         </div>
-      <section class="msg" >
 
-        <h1 style="text-align: center;">Successfully Updated</h1>
-        <div   id="dfiled" style="align-content:normal; margin-left: 0px;margin-right: auto; margin-top: 30px;"><p style="text-align: left;">
-            <div ></div> <span id = "status"></span><br><br><span id = "status2"></span> </p></div>
-    
-            <div id="load" class="load" > 
-                <div class="loader" id="loader"> 
-              
-                  </div> 
-                  <div
-                    id="message"
-                  class="message"
-                  style="width: 350px;"
-                    ></div>
-                </div> 
-    
-    
-    </section>
-        
+        <section class="msg" >
+
+          <h1 style="text-align: center;">Request Limit Exceeded</h1>
+          <div   id="dfiled" style="align-content:normal; margin-left: 0px;margin-right: auto; margin-top: 30px;"><p style="text-align: left;">
+            </p><span>No. of requests for today is exceeded. Try requesting by tomorrow</span><br><br>
+      
+      
+      
+      
+      </section>
 
    </div>
   </main>
@@ -399,65 +297,7 @@ alert("PassKey is already created for this Device")
      window.location="../index.html";
    }
    
-   function sendmail (name,id){
-     
-     document.getElementById("load").style.display="initial";
-           document.getElementById("loader").style.display="block"; 
-           document.getElementById("message").textContent = "Sending Mail to "+name+"...";
-           
-           
-             console.log(id)
 
-   fetch(
-    
-                 fetchurl,
-                 {
-                   redirect: "follow",
-                   method: "POST",
-                   body: id,
-                   headers: {
-                     "Content-Type": "text/plain;charset=utf-8",
-                   },
-                 }
-               )
-       
-                 .then(function (response) {
-       
-                   // Check if the request was successful
-                   if (response) {
-                
-                     return response; // Assuming your script returns JSON response
-                   } else {
-                     throw new Error("Failed to send the mail.");
-                   }
-                 })
-                 .then(async function (data) {
-           const result1 = await data.json();
-     
-           var r = result1.data2;
-   console.log(r);
-   if(r == "sent"){
-       document.getElementById("loader").style.display="none"; 
-                   document.getElementById("message").textContent =
-                    "Mail Sent to "+name;
-                   document.getElementById("message").style.display = "block";
-                   setTimeout(function () { document.getElementById("load").style.display="none"; },2000);
-   
-                 
-   }
-   
-   
-         })
-   
-         .catch(function (error) {
-           // Handle errors, you can display an error message here
-           console.error(error);
-           document.getElementById("loader").style.display="none"; 
-           document.getElementById("message").textContent =
-             "Failed to Send the Mail.";
-           document.getElementById("message").style.display = "block";
-         });
-   }
   
    </script>
     <script>
@@ -524,7 +364,5 @@ alert("PassKey is already created for this Device")
   };
   window.addEventListener("beforeunload", beforeUnloadHandler);
      </script>
-<script>
-  document.getElementById("status").innerHTML = "<span>The details are successfully updated directly since you are Cell Member.<br> <br> The Request ID is <b>"+reid+"</b><br><br> Use this ID for checking status.<br> <br>This is "+renonam+" request today. Only 5 requests are allowed per day.</span>";
-</script>
+
 </html>

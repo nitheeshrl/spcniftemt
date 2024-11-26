@@ -214,152 +214,165 @@ document.getElementById("popup-3").classList.toggle("active");
         </div>
     
         </div>
-      <section >
-        <div class="form-container">
-        <script type="text/javascript">var submitted=false </script>
-        <form id="form" class="container m-4 pl-4" name="form"  >
-        <h1 style="text-align: center;"> Update Brochure Details </h1>
-        
-        <div id="frqa" class="frqa">
-          <section class="step1" id="step1">
-        
+        <section >
+          <div class="form-container">
+          <script type="text/javascript">var submitted=false </script>
+          <form id="form" class="container m-4 pl-4" name="form"  >
+          <h1 style="text-align: center;"> Update Brochure Details </h1>
           
-        <div class="form-element">
+          <div id="frqa" class="frqa">
+            <section class="step1" id="step1">
+          
+            
+              <div class="form-element">
         <span class="q">Name</span>
           <input readonly type="text" name="Name" id="Name" required placeholder="Enter your Name" />
         </div>
-        <div class="form-element">
-        <span class="q">ID Number</span>
-        <input readonly type="text" name="ID Number" id="ID Number" required placeholder="Enter your ID number" />
-        </div>
-        <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
-          <input type="checkbox" class="Check" value="Email address" oninput="checken()">
-           <span style="margin-left: 20px;">Update Email address</span>
-        </div>
-        <div class="form-element"id="Email address V" style="display: none; flex-direction: column;">
-        <span class="q">Email address</span>
-        <input  type="email" name="Email address" id="Email address"  placeholder="Enter your email"/>
-        </div>
-        
-        <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
-          <input type="checkbox" class="Check" value="Skills" oninput="checken()">
-           <span style="margin-left: 20px;">Edit Skills</span>
-        </div>
-        <div id="Skills V" style="display: none; flex-direction: column;">
-        <div class="form-element"  >
-        <span class="q">Skill Set 1</span>
-        <input type="text" id="Skill Set 1" name="Skills"  placeholder="Enter your Skills" />
-        </div>
-        <div class="form-element"  >
-        <span class="q">Skill Set 2</span>
-        <input type="text" id="Skill Set 2" name="Skills"  placeholder="Enter your Skills" />
-        </div>
-        <div class="form-element"  >
-        <span class="q">Skill Set 3</span>
-        <input type="text" id="Skill Set 3" name="Skills"  placeholder="Enter your Skills" />
-        </div>
-        <div class="form-element"  >
-        <span class="q">Skill Set 4</span>
-        <input type="text" id="Skill Set 4" name="Skills"  placeholder="Enter your Skills" />
-        </div>
-        <div class="form-element"  >
-        <span class="q">Skill Set 5</span>
-        <input type="text" id="Skill Set 5" name="Skills"  placeholder="Enter your Skills" />
-        </div>
-        </div>
-        <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
-          <input type="checkbox" class="Check" value="Trainings and certifications" oninput="checken()">
-           <span style="margin-left: 20px;">Edit Trainings and certifications</span>
-        </div>
-        <div id="Trainings and certifications V" style="display: none; flex-direction: column;">
-        <div class="form-element">
-        <span class="q">Trainings and certifications</span>
-        <input type="text" name="Trainings and certifications" id="Trainings and certifications" onchange="checktupload()"  placeholder="Enter your Trainings and certifications" />
-        </div>
-        
-        <div class="form-element">
-        <span class="q">Upload your Trainings and certifications Files</span>
-        <div id="Trainings and certifications Files N"></div>
-        <input id="i2" type="file" accept=".pdf,.PDF" name="file" width="10" height="100"/>
-        <input id="Trainings and certifications File" type="hidden" name="Trainings and certifications Files Link" value=""/>
-        <span style="color: red;font-size: 12px;">Compile all files in one pdf</span>
-        </div>
-        </div>
-        <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
-          <input type="checkbox" class="Check" value="Internships" oninput="checken()">
-           <span style="margin-left: 20px;">Edit Internships</span>
-        </div>
-        <div id="Internships V" style="display: none; flex-direction: column;">
-        <div class="form-element">
-        <span class="q">Internship 1</span>
-        <input type="text" name="Internships" id="Internship 1" onchange="checkiupload()"  placeholder="Enter your Internships" />
-        </div>
-        <div class="form-element">
-        <span class="q">Internship 2</span>
-        <input type="text" name="Internships" id="Internship 2" onchange="checkiupload()"  placeholder="Enter your Internships" />
-        </div>
-        <div class="form-element">
-        <span class="q">Internship 3</span>
-        <input type="text" name="Internships" id="Internship 3" onchange="checkiupload()"  placeholder="Enter your Internships" />
-        </div>
-        <div class="form-element">
-        <span class="q">Internship 4</span>
-        <input type="text" name="Internships" id="Internship 4" onchange="checkiupload()"  placeholder="Enter your Internships" />
-        </div>
-        <div class="form-element">
-        <span class="q">Internship 5</span>
-        <input type="text" name="Internships" id="Internship 5" onchange="checkiupload()"  placeholder="Enter your Internships" />
-        </div>
-        <div class="form-element" >
-        <span class="q">Upload your Internships Files</span>
-        <div id="Internships Files N"></div>
-        <input id="i3" type="file" accept=".pdf,.PDF" name="file" width="10" height="100"/>
-        <input id="Internships File" type="hidden" name="Internships Files Link" value=""/>
-        <span style="color: red;font-size: 12px;">Compile all files in one pdf</span>
-        </div>
-        </div>
-        <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
-          <input type="checkbox" class="Check" value="Known Languages" oninput="checken()">
-           <span style="margin-left: 20px;">Edit Known Languages</span>
-        </div>
-        <div class="form-element"id="Known Languages V" style="display: none; flex-direction: column;">
-        <span class="q">Known Languages</span>
-        <input type="text" name="Known Languages" id="Known Languages"  placeholder="Enter your Known Language" />
-        </div>
-        <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
-          <input type="checkbox" class="Check" value="Project title" oninput="checken()">
-           <span style="margin-left: 20px;">Edit Project title</span>
-        </div>
-        <div class="form-element"id="Project title V" style="display: none; flex-direction: column;">
-        <span class="q">Project title</span>
-        <input type="text" name="Project title" id="Project title"  placeholder="Enter your Project title" />
-        </div>
-        <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
-          <input type="checkbox" class="Check" value="CV" oninput="checken()">
-           <span style="margin-left: 20px;">Update CV</span>
-        </div>
-        <div class="form-element"id="CV V" style="display: none; flex-direction: column;">
-        <span class="q">Upload the CV</span>
-        <div id="CV N"></div>
-        <input id="i1" type="file" accept=".pdf,.PDF" name="file" width="10" height="100" onchange="chc"/>
-        <input id="CV File" type="hidden" name="CV D.link" value=""/>
-        
-        </div>
-        <button style="margin-top: 20px; width: 100%;" type="button" id="bt" onclick="submitentry()"> 
-        Submit Request
-        </button> 
-        <a href=""></a>
-            <div id="load" class="load" > 
-          <div class="loader" id="loader"> 
-        
+          <div class="form-element">
+          <span class="q">ID Number</span>
+          <input readonly type="text" name="ID Number" id="ID Number" required placeholder="Enter your ID number" />
+          </div>
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="Email address" oninput="checken()">
+             <span style="margin-left: 20px;">Update Email address</span>
+          </div>
+          <div class="form-element"id="Email address V" style="display: none; flex-direction: column;">
+          <span class="q">Email address</span>
+          <input  type="email" name="Email address" id="Email address"  placeholder="Enter your email"/>
+          </div>
+          
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="Skills" oninput="checken()">
+             <span style="margin-left: 20px;">Edit Skills</span>
+          </div>
+          <div id="Skills V" style="display: none; flex-direction: column;">
+          <div class="form-element"  >
+          <span class="q">Skills</span>
+          <input type="text" id="Skills" name="Skills"  placeholder="Enter your Skills" />
+          </div>
+          </div>
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="Trainings and certifications" oninput="checken()">
+             <span style="margin-left: 20px;">Edit Trainings and certifications</span>
+          </div>
+          <div id="Trainings and certifications V" style="display: none; flex-direction: column;">
+          <div class="form-element">
+          <span class="q">Trainings and certifications 1</span>
+          <input type="text" name="Trainings and certifications" id="Trainings and certifications 1" onchange="checktupload()"  placeholder="Enter your Trainings and certifications" />
+          </div>
+          <div class="form-element"  >
+          <span class="q">Trainings and certifications 2</span>
+          <input type="text" id="Trainings and certifications 2" name="Trainings and certifications" onchange="checktupload()"  placeholder="Enter your Trainings and certifications" />
+          </div>
+          <div class="form-element"  >
+          <span class="q">Trainings and certifications 3</span>
+          <input type="text" id="Trainings and certifications 3" name="Trainings and certifications" onchange="checktupload()"  placeholder="Enter your Trainings and certifications" />
+          </div>
+          <div class="form-element"  >
+          <span class="q">Trainings and certifications 4</span>
+          <input type="text" id="Trainings and certifications 4" name="Trainings and certifications" onchange="checktupload()"  placeholder="Enter your Trainings and certifications" />
+          </div>
+          <div class="form-element"  >
+          <span class="q">Trainings and certifications 5</span>
+          <input type="text" id="Trainings and certifications 5" name="Trainings and certifications" onchange="checktupload()"  placeholder="Enter your Trainings and certifications" />
+          </div>
+          <div class="form-element">
+          <span class="q">Upload your Trainings and certifications Files</span>
+          <div id="Trainings and certifications Files N"></div>
+          <input id="i2" type="file" accept=".pdf,.PDF" name="file" width="10" height="100"/>
+          <input id="Trainings and certifications File" type="hidden" name="Trainings and certifications Files Link" value=""/>
+          <span style="color: red;font-size: 12px;">Compile all files in one pdf</span>
+          </div>
+          </div>
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="Internships" oninput="checken()">
+             <span style="margin-left: 20px;">Edit Internships</span>
+          </div>
+          <div id="Internships V" style="display: none; flex-direction: column;">
+          <div class="form-element">
+          <span class="q">Internship 1</span>
+          <input type="text" name="Internships" id="Internship 1" onchange="checkiupload()"  placeholder="Enter your Internships" />
+          </div>
+          <div class="form-element">
+          <span class="q">Internship 2</span>
+          <input type="text" name="Internships" id="Internship 2" onchange="checkiupload()"  placeholder="Enter your Internships" />
+          </div>
+          <div class="form-element">
+          <span class="q">Internship 3</span>
+          <input type="text" name="Internships" id="Internship 3" onchange="checkiupload()"  placeholder="Enter your Internships" />
+          </div>
+          <div class="form-element">
+          <span class="q">Internship 4</span>
+          <input type="text" name="Internships" id="Internship 4" onchange="checkiupload()"  placeholder="Enter your Internships" />
+          </div>
+          <div class="form-element">
+          <span class="q">Internship 5</span>
+          <input type="text" name="Internships" id="Internship 5" onchange="checkiupload()"  placeholder="Enter your Internships" />
+          </div>
+          <div class="form-element" >
+          <span class="q">Upload your Internships Files</span>
+          <div id="Internships Files N"></div>
+          <input id="i3" type="file" accept=".pdf,.PDF" name="file" width="10" height="100"/>
+          <input id="Internships File" type="hidden" name="Internships Files Link" value=""/>
+          <span style="color: red;font-size: 12px;">Compile all files in one pdf</span>
+          </div>
+          </div>
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="Work Experiences" oninput="checken()">
+             <span style="margin-left: 20px;">Edit Work Experiences</span>
+          </div>
+          <div id="Work Experiences V" style="display: none; flex-direction: column;">
+          <div class="form-element"  >
+          <span class="q">Work Experience 1</span>
+          <input type="text" id="Work Experience 1" name="Work Experiences"  placeholder="Enter your Work Experiences" />
+          </div>
+          <div class="form-element"  >
+          <span class="q">Work Experience 2</span>
+          <input type="text" id="Work Experience 2" name="Work Experiences"  placeholder="Enter your Work Experiences" />
+          </div>
+          </div>
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="Known Languages" oninput="checken()">
+             <span style="margin-left: 20px;">Edit Known Languages</span>
+          </div>
+          <div class="form-element"id="Known Languages V" style="display: none; flex-direction: column;">
+          <span class="q">Known Languages</span>
+          <input type="text" name="Known Languages" id="Known Languages"  placeholder="Enter your Known Language" />
+          </div>
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="Project title" oninput="checken()">
+             <span style="margin-left: 20px;">Edit Project title</span>
+          </div>
+          <div class="form-element"id="Project title V" style="display: none; flex-direction: column;">
+          <span class="q">Project title</span>
+          <input type="text" name="Project title" id="Project title"  placeholder="Enter your Project title" />
+          </div>
+          <div style="display: flex;flex-direction: row;margin-top: 20px; margin-bottom: 10px;">
+            <input type="checkbox" class="Check" value="CV" oninput="checken()">
+             <span style="margin-left: 20px;">Update CV</span>
+          </div>
+          <div class="form-element"id="CV V" style="display: none; flex-direction: column;">
+          <span class="q">Upload the CV</span>
+          <div id="CV N"></div>
+          <input id="i1" type="file" accept=".pdf,.PDF" name="file" width="10" height="100" onchange="chc"/>
+          <input id="CV File" type="hidden" name="CV D.link" value=""/>
+          
+          </div>
+          <button style="margin-top: 20px; width: 100%;" type="button" id="bt" onclick="submitentry()"> 
+          Submit Request
+          </button> 
+          <a href=""></a>
+              <div id="load" class="load" > 
+            <div class="loader" id="loader"> 
+          
+              </div> 
+              <div
+                id="message"
+              class="message"
+                ></div>
             </div> 
-            <div
-              id="message"
-            class="message"
-              ></div>
-          </div> 
-        
-        </section>
+          
+          </section>     
         </div>
             </form>
         </div>
@@ -626,7 +639,7 @@ alert("PassKey is already created for this Device")
       var logname = localStorage.getItem("loggedname");
       document.getElementById("Name").value = logname;
       matchnameid();
-  var hvalues ;
+      var hvalues ;
   var hheads;
   var uname ;
   var ent = "";
@@ -635,136 +648,83 @@ alert("PassKey is already created for this Device")
   let name = document.getElementById('Name').value;
   sessionStorage.setItem("rname",name);
   var uids = [
-  'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
+  'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'R B Ramyaa',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Anjali S',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'Mathangi G',
+'M.Tech Admin' 
 ];
 var inames = [
-'Aarthi A',
-'Nitheesh R L',
-'Dhanaselvam KR',
-'K Kabilan',
-'Lakshmi Sruthi L',
-'Nithish J P',
-'Sri Harini S',
-'Amirtha Varshini A',
-'Anusha R',
-'Cubarani Η',
-'Guguloth Sridhar',
-'Karyamsetty Worship',
-'Lavudya Sai Kumar',
-'Shivam Jha',
-'Avantika C',
-'Diya Dharshini S',
-'Joshua Charles',
-'Mohannath Shroff J',
-'Punithavathi D',
-'Subbu Krishna Sharma GM',
-'Vemula Uharika',
-'Ajitesh S',
-'Ethaya D',
-'Keerthika P',
-'Muthuraja K',
-'Santhoshkumar P',
-'Surendar S',
-'Vishnu Varthan T',
-'Akash B',
-'Chitturi Rohith',
-'Himavanth R',
-'Kota Lakshmi Sanjana',
-'Mohamed Tharif N J',
-'Padmaja M',
-'Anandha Keerthy M',
-'Archana P',
-'Diana Celcia R',
-'Jegan P',
-'Kevin Francis',
-'MA Monesh Ram',
-'Sivashree ',
-'Yuvashreekantham R',
-'Ginu Robtus R',
-'Mahabir Prasad Swain',
-'Mudavath Anjali',
-'J Sanjeeth',
-'Srinithi C P',
-'Suman Kumar',
-'Tippaleti Srujana',
-'Aishwarya Lakshmi S',
-'David Evander Jebson S',
-'Guberavishnu S',
-'Kisha M',
-'Merla A P',
-'Pranav Nanda Kishore',
-'Yadla Ganesh Babu',
-'Anindit Bizy Nair',
-'Chandrika Devendrappa',
-'Gautam Nayak',
-'Jenish Daniel B',
-'Lakshmi Narayanan S',
-'Rakshithapriya S',
-'Srivatsan V',
+'Bommi Durga Naga Sai Sri Sruthileena',
+'Damini H S',
+'Gokul Raj R',
+'Midhuna Kurian',
+'Parkhe Prajwal Anilkumar',
+'Praveena B',
+'R B Ramyaa',
+'Sathishwaran S',
+'Vidhyadharan A',
+'Yogesh M A',
+'Anjali S',
+'Anshida P K',
+'Hari Priya J',
+'Harish S',
+'Hayanthika M S',
+'Irfana Z',
+'Kadimi Lakshmi Devi',
+'Karthick Ajay B',
+'Kolli Venkata Naga Mallikarjuna Reddy',
+'Nandana M',
+'Shaliha A',
+'Sruti Chandra',
+'Sushmithasri R',
+'Abhijith K',
+'Ishwarya Lakshmi S',
+'Joseph P J',
+'Mani Bharathi G',
+'Manikandan T',
+'Mathangi G',
+'Mulukuri Naveena',
+'Muthumeena J',
+'Rajasri C',
+'Shanmugapriya R',
+'Srivigneswar S',
+'Sujithra M',
+'Trivedi Nidhi Deepak',
+'M.Tech Admin'  
 ]
-
 for (var i = 0; i < uids.length; i++) {
 
   if (name == inames[i]){
@@ -777,8 +737,8 @@ sessionStorage.setItem("name",uname);
     
 }
 function submitentry(){
-  ent = "";
-  qent ="";
+ ent = "";
+qent ="";
   console.log(serverstatus)
   var nametab = document.getElementById("Name").value;
   if(nametab == ""){
@@ -824,8 +784,11 @@ var nnnnaamme = document.getElementById("Name").value;
     else if (nam == "Internships"){
       cnam = "Internship 1";
     }
-    else if (nam == "Skills"){
-      cnam = "Skill Set 1";
+    else if (nam == "Trainings and certifications"){
+      cnam = "Trainings and certifications 1";
+    }
+    else if (nam == "Work Experiences"){
+      cnam = "Work Experience 1";
     }
     else{
       cnam = nam;
@@ -836,35 +799,7 @@ var nnnnaamme = document.getElementById("Name").value;
     console.log(vnam)
 
     if (vnam !== ""){
-    if (nam == "Trainings and certifications"){
-      var innum = hheads.indexOf(cnam);
-        console.log(innum);
-        console.log(hvalues[innum]);
-        var newvalue = document.getElementById(cnam).value;
-        if (hvalues[innum] == newvalue){
-          alert("Enter the "+cnam);
-          che = "no ok";
-        }
-        else{
-      var valup = "/iiff/"+document.getElementById(cnam).value;
-    ent = ent + valup; 
-    var head = "/ssww/"+nam;
-    qent = qent + head;
-    console.log(valup)
-    if (document.getElementById(nam+" File").value == ""){
-      alert("Upload the "+nam+' Files');
-      che = "not ok"
-    }
-    else{
-    var valup1 = "/iiff/"+document.getElementById(nam+" File").value;
-    ent = ent + valup1; 
-    var head1 = "/ssww/"+nam+" Files";
-    qent = qent + head1;
-    console.log(valup1)
-    }
-  }
-    }
-    else if (nam == "Internships"||nam == "Skills"){
+ if (nam == "Internships"||nam == "Work Experiences"||nam == "Trainings and certifications"){
       var nos = document.getElementsByName(nam);
       for(var j=0;j<nos.length;j++){  
         var innum = hheads.indexOf(nos[j].id);
@@ -885,7 +820,7 @@ var nnnnaamme = document.getElementById("Name").value;
         che = "no ok";
       }
       else{
-      if (nam == "Internships"){
+      if (nam == "Internships"||nam == "Trainings and certifications"){
     if (document.getElementById(nam+" File").value == ""){
       alert("Upload the "+nam+' Files');
       che = "not ok"
@@ -956,7 +891,7 @@ else if (che == "ok"){
 document.getElementById("load").style.display="initial";
 document.getElementById("loader").style.display="block"; 
 document.getElementById("message").textContent = "Submitting...";
-var formDataString = name+"%"+id+"%"+ent+"%"+qent+"%"+uname+"%"+"B.Tech";
+var formDataString = name+"%"+id+"%"+ent+"%"+qent+"%"+uname+"%"+"M.Tech";
 console.log(formDataString);
 sessionStorage.setItem("datastring",formDataString);
 
@@ -1008,7 +943,7 @@ console.log(spilcr)
 sessionStorage.setItem("stat","not sent");
 document.getElementById("bt").disabled = false;
     document.getElementById("form").reset();
-    sessionStorage.setItem("uorp","B.Tech");
+    sessionStorage.setItem("uorp","M.Tech");
     window.location='request-submission.html';
 }
       })
@@ -1024,6 +959,7 @@ document.getElementById("bt").disabled = false;
 
   }  
         }
+
 
           function matchnameid(){
   let id = document.getElementById('ID Number');
@@ -1126,7 +1062,8 @@ document.getElementById("bt").disabled = false;
 'Shanmugapriya R',
 'Srivigneswar S',
 'Sujithra M',
-'Trivedi Nidhi Deepak'
+'Trivedi Nidhi Deepak',
+'M.Tech Admin'
 ]
 var ids = ['2021U1001',
 '2021U1002',
@@ -1226,17 +1163,20 @@ var ids = ['2021U1001',
 '2023P3013',
 '2023P3014',
 '2023P3015',
-'2023P3016'
+'2023P3016',
+'madmin'
 ]
 for (var i = 0; i < names.length; i++) {
-  
-if (name == names[i])
+  console.log(name)
+if (name == names[i]){
+
 id.value = ids[i];
 id.placeholder = ids[i];
-
+}
 }
 alname();
-var formDataString = id.value+"/"+"B.Tech";
+var formDataString = id.value+"/"+"M.Tech";
+console.log(formDataString)
 document.getElementById("load").style.display="initial";
         document.getElementById("loader").style.display="block"; 
         document.getElementById("message").textContent = "Fetching Data...";
@@ -1307,7 +1247,6 @@ document.getElementById("load").style.display="none";
                 document.getElementById("message").style.display = "block";
               });
             }
-  
     </script>
 
   

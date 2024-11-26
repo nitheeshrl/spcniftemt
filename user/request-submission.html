@@ -71,7 +71,7 @@ var inames = [
 'Mathangi G',
 'Srivigneswar S',
 'Sathishwaran S',
-'Sample'
+'M.Tech Admin 2'
 ]
 var iurls = [
 'https://script.google.com/macros/s/AKfycbyY5uJMDnishBzf6icu-_OVAdKQiBhT2oV_WoGmfBSzjqH8dxAqT2kGNwZMR9RjsJY/exec',
@@ -191,7 +191,7 @@ document.getElementById("popup-3").classList.toggle("active");
         </button>
         <ul class="sub-menu show">
           <div>
-            <li class="active"><a  href="request-form.html">Request Form</a></li>
+            <li class="active"><a id="form-btn-side"  href="request-form.html">Request Form</a></li>
             <li><a href="past.html">Past Requests</a></li>
           </div>
         </ul>
@@ -270,6 +270,12 @@ document.getElementById("popup-3").classList.toggle("active");
   
 </body>
 <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+<script>
+  var uuorp = localStorage.getItem("loggeduorp");
+  if (uuorp=="M.Tech"){
+   document.getElementById("form-btn-side").href="m-request-form.html";
+  }
+</script>
 <script>
     var porfilepicback = sessionStorage.getItem("backprofilepic");
   if (porfilepicback!==null){

@@ -312,6 +312,8 @@ if (userdetails[0]!=="Not Found"){
   var password = "Niftem@iac";
   if (pass == password&&userdetails[0]==""){
     sessionStorage.setItem("setname",userdetails[2]);
+    var suserdetails = JSON.stringify(userdetails)
+    sessionStorage.setItem("setuserdetails",suserdetails);
 window.location="set-pass.html";
   }
   else if (pass == password&&userdetails[0] !=="") {
