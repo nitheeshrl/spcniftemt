@@ -143,7 +143,7 @@ var userdetails = result1.data2;
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
-passkey(userdetails[2],passdevuniid);
+passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5]);
 }
 else if (userdetails[0]=="Not Found"){
   alert("User not found")
@@ -166,7 +166,7 @@ else if (userdetails[0]=="Not Found"){
   } 
 
 
- async function passkey(userId,passdevuniid){
+ async function passkey(userId,passdevuniid,uuorp,pic,mail){
         var passkeysss ={};
         const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
  var fetchurl = "https://passkey-5ev6.onrender.com";
@@ -205,6 +205,9 @@ else if (userdetails[0]=="Not Found"){
            console.log(verifyuserResult)
 if (verifyuserResult.success){
   localStorage.setItem("loggedname", userId);
+  localStorage.setItem("loggeduorp", uuorp);
+  localStorage.setItem("loggedpic", pic);
+  localStorage.setItem("loggedmail", mail);
   var  uname = localStorage.getItem("loggedname");
   console.log(uname)
 document.getElementById("loader").style.display="none"; 
@@ -241,10 +244,10 @@ else{
     }
   }
   var username ="";
-function checklogdetails(realhash,checkhash){
+function checklogdetails(realhash,checkhash,uuorp,pic,mail){
   console.log("hgf")
 if (realhash == checkhash){
-  onuploadcomplete ()
+  onuploadcomplete (uuorp,pic,mail)
 
   }
   else{
@@ -253,9 +256,12 @@ if (realhash == checkhash){
   }
 
 }
-function onuploadcomplete (){
+function onuploadcomplete (uuorp,pic,mail){
   localStorage.setItem("loggedname", username);
   var  uname = localStorage.getItem("loggedname");
+  localStorage.setItem("loggeduorp", uuorp);
+  localStorage.setItem("loggedpic", pic);
+  localStorage.setItem("loggedmail", mail);
   console.log(uname)
 document.getElementById("loader").style.display="none"; 
 document.getElementById("message").textContent="Logged in Successful";
@@ -267,7 +273,7 @@ setTimeout(function () {
   window.location="user/past.html"
  },2000);
 }
-function getuserdetails(user,pass){
+function getuserdetails(user,pass,uuorp,pic,mail){
     var formDataString =user+"/2";
     console.log(formDataString)
     document.getElementById("loader").style.display="block"; 
@@ -332,7 +338,7 @@ async  function getdehash(){
     )
     .then(res=>res.json())
           
-     .then(data=>console.log(data)&checklogdetails(userdetails[0],data.hash))
+     .then(data=>console.log(data)&checklogdetails(userdetails[0],data.hash,userdetails[3],userdetails[4],userdetails[5]))
 }
 getdehash();
 }

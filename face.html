@@ -75,18 +75,80 @@ else {
 return uniqueID;
 }
 }
-  async  function passkey(){
+    function getuserdetailspasskey(){
+      var passdevuniid =GetUniqueID();
+           console.log(passdevuniid);
+
+if (passdevuniid !== "Not"){
+      var enusername = document.getElementById("Username").value;
+      if (enusername ==""){
+    alert("Enter the Username")
+}
+else{
+    var formDataString =enusername+"/2";
+    console.log(formDataString)
+    document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Verifying....";
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: formDataString,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to verify credentials");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+var userdetails = result1.data2;
+
+
+console.log(userdetails)
+
+if (userdetails[0]!=="Not Found"){
+passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5]);
+}
+else if (userdetails[0]=="Not Found"){
+  alert("User not found")
+  document.getElementById("load").style.display="none";
+}
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("message").textContent =
+          "An error occurred while verify credentials";
+        document.getElementById("message").style.display = "block";
+      });
+    }  
+  }
+    else {
+    alert("PassKey is Not Available in this Device")
+  }
+  } 
+
+
+ async function passkey(userId,passdevuniid,uuorp,pic,mail){
         var passkeysss ={};
         const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
  var fetchurl = "https://passkey-5ev6.onrender.com";
-    const userId = document.getElementById("Username").value;
-if (userId ==""){
-    alert("Select the Name")
-}
-else{
-          var passdevuniid =GetUniqueID();
-           console.log(passdevuniid);
-if (passdevuniid !== "Not"){
+
+
     document.getElementById("loader").style.display="block"; 
             document.getElementById("load").style.display="initial";
             document.getElementById("message").textContent="Verifying PassKey....";
@@ -119,7 +181,10 @@ if (passdevuniid !== "Not"){
            const verifyuserResult = await veruser.json()
            console.log(verifyuserResult)
 if (verifyuserResult.success){
-  localStorage.setItem("loggedname", username);
+  localStorage.setItem("loggedname", userId);
+  localStorage.setItem("loggeduorp", uuorp);
+  localStorage.setItem("loggedpic", pic);
+  localStorage.setItem("loggedmail", mail);
   var  uname = localStorage.getItem("loggedname");
   console.log(uname)
 document.getElementById("loader").style.display="none"; 
@@ -136,13 +201,10 @@ else{
   alert("Wrong PassKey. Try Again")
   document.getElementById("load").style.display="none";
 }
-       }
-else {
-    alert("PassKey is Not Available in this Device")
-  }
-}
+       
 
-  }
+
+}
   function getuserdetails(user){
     var formDataString =user+"/2";
     console.log(formDataString)
@@ -179,8 +241,9 @@ var userdetails = result1.data2;
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
-  console.log(userdetails[2])
-  sessionStorage.setItem("checkname",userdetails[2])
+  console.log(userdetails[2]);
+  var suserdetails = JSON.stringify(userdetails)
+  sessionStorage.setItem("checkname",suserdetails)
 
 window.location ="check face/index.html";
 
