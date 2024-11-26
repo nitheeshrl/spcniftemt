@@ -320,6 +320,10 @@ window.location="set-pass.html";
     document.getElementById("load").style.display="none";
 
   }
+  else if (userdetails[0] =="") {
+    alert("Set Password with default password");
+    document.getElementById("load").style.display="none";
+    }
   else{
     username = userdetails[2];
        var url ="https://passkey-5ev6.onrender.com";
