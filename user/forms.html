@@ -575,14 +575,15 @@ alert("PassKey is already created for this Device")
       function fetchd (){
        console.log("fetch")
        var details ="";
-       console.log(uorp)
+       var loname =  localStorage.getItem("loggedname");
+       console.log(uorp+"/"+loname)
        fetch(
     
     "https://script.google.com/macros/s/AKfycbwk9MMzOjWW5uUswI56x_wzLHHILj29FImtBFoSxY4-E5TtabjTT8Dp76Qu8sic1yt-/exec",
     {
       redirect: "follow",
       method: "POST",
-      body: uorp,
+      body: uorp+"/"+loname,
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
