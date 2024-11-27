@@ -285,21 +285,22 @@ padding-top: 5px;
 
   justify-content: center;
 
-  > div{
-    overflow-x: auto;
-  }
-  li{
-    display: flex;
-    flex-direction:row;
-height: 50px;
-  }
 
-  a{
-    box-sizing: border-box;
-    padding: 1em;
-    width: auto;
-    justify-content: center;
-  }
+}
+#sidebar ul li .sub-menu.show div{
+  overflow-x: auto;
+}
+#sidebar ul li .sub-menu.show li{
+  display: flex;
+  flex-direction:row;
+height: 50px;
+}
+
+#sidebar ul li .sub-menu.show a{
+  box-sizing: border-box;
+  padding: 1em;
+  width: auto;
+  justify-content: center;
 }
 
 .outdetails{
