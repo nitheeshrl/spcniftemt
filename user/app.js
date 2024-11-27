@@ -1,6 +1,11 @@
 const toggleButton = document.getElementById('toggle-btn')
 const sidebar = document.getElementById('sidebar')
-
+if (document.innerWidth < 800){
+  document.getElementsByClassName("indetails")[0].style.display="none";
+  document.getElementsByClassName("out-items")[0].style.display="none";
+  document.getElementsByClassName("outdetails")[0].style.display="flex";
+  document.getElementsByClassName("outdetails")[0].style="flex-direction: row;";
+}
 function toggleSidebar(){
   sidebar.classList.toggle('close')
   toggleButton.classList.toggle('rotate')
