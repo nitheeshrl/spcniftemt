@@ -239,16 +239,7 @@ height: 50px;
   }
   @media(max-width: 800px){
  
-    .indetails{
-      display: none;
-    }
-    .outdetails{
-      display: flex;
-      flex-direction: row;
-    }
-    .out-items{
-      display: none;
-    }
+ 
   }
 
 }

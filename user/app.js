@@ -4,6 +4,7 @@ if (document.innerWidth < 800){
   document.getElementsByClassName("indetails")[0].style.display="none";
   document.getElementsByClassName("out-items")[0].style.display="none";
   document.getElementsByClassName("outdetails")[0].style.display="flex";
+  document.getElementById("dside").style.display="flex";
   document.getElementsByClassName("outdetails")[0].style="flex-direction: row;";
 }
 function toggleSidebar(){
