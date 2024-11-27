@@ -24,6 +24,7 @@ console.log(idvalue)
       var sheetname ; 
       window.onload=getstatus();
       var loggedname =localStorage.getItem("loggedname")
+      var loggeduorp =localStorage.getItem("loggeduorp")
       function getstatus(){
    const url = "https://script.google.com/macros/s/AKfycbxR9JjLW-_xKlNmW7-2OmoqYeHLkfZn45DJL-kazZ4Nl_gGqbUNwJk96DmvpyGzxAPp/exec" 
 
@@ -40,7 +41,7 @@ console.log(idvalue)
           alert("Form not found")
         }
         if(formstatus=="Form Fetched"){
-        if(useraccess.includes(loggedname)){
+        if(useraccess.includes(loggedname)||useraccess.includes(loggeduorp)){
            if (data == "Live"){
    console.log("ok")
 
