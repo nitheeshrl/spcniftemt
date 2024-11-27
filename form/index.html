@@ -23,7 +23,7 @@ console.log(idvalue)
       var formstatus ;
       var sheetname ; 
       window.onload=getstatus();
-
+      var loggedname =localStorage.getItem("loggedname")
       function getstatus(){
    const url = "https://script.google.com/macros/s/AKfycbxR9JjLW-_xKlNmW7-2OmoqYeHLkfZn45DJL-kazZ4Nl_gGqbUNwJk96DmvpyGzxAPp/exec" 
 
@@ -34,18 +34,20 @@ console.log(idvalue)
    console.log(val)
    fetch(`${url}?header=${val}`)
        .then((response) => response.json())
-       .then(({ data }) => {
+       .then(({ data , useraccess}) => {
         console.log(data)
         if (data == "Not Found"){
           alert("Form not found")
         }
+        if(formstatus=="Form Fetched"){
+        if(useraccess.includes(loggedname)){
            if (data == "Live"){
    console.log("ok")
-   if(formstatus=="Form Fetched"){
+
    document.getElementById("frqa").style.display="initial";
    document.getElementById("ll").textContent="";
    document.getElementById("previewlink").style.display="none";
-   }
+   
                }
                else if (data == "Inactive"){
                  document.getElementById("frqa").style.display="none";
@@ -60,6 +62,14 @@ console.log(idvalue)
                else if (data == "Not Found"){
     alert("Form not found")
   }
+}
+else{
+  alert("Request access form "+owner+" for this form");
+ 
+  document.getElementById("frqa").style.display="none";
+  document.getElementById("ll").textContent="Request access form "+owner+" for this form";
+}
+        }
        })
        .catch((error) => console.error('!!!!!!!!', error));
    }
