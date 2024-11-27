@@ -31,7 +31,7 @@ document.getElementById("formtitle").textContent=idvalue
    console.log(val)
    fetch(`${url}?header=${val}`)
        .then((response) => response.json())
-       .then(({ data }) => {
+       .then(({ data, useraccess}) => {
         console.log(data)
         if (data == "Not Found"){
           alert("Form not found")
