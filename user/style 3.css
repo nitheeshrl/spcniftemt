@@ -183,7 +183,7 @@ z-index: 550;
   padding-top: 5px;
      ul{
       padding: 0;
-      display: flex;
+     display: flex;
       gap: 5px;
       align-items: center;
       justify-content: center;

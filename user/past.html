@@ -224,11 +224,14 @@ document.getElementById("popup-3").classList.toggle("active");
 </body>
 <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
 <script>
-  if (document.innerWidth < 800){
+
+  if (window.innerWidth < 1000){
+
+    document.getElementById("dside").style.display="flex";
   document.getElementsByClassName("indetails")[0].style.display="none";
   document.getElementsByClassName("out-items")[0].style.display="none";
   document.getElementsByClassName("outdetails")[0].style.display="flex";
-  document.getElementById("dside").style.display="flex";
+  
   document.getElementsByClassName("outdetails")[0].style="flex-direction: row;";
 }
   var uuorp = localStorage.getItem("loggeduorp");
