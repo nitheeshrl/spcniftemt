@@ -159,16 +159,7 @@ z-index: 550;
     padding: 0;
 
   }
-  .indetails{
-    display: none;
-  }
-  .outdetails{
-    display: flex;
-    flex-direction: row;
-  }
-  .out-items{
-    display: none;
-  }
+
   #sidebar{
   
 
@@ -234,6 +225,16 @@ height: 50px;
         width: auto;
         justify-content: center;
       }
+    }
+    .indetails{
+      display: none;
+    }
+    .outdetails{
+      display: flex;
+      flex-direction: row;
+    }
+    .out-items{
+      display: none;
     }
   }
 }
