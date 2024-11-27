@@ -17,7 +17,12 @@ document.getElementById("formtitle").textContent=idvalue
     <script>
       var sheetname ; 
       window.onload=getstatus();
-
+      var loggedname =localStorage.getItem("loggedname")
+      var loggeduorp =localStorage.getItem("loggeduorp")
+      if (loggedname==undefined){
+     alert("You are not logged in. Please log in");
+     window.location="../index.html";
+   }
       function getstatus(){
    const url = "https://script.google.com/macros/s/AKfycbxR9JjLW-_xKlNmW7-2OmoqYeHLkfZn45DJL-kazZ4Nl_gGqbUNwJk96DmvpyGzxAPp/exec" 
    var val = "Common Form Entry";
@@ -30,14 +35,16 @@ document.getElementById("formtitle").textContent=idvalue
         if (data == "Not Found"){
           alert("Form not found")
         }
+        if(formstatus=="Form Fetched"){
+        if(useraccess.includes(loggedname)||useraccess.includes(loggeduorp)){
         if (data == "Live"){
    console.log("ok")
-   if(formstatus=="Form Fetched"){
+
    document.getElementById("frqa").style.display="initial";
    document.getElementById("ll").textContent="";
    document.getElementById("previewlink").style.display="none";
    }
-               }
+               
                else if (data == "Inactive"){
                  document.getElementById("frqa").style.display="none";
                  window.location='end.html';
@@ -48,6 +55,14 @@ document.getElementById("formtitle").textContent=idvalue
                 document.getElementById("previewlink").style.display="initial";
                 document.getElementById("frqa").style.display="none";
                }
+              }
+              else{
+  alert("Request access form "+owner+" for this form");
+ 
+  document.getElementById("frqa").style.display="none";
+  document.getElementById("ll").textContent="Request access form "+owner+" for this form";
+}
+            }
        })
        .catch((error) => console.error('!!!!!!!!', error));
    }
