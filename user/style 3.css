@@ -170,6 +170,8 @@ z-index: 550;
     display: none;
   }
   #sidebar{
+    display: flex;
+    flex-direction: row;
     height: 60px;
     width: 100%;
     border-right: none;
