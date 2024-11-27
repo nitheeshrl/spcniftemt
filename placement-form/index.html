@@ -90,6 +90,7 @@ document.getElementById("formtitle").textContent=idvalue
             const result1 = await response.json();
             console.log(result1.data2);
             var data = result1.data2;
+            console.log(data)
             if(data[0]!==null){
             sheetname = data[3];
             document.getElementById("i1").className=data[4];
