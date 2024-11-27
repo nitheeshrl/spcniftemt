@@ -169,7 +169,7 @@ z-index: 550;
   .out-items{
     display: none;
   }
-  #sidebar{
+  /*#sidebar{
   
 
     height: 60px;
@@ -236,9 +236,9 @@ height: 50px;
       }
     }
 
-  }
-  @media(max-width: 800px){
-     .sidebar{
+  }*/
+
+     #sidebar{
       height: 60px;
       width: 100%;
       border-right: none;
@@ -307,4 +307,3 @@ height: 50px;
    
   }
 
-}
