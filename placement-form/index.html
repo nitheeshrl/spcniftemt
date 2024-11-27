@@ -11,7 +11,7 @@
       const keyvalues = window.location.search;
 const value = new URLSearchParams(keyvalues);
 const idvalue = value.get('form');
-document.getElementById("formtitle").textContent=idvalue
+
 </script>
     <link rel="stylesheet" href="style.css" />
     <script>
@@ -96,6 +96,7 @@ document.getElementById("formtitle").textContent=idvalue
             document.getElementById("i1").className=data[4];
           
             document.getElementById("CompanyLogo").src="https://drive.google.com/thumbnail?id="+data[1][0]+"&sz=w1000";
+            document.getElementById("formtitle").textContent=data[6];
             for(var i = 1; i < 5;i++){
             
     if (data[1][i]!==""&&data[1][i]!==null){
