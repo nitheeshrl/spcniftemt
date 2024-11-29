@@ -136,7 +136,7 @@ document.getElementById("Options "+data[2][i]).innerHTML=qopttions;
       console.log(i)
       console.log(data[2][i])
         document.getElementById("Value "+data[2][i]).style.display="none";
-        
+        document.getElementById("Value "+data[2][i]).children[1].required = false;
        var options =  document.getElementsByName(data[2][i])
        if (options.length == 0 ){
 
