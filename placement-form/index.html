@@ -152,6 +152,8 @@ document.getElementById("Options "+data[2][i]).innerHTML=qopttions;
    }
    formstatus = "Form Fetched";
 owner = data[5];
+var logname =  localStorage.getItem("loggedname");
+document.getElementById("Name").value=logname;
   }
   else{
     alert("Form not found")
@@ -279,74 +281,9 @@ owner = data[5];
 
 
   <section id="namesection">
-<div class="form-element" id="Value Name" style="display: nonde;">
+    <div class="form-element" id="Value Name" style="display: nonde;">
 <span class="q">Name</span>
-<select name="Name" id="Name" required placeholder="Select your name">
-<option value="">Select your name</option>
-<option value='Aarthi A'>Aarthi A</option>
-<option value='Aishwarya Lakshmi S'>Aishwarya Lakshmi S</option>
-<option value='Ajitesh S'>Ajitesh S</option>
-<option value='Akash B'>Akash B</option>
-<option value='Amirtha Varshini A'>Amirtha Varshini A</option>
-<option value='Anandha Keerthy M'>Anandha Keerthy M</option>
-<option value='Anindit Bizy Nair'>Anindit Bizy Nair</option>
-<option value='Anusha R'>Anusha R</option>
-<option value='Archana P'>Archana P</option>
-<option value='Avantika C'>Avantika C</option>
-<option value='Chandrika Devendrappa'>Chandrika Devendrappa</option>
-<option value='Chitturi Rohith'>Chitturi Rohith</option>
-<option value='Cubarani Η'>Cubarani Η</option>
-<option value='David Evander Jebson S'>David Evander Jebson S</option>
-<option value='Dhanaselvam KR'>Dhanaselvam KR</option>
-<option value='Diana Celcia R'>Diana Celcia R</option>
-<option value='Diya Dharshini S'>Diya Dharshini S</option>
-<option value='Ethaya D'>Ethaya D</option>
-<option value='Gautam Nayak'>Gautam Nayak</option>
-<option value='Ginu Robtus R'>Ginu Robtus R</option>
-<option value='Guberavishnu S'>Guberavishnu S</option>
-<option value='Guguloth Sridhar'>Guguloth Sridhar</option>
-<option value='Himavanth R'>Himavanth R</option>
-<option value='Jegan P'>Jegan P</option>
-<option value='Jenish Daniel B'>Jenish Daniel B</option>
-<option value='Joshua Charles'>Joshua Charles</option>
-<option value='K Kabilan'>K Kabilan</option>
-<option value='Karyamsetty Worship'>Karyamsetty Worship</option>
-<option value='Keerthika P'>Keerthika P</option>
-<option value='Kevin Francis'>Kevin Francis</option>
-<option value='Kisha M'>Kisha M</option>
-<option value='Kota Lakshmi Sanjana'>Kota Lakshmi Sanjana</option>
-<option value='Lakshmi Narayanan S'>Lakshmi Narayanan S</option>
-<option value='Lakshmi Sruthi L'>Lakshmi Sruthi L</option>
-<option value='Lavudya Sai Kumar'>Lavudya Sai Kumar</option>
-<option value='Mahabir Prasad Swain'>Mahabir Prasad Swain</option>
-<option value='Merla A P'>Merla A P</option>
-<option value='Mohamed Tharif N J'>Mohamed Tharif N J</option>
-<option value='Mohannath Shroff J'>Mohannath Shroff J</option>
-<option value='MA Monesh Ram'>MA Monesh Ram</option>
-<option value='Mudavath Anjali'>Mudavath Anjali</option>
-<option value='Muthuraja K'>Muthuraja K</option>
-<option value='Nitheesh R L'>Nitheesh R L</option>
-<option value='Nithish J P'>Nithish J P</option>
-<option value='Padmaja M'>Padmaja M</option>
-<option value='Pranav Nanda Kishore'>Pranav Nanda Kishore</option>
-<option value='Punithavathi D'>Punithavathi D</option>
-<option value='Rakshithapriya S'>Rakshithapriya S</option>
-<option value='J Sanjeeth'>J Sanjeeth</option>
-<option value='Santhoshkumar P'>Santhoshkumar P</option>
-<option value='Shivam Jha'>Shivam Jha</option>
-<option value='Sivashree '>Sivashree </option>
-<option value='Sri Harini S'>Sri Harini S</option>
-<option value='Srinithi C P'>Srinithi C P</option>
-<option value='Srivatsan V'>Srivatsan V</option>
-<option value='Subbu Krishna Sharma GM '>Subbu Krishna Sharma GM </option>
-<option value='Suman Kumar'>Suman Kumar</option>
-<option value='Surendar S'>Surendar S</option>
-<option value='Tippaleti Srujana'>Tippaleti Srujana</option>
-<option value='Vemula Uharika'>Vemula Uharika</option>
-<option value='Vishnu Varthan T'>Vishnu Varthan T</option>
-<option value='Yadla Ganesh Babu'>Yadla Ganesh Babu</option>
-<option value='Yuvashreekantham R'>Yuvashreekantham R</option>
-</select>
+<input type="text" name="Name" id="Name" required placeholder="Enter your name">
 
 </div>
 <div class="form-element"  id="Value Contact Number"  style="display: none;">
