@@ -131,6 +131,8 @@ document.getElementById("Form Description").innerHTML=data[3];
 sheetname=data[4];
 formstatus = "Form Fetched";
 owner = data[5];
+var logname =  localStorage.getItem("loggedname");
+document.getElementById("Auto-Name").value=logname;
   }
   else{
     alert("Form not found")
