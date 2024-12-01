@@ -5,7 +5,7 @@
 
 body {
 font-family: 'Inter';
-background: white;
+
 }
 form {
 background: white;
@@ -143,11 +143,11 @@ margin-left: -40px;
  height: 50px;
 }
 .msg{
-
+  height: 100vh;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    margin-top: 20px;
+  
 }
 
 @keyframes loading {
@@ -344,8 +344,42 @@ background-color: white;
 width: 120px;
 
    }
-
+.dash-whole{
+  display: flex;
+  flex-direction: row;
+height: 100%;
+}
+.dash-whole span{
+font-weight: bold;
+font-size: 20px;
+}
+.dash-whole p{
+color: #000;
+text-align: center;
+  }
+.notification{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.up-companies{
+  width: 30%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+.up-companies table, .up-companies th, .up-companies td {
+  border: 0px;
+  
+}
   @media (max-width: 1000px) {
+body{
+  height: 100vh;
+}
     .header {
   flex-direction: column;
   height: 200px;
@@ -376,4 +410,66 @@ margin-bottom: 20px;
        margin-left: 10px;
        margin-top: -20px;
     }
+    .dash-whole{
+
+      flex-direction: column;
+
+    }
+    .notification{
+      width: 100%;
+      height: 50vh;
+    }
+    .up-companies{
+      width: 100%;
+      height: 40vh;
+    }
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-150px * 10));
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+.slider, .com-table {
+  background: rgb(237, 235, 235);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+
+}
+
+
+.slider .slide-track {
+  margin-top: 50px;
+
+          animation: scroll 40s linear infinite;
+            -webkit-animation: scroll 40s linear infinite;
+  display: flex;
+  flex-direction: column;
+
+}
+.slider .slide {
+  height: 100px;
+  width: 100%;
+}
+.slider:hover .slide-track{
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  
 }

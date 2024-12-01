@@ -186,14 +186,11 @@ tbody tr.hide td img {
 
 
 @media (max-width: 1000px) {
-    main{
-        width: 90%;
-    }
+
     main.table {
-margin-top: -40px;
-margin-left: -10px;
-        width: 90vw;
-        height: 90vh;
+        width: 100vw;
+        padding: 10px;
+  
     }
     td:not(:first-of-type) {
         min-width: 12.1rem;
