@@ -37,6 +37,67 @@ font-weight: bold;
 }
 </style>
 <script>
+  function getnotifications(){
+const url = "https://script.google.com/macros/s/AKfycbz4Hi2UfKaR2uHULiYN0kA8aOj1bOHsW0tSHq7du1mQDsxfUNuN7fEyXf5msy2hU2-P/exec" 
+
+val = "idvalue";
+
+fetch(`${url}?header=${val}`)
+ .then((response) => response.json())
+ .then(({ data }) => {
+  console.log(data)
+  if (data!==` <div class="slide">
+         <p></p>
+      </div>`){
+document.getElementById("lat-notifications").innerHTML= `<div class="slide-track" >`+data+`</div>`;
+document.getElementById("lat-notifications").style.display="block";
+
+  }
+  else{
+    
+    document.getElementById("lat-notifications").innerHTML=`<span >No Latest Notifications</span>`;
+    document.getElementById("lat-notifications").style.display="flex";
+  }
+ })
+ .catch((error) => console.error('!!!!!!!!', error));
+}
+getnotifications()
+function getcompanies(){
+const url = "https://script.google.com/macros/s/AKfycbwMvTiwQJN-p_X__ExMbDjMhyk02AbI7ZHqWHte99-YPD9zYOQt9RdHBvu_uHF_d2Ol/exec" 
+
+val = "idvalue";
+
+fetch(`${url}?header=${val}`)
+ .then((response) => response.json())
+ .then(({ data }) => {
+  console.log(data)
+  if (data!==`<tr><td></td><td></td></tr>
+ `){
+document.getElementById("company-list").innerHTML= `  <table>
+  <thead>
+    <tr>
+    <th><b>Company Name</b></th>
+    <th><b>Expected Date</b></th>
+  </tr>
+  </thead>
+  <tbody >
+`+ data+`
+  </tbody>
+</table>`;
+document.getElementById("company-list").style.display="block";
+
+  }
+  else{
+    document.getElementById("company-list").innerHTML=`<span id="no-company">No Data</span>`;
+    document.getElementById("company-list").style.display="flex";
+    
+  }
+ })
+ .catch((error) => console.error('!!!!!!!!', error));
+}
+getcompanies()
+</script>
+<script>
   function logout(){
     updatelogstatus("Offline");  
     localStorage.removeItem("loggedname")
@@ -154,93 +215,20 @@ document.getElementById("popup-3").classList.toggle("active");
         </div>
       <section class="msg" >
         <div class="dash-whole">
-<div class="notification">
-<span>Latest Notifications</span>
-<div class="slider">
-  <span id="no-notification" style="display: none;">No Latest Notifications</span>
-  <div class="slide-track">
-      <div class="slide">
-         
-          <p>SHDfhgkahjegfsdvjsdbfkvhadijfbnvizsjkbdvkhskd</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi-2</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi-1</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi0</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi1</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi2</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi3</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi4</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi5</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi6</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi7</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi8</p>
-      </div>
-      <div class="slide">
-          <p>sjufdgvsekuddfjehgfwbi9</p>
-      </div>
-      <div class="slide">
-          <p>ladttttsjufdgvsekuddfjehgfwbilast</p>
-      </div>
-      <div class="slide">
-          <p>ladttttsjufdgvsekuddfjehgfwbilast</p>
-      </div>
-      <div class="slide">
-          <p>ladttttsjufdgvsekuddfjehgfwbilast</p>
-      </div>
-      <div class="slide">
-          <p>ladttttsjufdgvsekuddfjehgfwbilast</p>
-      </div>
-      <div class="slide">
-          <p>ladttttsjufdgvsekuddfjehgfwbilast</p>
-      </div>
-      <div class="slide">
-          <p>ladttttsjufdgvsekuddfjehgfwbilast</p>
-      </div>
-      <div class="slide">
-          <p>ladttttsjufdgvsekuddfjehgfwbilast444</p>
-      </div>
-
-  </div>
-</div>
-
-</div>
-<div class="up-companies">
-<span>Expected Upcoming Companies</span>
-<div class="com-table">
-  <span id="no-company" style="display: none;">No Data</span>
-<table>
-  <tbody>
-    <tr><td>fyfwkj</td></tr>
-    <tr><td>fyfwkj</td></tr>
-    <tr><td>fyfwkj</td></tr>
-    <tr><td>fyfwkj</td></tr>
-    <tr><td>fyfwkj</td></tr>
-    <tr><td>fyfwkj</td></tr> <tr><td>fyfwkj</td></tr>
-  </tbody>
-</table>
-</div>
-</div>
+          <div class="notification">
+            <span>Latest Notifications</span>
+            <div class="slider" id="lat-notifications">
+              <span id="no-notification" >Latest Notifications Loading....</span>
+              
+            </div>
+          </div>
+          <div class="up-companies">
+            <span>Expected Upcoming Companies</span>
+            <div class="com-table" id="company-list">
+              <span id="no-company">Data Loading.....</span>
+          
+            </div>
+            </div>
 </div>
     
     </section>
