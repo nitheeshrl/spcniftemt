@@ -459,7 +459,13 @@ margin-bottom: 20px;
   position: relative;
   width: 100%;
   border-radius: 20px;
-
+  display: flex;
+align-items: center;
+justify-content: center;
+}
+.slider span, .com-table span{
+  font-weight: lighter;
+  font-size: 14px;
 }
 
 
