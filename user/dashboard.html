@@ -38,18 +38,19 @@ font-weight: bold;
 </style>
 <script>
   function getnotifications(){
+    var loggedname = localStorage.getItem("loggedname")
 const url = "https://script.google.com/macros/s/AKfycbz4Hi2UfKaR2uHULiYN0kA8aOj1bOHsW0tSHq7du1mQDsxfUNuN7fEyXf5msy2hU2-P/exec" 
 
-val = "idvalue";
+val = loggedname+"/S";
 
 fetch(`${url}?header=${val}`)
  .then((response) => response.json())
- .then(({ data }) => {
-  console.log(data)
-  if (data!==` <div class="slide">
+ .then(({ deta1 }) => {
+  console.log(deta1)
+  if (deta1!==` <div class="slide">
          <p></p>
       </div>`){
-document.getElementById("lat-notifications").innerHTML= `<div class="slide-track" >`+data+`</div>`;
+document.getElementById("lat-notifications").innerHTML= `<div class="slide-track" >`+deta1+`</div>`;
 document.getElementById("lat-notifications").style.display="block";
 
   }
