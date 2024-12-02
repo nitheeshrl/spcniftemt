@@ -376,6 +376,14 @@ text-align: center;
   border: 0px;
   
 }
+.up-companies .com-table{
+  height: 100%;
+  overflow: scroll;
+  
+}
+.up-companies .com-table::-webkit-scrollbar{
+display: none;
+}
   @media (max-width: 1000px) {
 body{
   height: 100vh;
