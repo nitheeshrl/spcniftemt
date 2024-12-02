@@ -47,9 +47,7 @@ fetch(`${url}?header=${val}`)
  .then((response) => response.json())
  .then(({ deta1 }) => {
   console.log(deta1)
-  if (deta1!==` <div class="slide">
-         <p></p>
-      </div>`){
+  if (deta1!==undefined){
 document.getElementById("lat-notifications").innerHTML= `<div class="slide-track" >`+deta1+`</div>`;
 document.getElementById("lat-notifications").style.display="block";
 
@@ -72,8 +70,7 @@ fetch(`${url}?header=${val}`)
  .then((response) => response.json())
  .then(({ data }) => {
   console.log(data)
-  if (data!==`<tr><td></td><td></td></tr>
- `){
+  if (data!==undefined){
 document.getElementById("company-list").innerHTML= `  <table>
   <thead>
     <tr>
