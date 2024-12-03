@@ -38,11 +38,12 @@ font-weight: bold;
 </style>
 <script>
   function getnotifications(){
-    var loggedname = localStorage.getItem("loggedname")
+    var loggedname = localStorage.getItem("loggedname");
+    var loggeduorp = localStorage.getItem("loggeduorp");
 const url = "https://script.google.com/macros/s/AKfycbz4Hi2UfKaR2uHULiYN0kA8aOj1bOHsW0tSHq7du1mQDsxfUNuN7fEyXf5msy2hU2-P/exec" 
 
-val = loggedname+"/S";
-
+val = loggedname+"/S/All "+loggeduorp;
+console.log(val)
 fetch(`${url}?header=${val}`)
  .then((response) => response.json())
  .then(({ deta1 }) => {
@@ -192,6 +193,16 @@ document.getElementById("popup-3").classList.toggle("active");
   </nav>
   <main>
     <div class="container" onclick="closeAllSubMenus()">
+      <div id="load" class="load" > 
+        <div class="loader" id="loader"> 
+      
+          </div> 
+          <div
+            id="message"
+          class="message"
+          style="width: 350px;"
+            ></div>
+        </div> 
       <div class="popup1" id="popup-3">
  
         <div class="overlay"></div>
