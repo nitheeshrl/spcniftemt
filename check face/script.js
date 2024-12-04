@@ -29,19 +29,22 @@ function getLabeledFaceDescriptions() {
   var scheck_name = sessionStorage.getItem("checkname");
   var jcheck_name = JSON.parse(scheck_name);
   var check_name = jcheck_name[2];
-  console.log(check_name)
+  console.log(check_name,jcheck_name)
   if(check_name !== null){
   const labels = [check_name];
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
       for (let i = 1; i <= 2; i++) {
+        console.log(`./labels/${label}/${i}.JPG`)
         const img = await faceapi.fetchImage(`./labels/${label}/${i}.JPG`);
         const detections = await faceapi
           .detectSingleFace(img)
           .withFaceLandmarks()
           .withFaceDescriptor();
+          console.log(i,detections,img)
         descriptions.push(detections.descriptor);
+        
       }
       return new faceapi.LabeledFaceDescriptors(label, descriptions);
     })
