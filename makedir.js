@@ -36,8 +36,6 @@ for(var i =0;i<inames.length;i++){
 }*/
 const testFolder = './user/profiles/';
 
-fs.readdirSync(testFolder).forEach(file => {
-  console.log("'profiles/"+file+"',");
-});
+
 }
 main();

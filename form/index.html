@@ -399,13 +399,10 @@ console.log(formDataString+"=sheetid="+sheetname)
     console.log(rawformats)
 var formats = rawformats.split(",");
 console.log(formats)
-var supformat ="";
+var supformat = false;
 for(var i=0;i<formats.length;i++){
-  if(i==formats.length-1){
-    supformat+=`file1.value.includes("`+formats[i]+`")`;
-  }
-  else{
-    supformat+=`file1.value.includes("`+formats[i]+`")||`;
+  if(file1.value.includes(formats[i])){
+    supformat = true;
   }
 }
 console.log(supformat)
