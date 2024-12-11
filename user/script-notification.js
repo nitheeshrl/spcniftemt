@@ -11,13 +11,23 @@ async function deletesub(id){
 }
 async function checksub(){
     var uniqueID2 = localStorage.getItem("Notification-uniqueID");
-    const serviceWorkerRegistration = await navigator.serviceWorker.getRegistration;
+    var permission = await Notification.permission;
+    console.log(permission)
+    if (uniqueID2!==""||uniqueID2!==undefined){
+    if (permission =="default"||permission =="default"){
+        deletesub(uniqueID2);
+        localStorage.removeItem("Notification-uniqueID")
+    }
+
+    const serviceWorkerRegistration = await navigator.serviceWorker.getRegistration();
     if (serviceWorkerRegistration) {
     const actualSubscription = await serviceWorkerRegistration.pushManager.getSubscription();
-    if (uniqueID2!==""&& actualSubscription){
+    if (actualSubscription){
         deletesub(uniqueID2);
+        localStorage.removeItem("Notification-uniqueID")
     }
     }
+}
     }
 const  GetUniqueIDforNotification = () =>{
     const uniqueID = localStorage.getItem("Notification-uniqueID");
@@ -128,6 +138,7 @@ async function registerPWASW() {
   }
 const main = async () => {
     checkPermission();
+    await checksub();
     await registerPWASW();
     await requestNotificationPermission()
    
