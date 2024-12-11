@@ -1,4 +1,22 @@
 var username ;
+async function deletesub(id){
+    var url ="https://passkey-5ev6.onrender.com";
+    const response = await fetch(url+'/delete-notification', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id })
+    })
+}
+var uniqueID2 = localStorage.getItem("Notification-uniqueID");
+const serviceWorkerRegistration = await navigator.serviceWorker.getRegistration;
+if (serviceWorkerRegistration) {
+const actualSubscription = await serviceWorkerRegistration.pushManager.getSubscription();
+if (uniqueID2!==""&& actualSubscription){
+    deletesub(uniqueID2);
+}
+}
 const  GetUniqueIDforNotification = () =>{
     const uniqueID = localStorage.getItem("Notification-uniqueID");
     if (uniqueID == undefined){
