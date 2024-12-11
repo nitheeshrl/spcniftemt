@@ -1,4 +1,15 @@
 var username ;
+const  GetUniqueIDforNotification = () =>{
+    const uniqueID = localStorage.getItem("Notification-uniqueID");
+    if (uniqueID == undefined){
+    const newUniqueID = crypto.randomUUID();
+    
+    return [newUniqueID, "New"];
+    }
+    else {
+    return [uniqueID,"Old"];
+    }
+    }
 async function sendnotification(username,message,type){
     var url ="https://passkey-5ev6.onrender.com";
     const response = await fetch(url+'/send-notification', {
@@ -25,11 +36,15 @@ const urlBase64ToUint8Array = base64String => {
     return outputArray;
 }
 const saveSubscription = async (subscription) => {
+    var id = GetUniqueIDforNotification();
+    if (id[1]=="New"){
+        localStorage.setItem("Notification-uniqueID",id[0])  
+    }
 username = localStorage.getItem("loggedname");
     const response = await fetch('https://passkey-5ev6.onrender.com/save-subscription', {
         method: 'post',
         headers: { 'Content-type': "application/json" },
-        body: JSON.stringify({username,subscription,type:"student"})
+        body: JSON.stringify({username,subscription,type:"student",uniqueID:id[0]})
     })
 
     return response.json()
