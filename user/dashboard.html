@@ -87,7 +87,7 @@ console.log(userdetails)
         console.error(error);
       });
     }
-    getuserdetails()
+   
   function getnotifications(){
     var loggedname = localStorage.getItem("loggedname");
     var loggeduorp = localStorage.getItem("loggeduorp");
@@ -112,7 +112,7 @@ document.getElementById("lat-notifications").style.display="block";
  })
  .catch((error) => console.error('!!!!!!!!', error));
 }
-getnotifications()
+
 function getcompanies(){
 const url = "https://script.google.com/macros/s/AKfycbwMvTiwQJN-p_X__ExMbDjMhyk02AbI7ZHqWHte99-YPD9zYOQt9RdHBvu_uHF_d2Ol/exec" 
 
@@ -146,6 +146,8 @@ document.getElementById("company-list").style.display="block";
  .catch((error) => console.error('!!!!!!!!', error));
 }
 getcompanies()
+getnotifications()
+getuserdetails()
 </script>
 <script>
   function logout(){
@@ -531,10 +533,7 @@ alert("PassKey is already created for this Device")
   
      });
      }
-     setInterval(() => {
-  
-  fetchd ();
-  }, 1000)
+
   
   setTimeout(() => {
   
