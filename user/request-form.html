@@ -13,6 +13,10 @@
   <link rel="manifest" href="manifest.json">
   <script src="script-notification.js"></script>
   <script>
+     var uuserdetails = localStorage.getItem("loggeduserdetails");
+ if (uuserdetails ==""|| uuserdetails==undefined){
+ localStorage.removeItem("loggedname");
+ }
     var serverstatus ="";
     window.onload=getserverstatus();
      function getserverstatus(){

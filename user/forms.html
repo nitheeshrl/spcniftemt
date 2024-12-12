@@ -14,6 +14,10 @@
   <link rel="manifest" href="manifest.json">
   <script src="script-notification.js"></script>
   <script>
+     var uuserdetails = localStorage.getItem("loggeduserdetails");
+ if (uuserdetails ==""|| uuserdetails==undefined){
+ localStorage.removeItem("loggedname");
+ }
      var uuorp = localStorage.getItem("loggeduorp");
      if (uuorp=="M.Tech"){
       document.getElementById("form-btn-side").href="m-request-form.html";

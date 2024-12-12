@@ -58,6 +58,10 @@ font-weight: bold;
 }
 </style>
 <script>
+   var uuserdetails = localStorage.getItem("loggeduserdetails");
+ if (uuserdetails ==""|| uuserdetails==undefined){
+ localStorage.removeItem("loggedname");
+ }
   function logout(){
     localStorage.removeItem("loggedname")
     window.location="../logout.html";

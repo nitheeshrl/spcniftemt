@@ -357,16 +357,73 @@ font-size: 20px;
 color: #000;
 text-align: center;
   }
+  .profile-notification{
+    width: 50%;
+  }
 .notification{
-  width: 70%;
+  width: 100%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
 }
+.user-profile{
+  width: 50%;
+  margin-top: 50px;
+  height: calc(100% - 50px);
+  overflow: scroll;
+}
+.user-profile::-webkit-scrollbar{
+  display: none;
+  }
+.user-items{
+  height: 100%;
+}
+.user-items div{
+  margin-top: 10px;
+}
+.user-items div p {
+margin-top: 0px;
+margin-bottom: 0px;
+text-align:left;
+ }
+ .user-items :nth-child(2) p,.user-items :nth-child(3) p,.user-items :nth-child(4) p {
+  text-align: center;
+}
+.user-items div p span,.user-items div div span{
+ font-weight: normal;
+ font-size:medium;
+}
+.user-items div  div{
+  display: flex;
+justify-content: space-between;
+
+gap: 20px;
+}
+.user-items div  div span{
+  
+  background-color: rgb(237, 235, 235); 
+  color: black; 
+  padding: 10px;
+  border-radius: 15px;
+  min-height: 50px;
+margin-top: auto;
+margin-bottom: auto;
+
+
+}
+.user-items div  div :first-child{
+  width: 50%;
+  text-align: left;
+}
+.user-items div  div :last-child{
+  width: 50%;
+
+}
 .up-companies{
-  width: 30%;
-  height:100%;
+  width: 100%;
+  height:50%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -421,15 +478,35 @@ margin-bottom: 20px;
     .dash-whole{
 
       flex-direction: column;
-
+align-items: center;
     }
-    .notification{
+    .user-profile{
+      height: 50vh;
+      width: 100%;
+      overflow-y: scroll;
+    }
+    .profile-notification{
       width: 100%;
       height: 50vh;
     }
+    .notification{
+      width: 100%;
+      
+    }
     .up-companies{
       width: 100%;
-      height: 40vh;
+     
+    }
+    .user-items div  div span{
+      font-size: small;
+    }
+    .user-items div  div :first-child{
+      width: 40%;
+
+    }
+    .user-items div  div :last-child{
+      width: 60%;
+
     }
 }
 

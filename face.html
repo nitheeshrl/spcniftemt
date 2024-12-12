@@ -120,7 +120,7 @@ var userdetails = result1.data2;
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
-passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5]);
+passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
 }
 else if (userdetails[0]=="Not Found"){
   alert("User not found")
@@ -143,7 +143,7 @@ else if (userdetails[0]=="Not Found"){
   } 
 
 
- async function passkey(userId,passdevuniid,uuorp,pic,mail){
+ async function passkey(userId,passdevuniid,uuorp,pic, userdetails){
         var passkeysss ={};
         const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
  var fetchurl = "https://passkey-5ev6.onrender.com";
@@ -185,6 +185,7 @@ if (verifyuserResult.success){
   localStorage.setItem("loggeduorp", uuorp);
   localStorage.setItem("loggedpic", pic);
   localStorage.setItem("loggedmail", mail);
+  localStorage.setItem("loggeduserdetails", userdetails);
   var  uname = localStorage.getItem("loggedname");
   console.log(uname)
 document.getElementById("loader").style.display="none"; 
