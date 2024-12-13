@@ -388,7 +388,7 @@ margin-top: 0px;
 margin-bottom: 0px;
 text-align:left;
  }
- .user-items :nth-child(2) p,.user-items :nth-child(3) p,.user-items :nth-child(4) p {
+ .user-items :nth-child(2) p,.user-items :nth-child(3) p,.user-items :nth-child(4) p ,.user-items :nth-child(5) p {
   text-align: center;
 }
 .user-items div p span,.user-items div div span{

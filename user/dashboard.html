@@ -43,50 +43,7 @@ font-weight: bold;
  localStorage.removeItem("loggedname");
  window.location = "../index.html"
  }
- function getuserdetails(){
-  console.log("User Detail Fetching....")
-  var ruserdetails = localStorage.getItem("loggeduserdetails");
-  var rrf = JSON.parse(ruserdetails);
-  var user = rrf.id;
-    var formDataString =user+"/2";
-    console.log(formDataString)
-    document.getElementById("loader").style.display="block"; 
-            document.getElementById("load").style.display="initial";
-            document.getElementById("message").textContent="Verifying....";
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
-      {
-        redirect: "follow",
-        method: "POST",
-        body: formDataString,
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-      }
-    )
 
-      .then(function (response) {
-
-        // Check if the request was successful
-        if (response) {
-     
-          return response; // Assuming your script returns JSON response
-        } else {
-          throw new Error("Failed to verify credentials");
-        }
-      })
-      .then(async function (data) {
-        const result1 = await data.json();
-var userdetails = result1.data2;
-console.log(userdetails)
-
-      })
-
-      .catch(function (error) {
-        // Handle errors, you can display an error message here
-        console.error(error);
-      });
-    }
    
   function getnotifications(){
     var loggedname = localStorage.getItem("loggedname");
@@ -147,7 +104,7 @@ document.getElementById("company-list").style.display="block";
 }
 getcompanies()
 getnotifications()
-getuserdetails()
+
 </script>
 <script>
   function logout(){
@@ -282,6 +239,9 @@ document.getElementById("popup-3").classList.toggle("active");
              </div>
              <div style="background-color: rgb(237, 235, 235); color: black; padding: 10px;border-radius: 15px;">
               <p ><span id="mdeg"></span></p>
+             </div>
+             <div style="background-color: rgb(237, 235, 235); color: black; padding: 10px;border-radius: 15px;">
+              <p ><span id="mallot"></span></p>
              </div>
              <div >
               <div id="emailid"></div>
@@ -457,10 +417,9 @@ alert("PassKey is already created for this Device")
    var uname  = localStorage.getItem("loggedname");
    var uuuorp  = localStorage.getItem("loggeduorp");
    var uemail  = localStorage.getItem("loggedmail");
-   var ruserdetails = localStorage.getItem("loggeduserdetails");
-   var userdetails = JSON.parse(ruserdetails);
+
      console.log(uname)
-     console.log(userdetails)
+ 
        
   
 
@@ -475,9 +434,59 @@ alert("PassKey is already created for this Device")
 
    document.getElementById("mname").innerHTML = uname;
    document.getElementById("mname1").innerHTML = uname;
+   function getuserdetails(user){
+  console.log("User Detail Fetching....")
+  var ruserdetails = localStorage.getItem("loggeduserdetails");
+  var rrf = JSON.parse(ruserdetails);
+  var user = rrf.id;
+    var formDataString =user+"/2";
+    console.log(formDataString)
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: formDataString,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to verify credentials");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+var userdetails = result1.data2;
+
+var udata = userdetails[7];
+console.log(udata)
+localStorage.setItem("loggeduserdetails",udata);
+setdata()
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+      });
+    }
+   function setdata(){
+    var ruserdetails = localStorage.getItem("loggeduserdetails");
+    var userdetails = JSON.parse(ruserdetails);
+    console.log(userdetails)
    document.getElementById("emailid").innerHTML = "<span><b>Email Address: </b></span><span>"+ uemail+"</span>";
    document.getElementById("muorp").innerHTML = "<b>Batch: </b>"+ userdetails.batch;
    document.getElementById("mdeg").innerHTML = "<b>Degree: </b>"+ userdetails.degree;
+   document.getElementById("mallot").innerHTML = "<b>Alloted Member: </b>"+ userdetails.allotedmember;
    document.getElementById("iprefernce").innerHTML = "<span><b>Internship Preference: </b></span><span>"+ userdetails.ipreference+"</span>";
    document.getElementById("iconsideration").innerHTML = "<span><b>Is considered for further Internship Opportunities: </b></span><span>"+ userdetails.iconsideration+"</span>";
    document.getElementById("internship").innerHTML = "<span><b>Internship Company: </b></span><span>"+ userdetails.internship+"</span>";
@@ -485,6 +494,10 @@ alert("PassKey is already created for this Device")
    document.getElementById("pconsideration").innerHTML = "<span><b>Is considered for further Placement Opportunities: </b></span><span>"+ userdetails.iconsideration+"</span>";
    document.getElementById("placement1").innerHTML = "<span><b>1st Placement Company: </b></span><span>"+ userdetails.placement1+"</span>";
    document.getElementById("placement2").innerHTML = "<span><b>2nd Placement Company: </b></span><span>"+ userdetails.placement2+"</span>";
+   getuserdetails(userdetails.id)
+   }
+  
+   setdata()
    if (uname==undefined){
      alert("You are not logged in. Please log in");
      window.location="../index.html";
