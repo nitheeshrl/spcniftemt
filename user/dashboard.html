@@ -310,12 +310,7 @@ document.getElementById("popup-3").classList.toggle("active");
 </body>
 <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
 <script>
-    var porfilepicback = sessionStorage.getItem("backprofilepic");
-  if (porfilepicback!==null){
-    document.getElementById("profileimage").src = porfilepicback;
-    document.getElementById("profileimage1").src = porfilepicback;
-    document.getElementById("profileimage2").src = porfilepicback;
-  }
+
     function notavailable(){
     alert("Not Available")
   }
@@ -424,9 +419,10 @@ alert("PassKey is already created for this Device")
   
 
    sessionStorage.setItem("backprofilepic",localStorage.getItem("loggedpic"));
+   document.getElementById("profileimage2").src = localStorage.getItem("loggedpic");
    document.getElementById("profileimage").src = localStorage.getItem("loggedpic");
    document.getElementById("profileimage1").src = localStorage.getItem("loggedpic");
-   document.getElementById("profileimage2").src = localStorage.getItem("loggedpic");
+
 
 
   
