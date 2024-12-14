@@ -48,6 +48,7 @@
      else{
      
      }
+     getserverstatus();
              return response; // Assuming your script returns JSON response
            } else {
              throw new Error("Failed to submit the form.");
@@ -69,6 +70,7 @@
          .catch(function (error) {
            // Handle errors, you can display an error message here
            console.error(error);
+           getserverstatus();
            document.getElementById("message").textContent =
              "An error occurred while updating.";
            document.getElementById("message").style.display = "block";
@@ -76,7 +78,7 @@
        }
       
    setInterval(() => {
-   getserverstatus();
+   
    }, 1000);
   </script>
  <style>
