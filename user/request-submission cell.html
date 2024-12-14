@@ -152,6 +152,11 @@ document.getElementById("popup-3").classList.toggle("active");
 </script>
 </head>
 <body>
+  <div class="internetstatus-box" id="internetstatus-box">
+    <div class="internetstatus" id="internetstatus">
+      <span>You are Online</span>
+    </div>
+  </div>
   <nav id="sidebar">
     <ul>
       <li class="indetails" id="insname">
@@ -533,4 +538,5 @@ alert("PassKey is already created for this Device")
 <script>
   document.getElementById("status").innerHTML = "<span>The details are successfully updated directly since you are Cell Member.<br> <br> The Request ID is <b>"+reid+"</b><br><br> Use this ID for checking status.<br> <br>This is "+renonam+" request today. Only 5 requests are allowed per day.</span>";
 </script>
+<script src="common.js"></script>
 </html>

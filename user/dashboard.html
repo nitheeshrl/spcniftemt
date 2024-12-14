@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="style 2.css">
   <link rel="manifest" href="manifest.json">
   <script src="script-notification.js"></script>
+ 
  <style>
 .tablebee{
   width: 99%;
@@ -124,6 +125,11 @@ document.getElementById("popup-3").classList.toggle("active");
 </script>
 </head>
 <body>
+  <div class="internetstatus-box" id="internetstatus-box">
+  <div class="internetstatus" id="internetstatus">
+    <span>You are Online</span>
+  </div>
+</div>
   <nav id="sidebar">
     <ul>
       <li class="indetails" id="insname">
@@ -431,12 +437,12 @@ alert("PassKey is already created for this Device")
    document.getElementById("mname").innerHTML = uname;
    document.getElementById("mname1").innerHTML = uname;
    function getuserdetails(user){
-  console.log("User Detail Fetching....")
+  //console.log("User Detail Fetching....")
   var ruserdetails = localStorage.getItem("loggeduserdetails");
   var rrf = JSON.parse(ruserdetails);
   var user = rrf.id;
     var formDataString =user+"/2";
-    console.log(formDataString)
+  //  console.log(formDataString)
 
     fetch(
       "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
@@ -465,7 +471,7 @@ alert("PassKey is already created for this Device")
 var userdetails = result1.data2;
 
 var udata = userdetails[7];
-console.log(udata)
+//console.log(udata)
 localStorage.setItem("loggeduserdetails",udata);
 setdata()
       })
@@ -478,7 +484,7 @@ setdata()
    function setdata(){
     var ruserdetails = localStorage.getItem("loggeduserdetails");
     var userdetails = JSON.parse(ruserdetails);
-    console.log(userdetails)
+   // console.log(userdetails)
    document.getElementById("emailid").innerHTML = "<span><b>Email Address: </b></span><span>"+ uemail+"</span>";
    document.getElementById("muorp").innerHTML = "<b>Batch: </b>"+ userdetails.batch;
    document.getElementById("mdeg").innerHTML = "<b>Degree: </b>"+ userdetails.degree;
@@ -563,4 +569,5 @@ setdata()
   };
   window.addEventListener("beforeunload", beforeUnloadHandler);
      </script>
+      <script src="common.js"></script>
 </html>

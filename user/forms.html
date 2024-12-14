@@ -101,6 +101,11 @@ console.log(document.getElementById("actbt").onclick)
 </script>
 </head>
 <body>
+  <div class="internetstatus-box" id="internetstatus-box">
+    <div class="internetstatus" id="internetstatus">
+      <span>You are Online</span>
+    </div>
+  </div>
   <nav id="sidebar">
     <ul>
       <li class="indetails" id="insname">
@@ -1200,4 +1205,5 @@ setInterval(() => {
   };
   window.addEventListener("beforeunload", beforeUnloadHandler);
      </script>
+     <script src="common.js"></script>
 </html>

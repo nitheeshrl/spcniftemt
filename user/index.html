@@ -78,6 +78,11 @@ document.getElementById("popup-3").classList.toggle("active");
 </script>
 </head>
 <body>
+  <div class="internetstatus-box" id="internetstatus-box">
+    <div class="internetstatus" id="internetstatus">
+      <span>You are Online</span>
+    </div>
+  </div>
   <nav id="sidebar">
     <ul>
       <li class="indetails" id="insname">
@@ -887,5 +892,5 @@ const beforeUnloadHandler = (event) => {
 };
 window.addEventListener("beforeunload", beforeUnloadHandler);
    </script>
-
+<script src="common.js"></script>
 </html>
