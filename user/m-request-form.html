@@ -48,6 +48,7 @@
      else{
      
      }
+     getserverstatus();
              return response; // Assuming your script returns JSON response
            } else {
              throw new Error("Failed to submit the form.");
@@ -69,6 +70,7 @@
          .catch(function (error) {
            // Handle errors, you can display an error message here
            console.error(error);
+           getserverstatus();
            document.getElementById("message").textContent =
              "An error occurred while updating.";
            document.getElementById("message").style.display = "block";
@@ -76,7 +78,7 @@
        }
       
    setInterval(() => {
-   getserverstatus();
+
    }, 1000);
   </script>
  <style>
@@ -738,7 +740,7 @@ uname = uids[i];
 }
   }
 console.log(uname);
-sessionStorage.setItem("name",uname);
+
 
     
 }
@@ -968,9 +970,9 @@ document.getElementById("bt").disabled = false;
 
 
           function matchnameid(){
-  let id = document.getElementById('ID Number');
+let id = document.getElementById('ID Number');
   let name = document.getElementById('Name').value;
-  var names =['Aarthi A',
+/*   var names =['Aarthi A',
 'Aishwarya Lakshmi S',
 'Ajitesh S',
 'Akash B',
@@ -1179,9 +1181,9 @@ if (name == names[i]){
 id.value = ids[i];
 id.placeholder = ids[i];
 }
-}
-alname();
-var formDataString = id.value+"/"+"M.Tech";
+}*/
+sessionStorage.setItem("rname",logname);
+var formDataString = logname+"/"+"M.Tech";
 console.log(formDataString)
 document.getElementById("load").style.display="initial";
         document.getElementById("loader").style.display="block"; 
@@ -1210,7 +1212,8 @@ fetch(
               })
               .then(async function (data) {
                 const result1 = await data.json();
-          
+                uname = result1.data2[2];
+                sessionStorage.setItem("name",result1.data2[2]);
 var head = result1.data2[0];
 hheads = head[0];
 console.log(hheads)
