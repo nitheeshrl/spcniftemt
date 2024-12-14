@@ -778,7 +778,7 @@ uname = uids[i];
 }
   }
 console.log(uname);
-sessionStorage.setItem("name",uname);
+
 
     
 }
@@ -1034,7 +1034,7 @@ document.getElementById("bt").disabled = false;
           function matchnameid(){
   let id = document.getElementById('ID Number');
   let name = document.getElementById('Name').value;
-  var names =['Aarthi A',
+  /*var names =['Aarthi A',
 'Aishwarya Lakshmi S',
 'Ajitesh S',
 'Akash B',
@@ -1241,8 +1241,9 @@ id.value = ids[i];
 id.placeholder = ids[i];
 
 }
-alname();
-var formDataString = id.value+"/"+"B.Tech";
+*/
+sessionStorage.setItem("rname",logname);
+var formDataString = logname+"/"+"B.Tech";
 document.getElementById("load").style.display="initial";
         document.getElementById("loader").style.display="block"; 
         document.getElementById("message").textContent = "Fetching Data...";
@@ -1270,7 +1271,9 @@ fetch(
               })
               .then(async function (data) {
                 const result1 = await data.json();
-          
+                console.log(result1.data2)
+                uname = result1.data2[2];
+                sessionStorage.setItem("name",result1.data2[2]);
 var head = result1.data2[0];
 hheads = head[0];
 console.log(hheads)
