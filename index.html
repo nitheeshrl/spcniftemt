@@ -218,7 +218,15 @@ setTimeout(function () {
   var enusername = document.getElementById("Username").value;
   
 
+ 
+    var lastpage = sessionStorage.getItem("lastpage");
+if (lastpage==undefined||lastpage==""){
   window.location="user/dashboard.html"
+}
+else{
+  window.location=lastpage;
+    sessionStorage.removeItem("lastpage");
+}
  },2000);
 }
 else{
@@ -273,7 +281,15 @@ setTimeout(function () {
   var enusername = document.getElementById("Username").value;
   
 
+ 
+    var lastpage = sessionStorage.getItem("lastpage");
+if (lastpage==undefined||lastpage==""){
   window.location="user/dashboard.html"
+}
+else{
+  window.location=lastpage;
+    sessionStorage.removeItem("lastpage");
+}
  },2000);
 }
 function getuserdetails(user,pass){

@@ -133,7 +133,14 @@ if (namechecked !== "unknown" && username[0] !== "unknown" ){
   localStorage.setItem("loggedmail", jde[5]);
   document.getElementById("message1").innerHTML="Welcome, <b>"+namechecked+"</b>";
   setTimeout(function( ) { 
-   window.location="../user/dashboard.html"
+      var lastpage = sessionStorage.getItem("lastpage");
+if (lastpage==undefined||lastpage==""){
+  window.location="user/dashboard.html"
+}
+else{
+  window.location=lastpage;
+    sessionStorage.removeItem("lastpage");
+}
   },1000)
  }   
 }
@@ -179,7 +186,14 @@ if (namechecked !== "unknown"){
   sessionStorage.removeItem("checkname"); 
   document.getElementById("message1").innerHTML="Welcome, <b>"+namechecked+"</b>";
   setTimeout(function( ) { 
-    window.location="../user/dashboard.html"
+       var lastpage = sessionStorage.getItem("lastpage");
+if (lastpage==undefined||lastpage==""){
+  window.location="user/dashboard.html"
+}
+else{
+  window.location=lastpage;
+    sessionStorage.removeItem("lastpage");
+}
    },1000)
  }
 }  

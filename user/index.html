@@ -500,6 +500,7 @@ alert("PassKey is already created for this Device")
    document.getElementById("mname").innerHTML = uname;
    if (idvalue == undefined||uname==undefined){
      alert("You are not logged in. Please log in");
+     sessionStorage.setItem("lastpage",window.location.pathname)
      window.location="../index.html";
    }
    document.getElementById("load").style.display="initial";
