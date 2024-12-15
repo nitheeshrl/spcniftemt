@@ -437,7 +437,7 @@ alert("PassKey is already created for this Device")
    document.getElementById("mname").innerHTML = uname;
    document.getElementById("mname1").innerHTML = uname;
    function getuserdetails(user){
-  //console.log("User Detail Fetching....")
+  console.log("User Detail Fetching....")
   var ruserdetails = localStorage.getItem("loggeduserdetails");
   var rrf = JSON.parse(ruserdetails);
   var user = rrf.id;
@@ -484,6 +484,7 @@ setdata()
    function setdata(){
     var ruserdetails = localStorage.getItem("loggeduserdetails");
     var userdetails = JSON.parse(ruserdetails);
+
    // console.log(userdetails)
    document.getElementById("emailid").innerHTML = "<span><b>Email Address: </b></span><span>"+ uemail+"</span>";
    document.getElementById("muorp").innerHTML = "<b>Batch: </b>"+ userdetails.batch;
@@ -496,9 +497,18 @@ setdata()
    document.getElementById("pconsideration").innerHTML = "<span><b>Is considered for further Placement Opportunities: </b></span><span>"+ userdetails.iconsideration+"</span>";
    document.getElementById("placement1").innerHTML = "<span><b>1st Placement Company: </b></span><span>"+ userdetails.placement1+"</span>";
    document.getElementById("placement2").innerHTML = "<span><b>2nd Placement Company: </b></span><span>"+ userdetails.placement2+"</span>";
-   getuserdetails(userdetails.id)
+   if(uuuorp == "M.Tech") {
+    document.getElementById("iprefernce").style.display="none";
+   document.getElementById("iconsideration").style.display="none";
+   document.getElementById("internship").style.display="none";
    }
-  
+   else{
+    document.getElementById("iprefernce").style.display="flex";
+   document.getElementById("iconsideration").style.display="flex";
+   document.getElementById("internship").style.display="flex";
+   }
+   getuserdetails(userdetails.id)
+  }
    setdata()
    if (uname==undefined){
      alert("You are not logged in. Please log in");
