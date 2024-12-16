@@ -29,7 +29,7 @@ function getuserdetailsonload(user){
     var rrf = JSON.parse(ruserdetails);
     var user = rrf.id;
       var formDataString =user+"/2";
-    //  console.log(formDataString)
+      console.log(formDataString)
   
       fetch(
         "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
