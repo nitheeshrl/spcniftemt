@@ -92,6 +92,6 @@ function getuserdetailsonload(user){
  
       var rid  = localStorage.getItem("loggeduserdetails");
       var uid = JSON.parse(rid).id;
-      getuserdetailsonload(uid);
+      getuserdetailsonload(uid+"/2");
      
   
