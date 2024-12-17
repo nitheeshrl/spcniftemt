@@ -21,7 +21,10 @@ function checkinternet(){
 }
 
 setInterval(checkinternet,100)
-
+var uuorp = localStorage.getItem("loggeduorp");
+if (uuorp=="M.Tech"){
+ document.getElementById("form-btn-side").href="m-request-form.html";
+}
 
 function getuserdetailsonload(user){
     console.log("User Detail Fetching....")
