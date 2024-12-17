@@ -661,91 +661,6 @@ alert("PassKey is already created for this Device")
   function alname(){
   let name = document.getElementById('Name').value;
   sessionStorage.setItem("rname",name);
-  var uids = [
-  'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'R B Ramyaa',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Anjali S',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'Mathangi G',
-'M.Tech Admin' 
-];
-var inames = [
-'Bommi Durga Naga Sai Sri Sruthileena',
-'Damini H S',
-'Gokul Raj R',
-'Midhuna Kurian',
-'Parkhe Prajwal Anilkumar',
-'Praveena B',
-'R B Ramyaa',
-'Sathishwaran S',
-'Vidhyadharan A',
-'Yogesh M A',
-'Anjali S',
-'Anshida P K',
-'Hari Priya J',
-'Harish S',
-'Hayanthika M S',
-'Irfana Z',
-'Kadimi Lakshmi Devi',
-'Karthick Ajay B',
-'Kolli Venkata Naga Mallikarjuna Reddy',
-'Nandana M',
-'Shaliha A',
-'Sruti Chandra',
-'Sushmithasri R',
-'Abhijith K',
-'Ishwarya Lakshmi S',
-'Joseph P J',
-'Mani Bharathi G',
-'Manikandan T',
-'Mathangi G',
-'Mulukuri Naveena',
-'Muthumeena J',
-'Rajasri C',
-'Shanmugapriya R',
-'Srivigneswar S',
-'Sujithra M',
-'Trivedi Nidhi Deepak',
-'M.Tech Admin'  
-]
-for (var i = 0; i < uids.length; i++) {
-
-  if (name == inames[i]){
-uname = uids[i];
-}
-  }
-console.log(uname);
 
 
     
@@ -1220,6 +1135,12 @@ fetch(
                 const result1 = await data.json();
                 uname = result1.data2[2];
                 sessionStorage.setItem("name",result1.data2[2]);
+                uname = result1.data2[2];
+                sessionStorage.setItem("name",result1.data2[2]);
+                sessionStorage.setItem("fetchurl",data[3]);
+                console.log(data[3])
+                console.log(uname);
+var head = result1.data2[0];
 var head = result1.data2[0];
 hheads = head[0];
 console.log(hheads)

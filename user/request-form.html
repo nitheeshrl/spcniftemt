@@ -648,144 +648,8 @@ alert("PassKey is already created for this Device")
   function alname(){
   let name = document.getElementById('Name').value;
   sessionStorage.setItem("rname",name);
-  var uids = [
-  'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Nitheesh R L',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Shivam Jha',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Subbu Krishna Sharma GM',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Keerthika P',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Anandha Keerthy M',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Yuvashreekantham R',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'Srinithi C P',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'David Evander Jebson S',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-'Anindit Bizy Nair',
-];
-var inames = [
-'Aarthi A',
-'Nitheesh R L',
-'Dhanaselvam KR',
-'K Kabilan',
-'Lakshmi Sruthi L',
-'Nithish J P',
-'Sri Harini S',
-'Amirtha Varshini A',
-'Anusha R',
-'Cubarani Η',
-'Guguloth Sridhar',
-'Karyamsetty Worship',
-'Lavudya Sai Kumar',
-'Shivam Jha',
-'Avantika C',
-'Diya Dharshini S',
-'Joshua Charles',
-'Mohannath Shroff J',
-'Punithavathi D',
-'Subbu Krishna Sharma GM',
-'Vemula Uharika',
-'Ajitesh S',
-'Ethaya D',
-'Keerthika P',
-'Muthuraja K',
-'Santhoshkumar P',
-'Surendar S',
-'Vishnu Varthan T',
-'Akash B',
-'Chitturi Rohith',
-'Himavanth R',
-'Kota Lakshmi Sanjana',
-'Mohamed Tharif N J',
-'Padmaja M',
-'Anandha Keerthy M',
-'Archana P',
-'Diana Celcia R',
-'Jegan P',
-'Kevin Francis',
-'MA Monesh Ram',
-'Sivashree S K',
-'Yuvashreekantham R',
-'Ginu Robtus R',
-'Mahabir Prasad Swain',
-'Mudavath Anjali',
-'J Sanjeeth',
-'Srinithi C P',
-'Suman Kumar',
-'Tippaleti Srujana',
-'Aishwarya Lakshmi S',
-'David Evander Jebson S',
-'Guberavishnu S',
-'Kisha M',
-'Merla A P',
-'Pranav Nanda Kishore',
-'Yadla Ganesh Babu',
-'Anindit Bizy Nair',
-'Chandrika Devendrappa',
-'Gautam Nayak',
-'Jenish Daniel B',
-'Lakshmi Narayanan S',
-'Rakshithapriya S',
-'Srivatsan V',
-]
 
-for (var i = 0; i < uids.length; i++) {
 
-  if (name == inames[i]){
-uname = uids[i];
-}
-  }
-console.log(uname);
 
 
     
@@ -1003,6 +867,7 @@ sessionStorage.setItem("datastring",formDataString);
 var cr = result1.data2;
 var spilcr = cr.split("/");
 sessionStorage.setItem("reno",spilcr[3]);
+
 console.log(spilcr)
 if (spilcr[2]=="Exceeded"){
   window.location='exceed.html';
@@ -1282,6 +1147,9 @@ fetch(
                 console.log(result1.data2)
                 uname = result1.data2[2];
                 sessionStorage.setItem("name",result1.data2[2]);
+                sessionStorage.setItem("fetchurl",data[3]);
+                console.log(data[3])
+                console.log(uname);
 var head = result1.data2[0];
 hheads = head[0];
 console.log(hheads)
