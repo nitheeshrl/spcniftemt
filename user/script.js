@@ -61,6 +61,7 @@ function clickupload(folurl,fol,ii){
             fr.onprogress = function(data) {
                 if (data.lengthComputable) {
                     var progress = parseInt( ((data.loaded / data.total) * 100), 10 );
+                    console.log(data.loaded , data.total, data);
                     console.log(progress);
                 }
             }
