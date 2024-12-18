@@ -58,7 +58,12 @@ function clickupload(folurl,fol,ii){
                 .then(console.log(v) )
             })
             fr.readAsDataURL(file1.files[0])
-                 
+            fr.onprogress = function(data) {
+                if (data.lengthComputable) {
+                    var progress = parseInt( ((data.loaded / data.total) * 100), 10 );
+                    console.log(progress);
+                }
+            }
     }
     else{
         alert("Upload the file in correct format")
