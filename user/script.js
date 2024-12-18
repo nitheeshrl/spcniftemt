@@ -25,6 +25,7 @@ function clickupload(folurl,fol,ii){
     let fileurl1 = document.getElementById(folurl);
     file1.addEventListener('change',()=>{
     let fr = new FileReader();
+    console.log(fr)
     console.log(file1.value)
     if (file1.value.includes(".pdf")||file1.value.includes(".PDF")){
             document.getElementById("loader").style.display="block"; 
