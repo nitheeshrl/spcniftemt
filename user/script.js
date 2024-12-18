@@ -46,7 +46,7 @@ function clickupload(folurl,fol,ii){
                     v
         
                 }
-                console.log(obj)
+                console.log(obj.base64)
                 fetch(url,{
                     method:"POST",
                     body:JSON.stringify(obj)
