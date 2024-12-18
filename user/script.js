@@ -33,7 +33,7 @@ function clickupload(folurl,fol,ii){
             document.getElementById("message").textContent="Uploading....";
             fr.addEventListener('loadend',()=>{
                 let res = fr.result;
-                console.log(res)
+            //    console.log(res)
                 let v = fileurl1.value.replace("/"+fol,"");
                 let folder = "15GgsPpNztp41g7Sw7s7LOT0vhnYnViei";
         
