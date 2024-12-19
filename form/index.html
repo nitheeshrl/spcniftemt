@@ -281,10 +281,11 @@ console.log(formDataString+"=sheetid="+sheetname+"=sheetid="+uid+"=sheetid="+idv
           .then(async function (data) {
             const result1 = await data.json();
             console.log(result1.data2);
-            if (result1.data2 == "accept"){
+            if (result1.data2[0] == "accept"){
             // Display a success message
             document.getElementById("bt").disabled = false;
             document.getElementById("form").reset();
+            sessionStorage.setItem("frefid",result1.data2[1])
             window.location='submission.html';
             setTimeout(function () {
               document.getElementById("message").textContent = "";

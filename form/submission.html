@@ -19,8 +19,11 @@
 </section>
 <section class="msg" >
 <h1>Successfully submitted</h1>
-<p>Thank for submitting your response</p>
-
+<p id="thanks">Thank for submitting your response</p>
+<script>
+    var refid = sessionStorage.getItem("frefid")
+    document.getElementById("thanks").innerHTML += "<br><br> Your Form Submission Reference ID is <b>"+refid+"</b>"; 
+</script>
 </section>
 </body>
 </html>
