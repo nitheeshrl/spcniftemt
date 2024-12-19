@@ -396,7 +396,10 @@ document.getElementById("form").addEventListener("submit", function (e) {
 console.log(pair[0])
         }}
 
-        var formDataString = keyValuePairs.join("=namff=");
+        var rformDataString = keyValuePairs.join("=namff=");
+        var rid  = localStorage.getItem("loggeduserdetails");
+        var uid = JSON.parse(rid).id;
+        var formDataString = rformDataString+"=sheetid="+sheetname+"=sheetid="+uid+"=sheetid="+idvalue
 console.log(formDataString)
 
         // Send a POST request to your Google Apps Script
