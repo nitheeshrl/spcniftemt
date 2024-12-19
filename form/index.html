@@ -250,7 +250,9 @@ console.log(pair[0])
         }}
 
         var formDataString = keyValuePairs.join("=namff=");
-console.log(formDataString+"=sheetid="+sheetname)
+        var rid  = localStorage.getItem("loggeduserdetails");
+        var uid = JSON.parse(rid).id;
+console.log(formDataString+"=sheetid="+sheetname+"=sheetid="+uid+"=sheetid="+idvalue)
 
         // Send a POST request to your Google Apps Script
         fetch(
@@ -259,7 +261,7 @@ console.log(formDataString+"=sheetid="+sheetname)
           {
             redirect: "follow",
             method: "POST",
-            body: formDataString+"=sheetid="+sheetname,
+            body: formDataString+"=sheetid="+sheetname+"=sheetid="+uid+"=sheetid="+idvalue,
             headers: {
               "Content-Type": "text/plain;charset=utf-8",
             },
