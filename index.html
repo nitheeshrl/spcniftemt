@@ -212,7 +212,7 @@ else if (userdetails[0]=="Not Found"){
                headers: {
                    'Content-Type': 'application/json'
                },
-               body: JSON.stringify({ cred: authenticationResult, challenge: options.challenge, devUniId:passdevuniid, weburl, urlorigin})
+               body: JSON.stringify({ cred: authenticationResult, challenge: options.challenge, weburl, urlorigin})
            })
            const verifyuserResult = await veruser.json()
            console.log(verifyuserResult)
