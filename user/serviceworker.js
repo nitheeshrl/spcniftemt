@@ -24,3 +24,5 @@ self.addEventListener("fetch", function (event) {
 self.addEventListener("push", e => {
     self.registration.showNotification("NIFTEM-T Placement Cell", { body: e.data.text() })
 })
+
+

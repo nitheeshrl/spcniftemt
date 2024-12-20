@@ -101,17 +101,7 @@ document.getElementById("loader").style.display="none";
 document.getElementById("message").textContent="Password Set Successful";
 setTimeout(function () { 
   document.getElementById("load").style.display="none";
-  var setname = sessionStorage.getItem("setname");
-  var jsetuserdetails = sessionStorage.getItem("setuserdetails");
-  var setuserdetails = JSON.parse(jsetuserdetails);
-  if (setname !== null){
-  localStorage.setItem("loggedname", setname);
-  localStorage.setItem("loggeduorp", setuserdetails[3]);
-  localStorage.setItem("loggedpic", setuserdetails[4]);
-  localStorage.setItem("loggedmail", setuserdetails[5]);
-  }
-  sessionStorage.removeItem("setname");
-  window.location="user/dashboard.html"
+  window.location="index.html"
  },2000);
 }
 function getuserdetails(user,pass,salt){

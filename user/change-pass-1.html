@@ -628,6 +628,7 @@ function set(){
             document.getElementById("message").textContent="Setting Password....";
   function getusername(){
     var loggedname = localStorage.getItem("loggedname");
+    
     if (loggedname !== null){
       return loggedname;
     }
@@ -682,7 +683,7 @@ else{
 }
 </script>
 <script>
-  function updatelogstatus(){
+  /*function updatelogstatus(){
     var updatestring = localStorage.getItem("loggedname");
 
          
@@ -726,7 +727,7 @@ else{
 
 setInterval(() => {
 updatelogstatus();
-}, 500)
+}, 500)*/
  </script>
 <script src="scriptform.js"></script>
 <script src="common.js"></script>
