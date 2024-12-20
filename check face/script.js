@@ -134,7 +134,7 @@ if (namechecked !== "unknown" && username[0] !== "unknown" ){
   localStorage.setItem("loggedpic", jde[4]);
   localStorage.setItem("loggedmail", jde[5]);
   localStorage.setItem("loggeduserdetails", jde[7]);
-  document.getElementById("message1").innerHTML="Welcome, <b>"+namechecked+"</b>";
+  document.getElementById("message1").innerHTML="Welcome, <b>"+jde[2]+"</b>";
   setTimeout(function( ) { 
       var lastpage = sessionStorage.getItem("lastpage");
 if (lastpage==undefined||lastpage==""){
@@ -188,7 +188,7 @@ if (namechecked !== "unknown"){
   localStorage.setItem("loggeduserdetails", jde[7]);
   document.getElementById("bg").style.display="none"; 
   sessionStorage.removeItem("checkname"); 
-  document.getElementById("message1").innerHTML="Welcome, <b>"+namechecked+"</b>";
+  document.getElementById("message1").innerHTML="Welcome, <b>"+jde[2]+"</b>";
   setTimeout(function( ) { 
        var lastpage = sessionStorage.getItem("lastpage");
 if (lastpage==undefined||lastpage==""){
