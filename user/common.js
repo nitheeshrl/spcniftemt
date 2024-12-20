@@ -246,7 +246,9 @@ async function passkey1(){
   const url = new URL(window.location)
   var weburl = location.hostname;
            var passdevuniid =GetUniqueID();
-           const username = localStorage.getItem("loggedname");
+           const jcheck_name = localStorage.getItem("loggeduserdetails");
+           var fgname = JSON.parse(jcheck_name);
+           var username = fgname.id;
            console.log(passdevuniid);
            const response = await fetch(fetchurl+'/check-pasakey', {
                method: 'POST',
