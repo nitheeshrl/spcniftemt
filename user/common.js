@@ -1,3 +1,6 @@
+
+var ustatus ;
+
 function checkinternet(){
     var status = navigator.onLine;
     var element_box = document.getElementById("internetstatus-box");
@@ -233,6 +236,7 @@ console.log(opt)
 }
 
 async function passkey1(){
+  ustatus="Going";
   document.getElementById("loader").style.display="block"; 
            document.getElementById("load").style.display="initial";
            document.getElementById("message").textContent="Checking....";
@@ -298,6 +302,7 @@ if (create_passkeyResult.info.userVerified){
 document.getElementById("message").textContent="PassKey Registered Successfully";
 setTimeout(function () { 
  document.getElementById("load").style.display="none";
+ ustatus="";
 },2000);
 }
 
@@ -308,6 +313,7 @@ else{
 document.getElementById("message").textContent="PassKey is already created for this Device";
 setTimeout(function () { 
  document.getElementById("load").style.display="none";
+ ustatus="";
 },2000);
 //alert("PassKey is already created for this Device")
 }
