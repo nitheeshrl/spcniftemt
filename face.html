@@ -75,140 +75,133 @@ else {
 return uniqueID;
 }
 }
-    function getuserdetailspasskey(){
-      var passdevuniid =GetUniqueID();
-           console.log(passdevuniid);
+function getuserdetailspasskey(user){
 
-if (passdevuniid !== "Not"){
-      var enusername = document.getElementById("Username").value;
-      if (enusername ==""){
-    alert("Enter the Username")
-}
-else{
-    var formDataString =enusername+"/2";
-    console.log(formDataString)
-    document.getElementById("loader").style.display="block"; 
-            document.getElementById("load").style.display="initial";
-            document.getElementById("message").textContent="Verifying....";
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
-      {
-        redirect: "follow",
-        method: "POST",
-        body: formDataString,
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-      }
-    )
 
-      .then(function (response) {
+var formDataString =user+"/1";
+console.log(formDataString)
+document.getElementById("loader").style.display="block"; 
+        document.getElementById("load").style.display="initial";
+        document.getElementById("message").textContent="Logging in....";
+fetch(
+  "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
+  {
+    redirect: "follow",
+    method: "POST",
+    body: formDataString,
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+  }
+)
 
-        // Check if the request was successful
-        if (response) {
-     
-          return response; // Assuming your script returns JSON response
-        } else {
-          throw new Error("Failed to verify credentials");
-        }
-      })
-      .then(async function (data) {
-        const result1 = await data.json();
+  .then(function (response) {
+
+    // Check if the request was successful
+    if (response) {
+ 
+      return response; // Assuming your script returns JSON response
+    } else {
+      throw new Error("Failed to verify credentials");
+    }
+  })
+  .then(async function (data) {
+    const result1 = await data.json();
 var userdetails = result1.data2;
 
 
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
-passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
-}
-else if (userdetails[0]=="Not Found"){
-  alert("User not found")
-  document.getElementById("load").style.display="none";
-}
-      })
-
-      .catch(function (error) {
-        // Handle errors, you can display an error message here
-        console.error(error);
-        document.getElementById("message").textContent =
-          "An error occurred while verify credentials";
-        document.getElementById("message").style.display = "block";
-      });
-    }  
-  }
-    else {
-    alert("PassKey is Not Available in this Device")
-  }
-  } 
-
-
- async function passkey(userId,passdevuniid,uuorp,pic, userdetails){
-        var passkeysss ={};
-        const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
- var fetchurl = "https://passkey-5ev6.onrender.com";
-
-
-    document.getElementById("loader").style.display="block"; 
-            document.getElementById("load").style.display="initial";
-            document.getElementById("message").textContent="Verifying PassKey....";
-           
-           var weburl = location.hostname;
-           console.log(weburl)
-           const response = await fetch(fetchurl+'/login-challenge', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
-               body: JSON.stringify({ userId, weburl })
-           })
-
-           const challengeResult = await response.json()
-           const { options } = challengeResult // Server side challenge
-       
-           var urlorigin= location.protocol+"//"+location.host;
-            console.log(urlorigin)
-           const authenticationResult = await startAuthentication({optionsJSON: options})
-           console.log(authenticationResult)
-
-           var veruser = await fetch(fetchurl+'/login-verify', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
-               body: JSON.stringify({ userId:userId, cred: authenticationResult, challenge: options.challenge, devUniId:passdevuniid, weburl, urlorigin})
-           })
-           const verifyuserResult = await veruser.json()
-           console.log(verifyuserResult)
-if (verifyuserResult.success){
-  localStorage.setItem("loggedname", userId);
-  localStorage.setItem("loggeduorp", uuorp);
-  localStorage.setItem("loggedpic", pic);
-  localStorage.setItem("loggedmail", mail);
-  localStorage.setItem("loggeduserdetails", userdetails);
-  var  uname = localStorage.getItem("loggedname");
-  console.log(uname)
+//passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
+localStorage.setItem("loggedname",userdetails[2]);
+localStorage.setItem("loggeduorp", userdetails[3]);
+localStorage.setItem("loggedpic", userdetails[4]);
+localStorage.setItem("loggedmail", userdetails[5]);
+localStorage.setItem("loggeduserdetails", userdetails[7]);
+var  uname = localStorage.getItem("loggedname");
+console.log(uname)
 document.getElementById("loader").style.display="none"; 
 document.getElementById("message").textContent="Logged in Successful";
 setTimeout(function () { 
-  document.getElementById("load").style.display="none";
-  var enusername = document.getElementById("Username").value;
-  
-  var lastpage = sessionStorage.getItem("lastpage");
+document.getElementById("load").style.display="none";
+var enusername = document.getElementById("Username").value;
+
+
+
+var lastpage = sessionStorage.getItem("lastpage");
 if (lastpage==undefined||lastpage==""){
-  window.location="user/dashboard.html"
+window.location="user/dashboard.html"
 }
 else{
-  window.location=lastpage;
-    sessionStorage.removeItem("lastpage");
+window.location=lastpage;
+sessionStorage.removeItem("lastpage");
 }
- },2000);
+},2000);
 }
-else{
-  alert("Wrong PassKey. Try Again")
-  document.getElementById("load").style.display="none";
+else if (userdetails[0]=="Not Found"){
+alert("User not found")
+document.getElementById("load").style.display="none";
 }
+  })
+
+  .catch(function (error) {
+    // Handle errors, you can display an error message here
+    console.error(error);
+    document.getElementById("message").textContent =
+      "An error occurred while verify credentials";
+    document.getElementById("message").style.display = "block";
+  });
+}  
+
+
+
+async function passkey(){
+    var passkeysss ={};
+    const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+var fetchurl = "https://passkey-5ev6.onrender.com";
+
+
+document.getElementById("loader").style.display="block"; 
+        document.getElementById("load").style.display="initial";
+        document.getElementById("message").textContent="Verifying PassKey....";
        
+       var weburl = location.hostname;
+       console.log(weburl)
+       const response = await fetch(fetchurl+'/login-challenge', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({  weburl })
+       })
+
+       const challengeResult = await response.json()
+       const { options } = challengeResult // Server side challenge
+   
+       var urlorigin= location.protocol+"//"+location.host;
+        console.log(urlorigin)
+       const authenticationResult = await startAuthentication({optionsJSON: options})
+       console.log(authenticationResult)
+
+       var veruser = await fetch(fetchurl+'/login-verify', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({ cred: authenticationResult, challenge: options.challenge, weburl, urlorigin})
+       })
+       const verifyuserResult = await veruser.json()
+       console.log(verifyuserResult)
+if (verifyuserResult.success){
+
+getuserdetailspasskey( verifyuserResult.userId)
+}
+else{
+alert("Wrong PassKey. Try Again")
+document.getElementById("load").style.display="none";
+}
+   
 
 
 }
