@@ -58,7 +58,7 @@
     </div>
     <div class="topic-in">
       
-      <a  onclick="getuserdetailspasskey()" >
+      <a  onclick="passkey()" >
         <div class="topics 1">
         <img style=" width: 30px; filter: invert(1);" src="passkey.webp" alt="" srcset="">
        <span><b>Passkey</b></span> 
@@ -98,21 +98,14 @@ else {
 return uniqueID;
 }
 }
-    function getuserdetailspasskey(){
-      var passdevuniid =GetUniqueID();
-           console.log(passdevuniid);
+    function getuserdetailspasskey(user){
 
-if (passdevuniid !== "Not"){
-      var enusername = document.getElementById("Username").value;
-      if (enusername ==""){
-    alert("Enter the Username")
-}
-else{
-    var formDataString =enusername+"/2";
+
+    var formDataString =user+"/1";
     console.log(formDataString)
     document.getElementById("loader").style.display="block"; 
             document.getElementById("load").style.display="initial";
-            document.getElementById("message").textContent="Verifying....";
+            document.getElementById("message").textContent="Logging in....";
     fetch(
       "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
       {
@@ -144,6 +137,30 @@ console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
 passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
+localStorage.setItem("loggedname",userdetails[2]);
+  localStorage.setItem("loggeduorp", userdetails[3]);
+  localStorage.setItem("loggedpic", userdetails[4]);
+  localStorage.setItem("loggedmail", userdetails[5]);
+  localStorage.setItem("loggeduserdetails", userdetails[7]);
+  var  uname = localStorage.getItem("loggedname");
+  console.log(uname)
+document.getElementById("loader").style.display="none"; 
+document.getElementById("message").textContent="Logged in Successful";
+setTimeout(function () { 
+  document.getElementById("load").style.display="none";
+  var enusername = document.getElementById("Username").value;
+  
+
+ 
+    var lastpage = sessionStorage.getItem("lastpage");
+if (lastpage==undefined||lastpage==""){
+  window.location="user/dashboard.html"
+}
+else{
+  window.location=lastpage;
+    sessionStorage.removeItem("lastpage");
+}
+ },2000);
 }
 else if (userdetails[0]=="Not Found"){
   alert("User not found")
@@ -159,14 +176,60 @@ else if (userdetails[0]=="Not Found"){
         document.getElementById("message").style.display = "block";
       });
     }  
-  }
-    else {
-    alert("PassKey is Not Available in this Device")
-  }
-  } 
+  
+  
+  
+  async function passkey(){
+        var passkeysss ={};
+        const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+ var fetchurl = "https://passkey-5ev6.onrender.com";
 
 
- async function passkey(userId,passdevuniid,uuorp,pic,mail,userdetails){
+    document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Verifying PassKey....";
+           
+           var weburl = location.hostname;
+           console.log(weburl)
+           const response = await fetch(fetchurl+'/login-challenge', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({  weburl })
+           })
+
+           const challengeResult = await response.json()
+           const { options } = challengeResult // Server side challenge
+       
+           var urlorigin= location.protocol+"//"+location.host;
+            console.log(urlorigin)
+           const authenticationResult = await startAuthentication({optionsJSON: options})
+           console.log(authenticationResult)
+
+           var veruser = await fetch(fetchurl+'/login-verify', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ cred: authenticationResult, challenge: options.challenge, devUniId:passdevuniid, weburl, urlorigin})
+           })
+           const verifyuserResult = await veruser.json()
+           console.log(verifyuserResult)
+if (verifyuserResult.success){
+ 
+  getuserdetailspasskey( verifyuserResult.userId)
+}
+else{
+  alert("Wrong PassKey. Try Again")
+  document.getElementById("load").style.display="none";
+}
+       
+
+
+}
+
+ /*async function passkey(userId,passdevuniid,uuorp,pic,mail,userdetails){
         var passkeysss ={};
         const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
  var fetchurl = "https://passkey-5ev6.onrender.com";
@@ -236,7 +299,7 @@ else{
        
 
 
-}
+}*/
   function showpass(){
     var btn = document.getElementById("Password").type ;
 
