@@ -28,7 +28,7 @@ function vidOff() {
 function getLabeledFaceDescriptions() {
   var scheck_name = sessionStorage.getItem("checkname");
   var jcheck_name = JSON.parse(scheck_name);
-  var check_name = jcheck_name[2];
+  var check_name = jcheck_name[7].id;
   console.log(check_name,jcheck_name)
   if(check_name !== null){
   const labels = [check_name];
@@ -125,9 +125,10 @@ if (namechecked !== "unknown" && username[0] !== "unknown" ){
   document.getElementById("message").style.display="none"; 
   document.getElementById("load").style.display = "initial";
   document.getElementById("bg").style.display="none"; 
-  localStorage.setItem("loggedname", namechecked);
+  
   var scde = sessionStorage.getItem("checkname");
   var jde = JSON.parse(scde);
+  localStorage.setItem("loggedname", jde[2]);
   localStorage.setItem("loggeduorp", jde[3]);
   localStorage.setItem("loggedpic", jde[4]);
   localStorage.setItem("loggedmail", jde[5]);
@@ -176,9 +177,10 @@ if (namechecked !== "unknown"){
   document.getElementById("loader").style.display="none";
   document.getElementById("message").style.display="none"; 
   document.getElementById("load").style.display = "initial";
-  localStorage.setItem("loggedname", namechecked);
+  
   var scde = sessionStorage.getItem("checkname");
   var jde = JSON.parse(scde);
+  localStorage.setItem("loggedname", jde[2]);
   localStorage.setItem("loggeduorp", jde[3]);
   localStorage.setItem("loggedpic", jde[4]);
   localStorage.setItem("loggedmail", jde[5]);
