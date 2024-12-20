@@ -28,7 +28,8 @@ function vidOff() {
 function getLabeledFaceDescriptions() {
   var scheck_name = sessionStorage.getItem("checkname");
   var jcheck_name = JSON.parse(scheck_name);
-  var check_name = jcheck_name[7].id;
+  var fgname = JSON.parse(jcheck_name[7]);
+  var check_name = fgname.id;
   console.log(check_name,jcheck_name)
   if(check_name !== null){
   const labels = [check_name];
