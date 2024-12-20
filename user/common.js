@@ -8,6 +8,7 @@ function checkinternet(){
         document.getElementById("internetstatus").classList.toggle('offline')
         element.children[0].textContent="You are Offline";
         element_box.style.display="flex"
+        updatelogstatus2("Offline");  
         
     }
     else if(status&&!element.classList.contains('online')){
