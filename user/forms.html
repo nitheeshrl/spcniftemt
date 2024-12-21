@@ -588,7 +588,8 @@ alert("PassKey is already created for this Device")
       function fetchd (){
        console.log("fetch")
        var details ="";
-       var loname =  localStorage.getItem("loggedname");
+       var rid  = localStorage.getItem("loggeduserdetails");
+       var loname = JSON.parse(rid).id;
        console.log(uorp+"/"+loname)
        fetch(
     
