@@ -48,10 +48,12 @@ font-weight: bold;
    
   function getnotifications(){
     var loggedname = localStorage.getItem("loggedname");
+    var rid  = localStorage.getItem("loggeduserdetails");
+    var uid = JSON.parse(rid).id;
     var loggeduorp = localStorage.getItem("loggeduorp");
 const url = "https://script.google.com/macros/s/AKfycbz4Hi2UfKaR2uHULiYN0kA8aOj1bOHsW0tSHq7du1mQDsxfUNuN7fEyXf5msy2hU2-P/exec" 
 
-val = loggedname+"/S/All "+loggeduorp;
+val = uid+"/S/All "+loggeduorp;
 console.log(val)
 fetch(`${url}?header=${val}`)
  .then((response) => response.json())
