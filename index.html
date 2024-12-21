@@ -447,7 +447,8 @@ else if (userdetails[0]=="Not Found"){
     }
   
 function login(){
-  var enusername = document.getElementById("Username").value;
+  var enusername = document.getElementById("Username").value.toUpperCase().replaceAll(" ","");
+  console.log(enusername)
   var enpassword = document.getElementById("Password").value;
   var Username = "iacadmin";
   username = enusername;
