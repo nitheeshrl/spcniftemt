@@ -26,6 +26,8 @@ console.log(idvalue)
       var sheetname ; 
       window.onload=getstatus();
       var loggedname =localStorage.getItem("loggedname")
+      var rid  = localStorage.getItem("loggeduserdetails");
+      var uid = JSON.parse(rid).id;
       var loggeduorp =localStorage.getItem("loggeduorp")
       if (loggedname==undefined){
      alert("You are not logged in. Please log in");
@@ -47,7 +49,7 @@ console.log(idvalue)
           alert("Form not found")
         }
         if(formstatus=="Form Fetched"){
-        if(useraccess.includes(loggedname)||useraccess.includes(loggeduorp)||useraccess==""){
+        if(useraccess.includes(uid)||useraccess.includes(loggeduorp)||useraccess==""){
            if (data == "Live"){
    console.log("ok")
 
