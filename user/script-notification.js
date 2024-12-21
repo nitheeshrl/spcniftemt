@@ -70,7 +70,8 @@ const saveSubscription = async (subscription) => {
     if (id[1]=="New"){
         localStorage.setItem("Notification-uniqueID",id[0])  
     }
-username = localStorage.getItem("loggedname");
+    var rid  = localStorage.getItem("loggeduserdetails");
+username =  JSON.parse(rid).id;
     const response = await fetch('https://passkey-5ev6.onrender.com/save-subscription', {
         method: 'post',
         headers: { 'Content-type': "application/json" },
