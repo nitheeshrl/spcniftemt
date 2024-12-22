@@ -61,6 +61,8 @@ function getuserdetailsonload(user){
           }
         })
         .then(async function (data) {
+          getuserdetailsonload(uid+"/2")
+          
           const result1 = await data.json();
   var userdetails = result1.data2;
 //console.log(userdetails)
@@ -93,6 +95,7 @@ function getuserdetailsonload(user){
         })
   
         .catch(function (error) {
+          getuserdetailsonload(uid+"/2")
           // Handle errors, you can display an error message here
           console.error(error);
         });
@@ -325,7 +328,7 @@ setTimeout(function () {
 }
 }
 
-function updatelogstatus2(status){
+/*function updatelogstatus2(status){
   var rid  = localStorage.getItem("loggeduserdetails");
   var uid = JSON.parse(rid).id;
   var updatestring = uid+"/"+status;
@@ -385,4 +388,4 @@ updatelogstatus2("Online");
 const beforeUnloadHandler = (event) => {  
 updatelogstatus2("Offline");  
 };
-window.addEventListener("beforeunload", beforeUnloadHandler);
+window.addEventListener("beforeunload", beforeUnloadHandler);*/
