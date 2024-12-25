@@ -245,7 +245,7 @@ const  GetUniqueID1 = () =>{
   const uniqueID = localStorage.getItem("Passkey-uniqueID");
   if (uniqueID == undefined){
   const newUniqueID = crypto.randomUUID();
-  
+  localStorage.setItem("Passkey-uniqueID",newUniqueID)
   return newUniqueID;
   }
   else {
