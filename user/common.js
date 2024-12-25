@@ -317,7 +317,7 @@ if (no ==  0){
 passkeysss = create_passkeyResult.info;
 console.log(create_passkeyResult.info);
 if (create_passkeyResult.info.userVerified){
- localStorage.setItem("Passkey-uniqueID",passdevuniid[0]);
+ //localStorage.setItem("Passkey-uniqueID",passdevuniid[0]);
  document.getElementById("loader").style.display="none"; 
 document.getElementById("message").textContent="PassKey Registered Successfully";
 setTimeout(function () { 
