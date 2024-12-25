@@ -255,6 +255,7 @@ async function passkey1(){
            const jcheck_name = localStorage.getItem("loggeduserdetails");
            var fgname = JSON.parse(jcheck_name);
            var username = fgname.id;
+           const name = localStorage.getItem("loggedname");
            console.log(passdevuniid);
            const response = await fetch(fetchurl+'/check-pasakey', {
                method: 'POST',
@@ -281,7 +282,7 @@ if (no ==  0){
                headers: {
                    'Content-Type': 'application/json'
                },
-               body: JSON.stringify({ username, weburl })
+               body: JSON.stringify({ username, weburl, name })
            })
 
            const challengeResult = await response.json()
