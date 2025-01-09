@@ -27,7 +27,7 @@ const idvalue = value.get('form');
      window.location="../index.html";
    }
       function getstatus(){
-   const url = "https://script.google.com/macros/s/AKfycbxR9JjLW-_xKlNmW7-2OmoqYeHLkfZn45DJL-kazZ4Nl_gGqbUNwJk96DmvpyGzxAPp/exec" 
+   const url = "https://script.google.com/macros/s/AKfycbwRbkqtkvw-It4xS1geMUPs6DcHi8Kh2L7QMge_JJdXMFwlBW4MqrMJsbUUqB22Sucj/exec" 
    var val = "Common Form Entry";
    val = idvalue;
    console.log(val)
@@ -35,12 +35,81 @@ const idvalue = value.get('form');
        .then((response) => response.json())
        .then(({ data, useraccess}) => {
         console.log(data)
-        if (data == "Not Found"){
+        if(data[0]!==null){
+            sheetname = data[3];
+            document.getElementById("i1").className=data[4];
+          
+            document.getElementById("CompanyLogo").src="https://drive.google.com/thumbnail?id="+data[1][0]+"&sz=w1000";
+            document.getElementById("formtitle").textContent=data[6];
+            for(var i = 1; i < 5;i++){
+            
+    if (data[1][i]!==""&&data[1][i]!==null){
+ 
+      document.getElementById(data[2][i]).textContent=data[2][i]+" : "+data[1][i];
+    }
+   }
+   for(var i = 5; i < data[2].length;i++){
+   
+    console.log(data[1][i])
+    if (data[1][i]!=="Not Required"&&data[1][i]!==""){
+      console.log("Done")
+      if(data[2][i] =="Role Preference" ||data[2][i] =="Location Preference" ){
+var optionsin = data[1][i].split(";");
+var qopttions = "";
+for(var f=0; f< optionsin.length;f++){
+  if(f==0){
+var optionformula = '<label for="'+optionsin[f]+'"> <input type="radio" name="'+data[2][i]+'" class="'+data[2][i]+'" required id="'+optionsin[f]+'" value="'+optionsin[f]+'" /> <span>'+optionsin[f]+'</span> </label><br>';
+qopttions = qopttions+optionformula;
+console.log(qopttions)
+  }
+  else{
+    var optionformula = '<label for="'+optionsin[f]+'"> <input type="radio" name="'+data[2][i]+'" class="'+data[2][i]+'" id="'+optionsin[f]+'" value="'+optionsin[f]+'" /> <span>'+optionsin[f]+'</span> </label><br>';
+qopttions =qopttions+optionformula;
+console.log(qopttions)
+  }
+}
+console.log(qopttions)
+document.getElementById("Options "+data[2][i]).innerHTML=qopttions;
+  document.getElementById("Value "+data[2][i]).style.display="flex"
+      }
+      else{
+      document.getElementById("Value "+data[2][i]).style.display="flex"
+      }
+    }
+    else{
+      console.log(i)
+      console.log(data[2][i])
+        document.getElementById("Value "+data[2][i]).style.display="none";
+        document.getElementById("Value "+data[2][i]).children[1].required = false;
+       var options =  document.getElementsByName(data[2][i])
+       if (options.length == 0 ){
+
+       }
+       else{
+        options[0].required = false;
+       }
+       console.log(options)
+
+       
+       
+    }
+   }
+   formstatus = "Form Fetched";
+owner = data[5];
+var logname =  localStorage.getItem("loggedname");
+document.getElementById("Name").value=logname;
+  }
+  else{
+    alert("Form not found")
+  }
+  
+        if (data[0] == "Not Found"){
           alert("Form not found")
         }
         if(formstatus=="Form Fetched"){
+          
         if(useraccess.includes(uid)||useraccess.includes(loggeduorp)||useraccess==""){
-        if (data == "Live"){
+        if (data[0] == "Live"){
    console.log("ok")
 
    document.getElementById("frqa").style.display="initial";
@@ -48,7 +117,7 @@ const idvalue = value.get('form');
    document.getElementById("previewlink").style.display="none";
    }
                
-               else if (data == "Inactive"){
+               else if (data[0] == "Inactive"){
                  document.getElementById("frqa").style.display="none";
                  window.location='end.html';
                }
@@ -71,7 +140,7 @@ const idvalue = value.get('form');
    }
    setInterval(() => {
     getstatus();
-    fetchq();
+   // fetchq();
 }, 1000);
    </script>
    <script>
@@ -463,7 +532,6 @@ console.log(formDataString)
 
 
 </script>
-<script src="/user/common.js"></script>
 <script src="script.js  "></script>
 
 </section>

@@ -164,7 +164,9 @@ function login(){
   function getusername(){
     var loggedname = localStorage.getItem("loggedname");
     if (loggedname !== null){
-      return loggedname;
+      var rid  = localStorage.getItem("loggeduserdetails");
+      var uid = JSON.parse(rid).id;
+      return uid;
     }
     else{
       return sessionStorage.getItem("setname");
