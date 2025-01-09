@@ -4,9 +4,39 @@
 }
 
 body {
-font-family: 'Inter';
-background: #eee;
-}
+    font-family: 'Inter';
+    background: #eee;
+    z-index: 1000;
+    }
+    .internetstatus-box{
+        z-index: 1100;
+        position: fixed;
+        display: none;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      padding: 20px;
+      transition: ease-in-out;
+      }
+      .internetstatus{
+      
+        width: 200px;
+        height: 50px;
+        background-color: #000;
+        color: #f1f1f1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+      border-top-style: solid;
+      border-top-width: 5px;
+      }
+      .internetstatus.online{
+        border-top-color: green;
+      }
+      .internetstatus.offline{
+        border-top-color: red;
+      }
 form {
 background: white;
 padding: 60px; 
