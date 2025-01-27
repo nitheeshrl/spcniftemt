@@ -43,6 +43,7 @@ return ord;
 var ordd = getOrdinal(renoval)
 var renonam = renoval + ordd;
       var name = sessionStorage.getItem("name");
+      var mname1 = sessionStorage.getItem("mname1");
       var reid = sessionStorage.getItem("reid");
 
 console.log(fetchurl)
@@ -425,13 +426,13 @@ alert("PassKey is already created for this Device")
 
     var status = document.getElementById("status");
     console.log(status)
-    document.getElementById("status").innerHTML = "<span>The details are submitted to your alloted member: "+name+" for the verfication.<br> <br> Once, it is approved or declined you will recieve the mail. So, kindly check your mail. <br> <br> The Request ID is <b>"+reid+"</b><br><br> Use this ID for checking status.<br> <br>This is "+renonam+" request today. Only 5 requests are allowed per day.</span>";
+    document.getElementById("status").innerHTML = "<span>The details are submitted to your alloted member: "+mname1+" for the verfication.<br> <br> Once, it is approved or declined you will recieve the mail. So, kindly check your mail. <br> <br> The Request ID is <b>"+reid+"</b><br><br> Use this ID for checking status.<br> <br>This is "+renonam+" request today. Only 5 requests are allowed per day.</span>";
     console.log("start")
     var uorp = sessionStorage.getItem("uorp");
     if (stat !=="sent"){
     document.getElementById("load").style.display="initial";
         document.getElementById("loader").style.display="block"; 
-        document.getElementById("message").textContent = "Sending Mail to "+name+"...";
+        document.getElementById("message").textContent = "Sending Mail to "+mname1+"...";
         
         
           console.log("in")
