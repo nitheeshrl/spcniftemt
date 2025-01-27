@@ -627,11 +627,12 @@ function set(){
   document.getElementById("loader").style.display="block"; 
             document.getElementById("load").style.display="initial";
             document.getElementById("message").textContent="Setting Password....";
-  function getusername(){
+function getusername(){
     var loggedname = localStorage.getItem("loggedname");
-    
     if (loggedname !== null){
-      return loggedname;
+      var rid  = localStorage.getItem("loggeduserdetails");
+      var uid = JSON.parse(rid).id;
+      return uid;
     }
     else{
       return sessionStorage.getItem("setname");
