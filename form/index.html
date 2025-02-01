@@ -25,6 +25,7 @@ console.log(idvalue)
       var formstatus ;
       var sheetname ; 
       var respondents = [];
+      var validresponse ; 
       window.onload=getstatus();
       var loggedname =localStorage.getItem("loggedname")
       var rid  = localStorage.getItem("loggeduserdetails");
@@ -58,7 +59,7 @@ console.log(idvalue)
         }
         if(formstatus=="Form Fetched"){
         if(useraccess.includes(uid)||useraccess.includes(loggeduorp)||useraccess==""){
-          if(respondents.includes(uid)){
+          if(respondents.includes(uid)&&validresponse){
             alert("You already responded to this form.");
  
  document.getElementById("frqa").style.display="none";
@@ -147,7 +148,8 @@ document.getElementById("Form Description").innerHTML=data[3];
 sheetname=data[4];
 formstatus = "Form Fetched";
 owner = data[5];
-respondents = data[7]
+respondents = data[7];
+validresponse = data[8];
 var logname =  localStorage.getItem("loggedname");
 document.getElementById("Auto-Name").value=logname;
   }
