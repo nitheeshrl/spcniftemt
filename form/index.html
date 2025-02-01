@@ -59,6 +59,11 @@ console.log(idvalue)
         }
         if(formstatus=="Form Fetched"){
         if(useraccess.includes(uid)||useraccess.includes(loggeduorp)||useraccess==""){
+          console.log(respondents)
+          console.log(loggedname)
+          console.log([loggedname])
+          console.log(respondents.includes([loggedname]))
+          console.log(respondents.includes([loggedname])&&validresponse)
           if(respondents.includes([loggedname])&&validresponse){
             alert("You already responded to this form.");
  
