@@ -59,12 +59,19 @@ console.log(idvalue)
         }
         if(formstatus=="Form Fetched"){
         if(useraccess.includes(uid)||useraccess.includes(loggeduorp)||useraccess==""){
+
+
+          var echeck = false;
+          for(var e=0; e<respondents.length;e++){
+            if(respondents[e][0]==loggedname){
+              echeck = true;
+            }
+          }
           console.log(respondents)
           console.log(loggedname)
-          console.log([loggedname])
-          console.log(respondents.includes(loggedname))
-          console.log(respondents.includes(loggedname)&&validresponse)
-          if(respondents.includes([loggedname])&&validresponse){
+          console.log(echeck)
+          console.log(echeck&&validresponse)
+          if(echeck&&validresponse){
             alert("You already responded to this form.");
  
  document.getElementById("frqa").style.display="none";
