@@ -172,6 +172,7 @@ document.getElementById("Auto-Name").value=logname;
               return response; // Assuming your script returns JSON response
             } else {
               throw new Error("Failed to load the form.");
+              fetchq()
             }
           })
          /* .then(async function (data) {
@@ -200,6 +201,7 @@ owner = data[5];
           .catch(function (error) {
             // Handle errors, you can display an error message here
             console.error(error);
+            fetchq()
             document.getElementById("message").textContent =
               "An error occurred while submitting the form.";
             document.getElementById("message").style.display = "block";
