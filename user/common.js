@@ -155,7 +155,7 @@ function getuserdetailsonload(user){
         <ul class="sub-menu">
           <div>
             <li><a id="form-btn-side" href="request-form.html">Request Form</a></li>
-            <li><a href="past.html">Past Requests</a></li>
+            <li><a href="past.html">Completed Requests</a></li>
           </div>
         </ul>
       </li>
