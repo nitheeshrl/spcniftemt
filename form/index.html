@@ -144,7 +144,9 @@ else{
               console.log(data[6])
               if (data[6]){
                 console.log(autoff)
-                document.getElementById("formquestions").innerHTML=autoff + data[1];           
+                document.getElementById("formquestions").innerHTML=autoff + data[1];     
+                var logname =  localStorage.getItem("loggedname");
+document.getElementById("Auto-Name").value=logname;      
               }
               else{
                 document.getElementById("formquestions").innerHTML=data[1];
@@ -162,8 +164,7 @@ formstatus = "Form Fetched";
 owner = data[5];
 respondents = data[7];
 validresponse = data[8];
-var logname =  localStorage.getItem("loggedname");
-document.getElementById("Auto-Name").value=logname;
+
   }
   else{
     alert("Form not found")
