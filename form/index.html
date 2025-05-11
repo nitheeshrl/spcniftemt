@@ -26,7 +26,10 @@ console.log(idvalue)
       var sheetname ; 
       var respondents = [];
       var validresponse ; 
-      window.onload=getstatus();
+      var ldata;
+      var luseraccess;
+  
+            window.onload=getstatus();
       var loggedname =localStorage.getItem("loggedname")
       var rid  = localStorage.getItem("loggeduserdetails");
      
@@ -54,11 +57,18 @@ console.log(idvalue)
        .then((response) => response.json())
        .then(({ data , useraccess}) => {
         console.log(data)
+        ldata = data;
+        luseraccess = useraccess;
         if (data == "Not Found"){
           alert("Form not found")
         }
-        if(formstatus=="Form Fetched"){
-        if(useraccess.includes(uid)||useraccess.includes(loggeduorp)||useraccess==""){
+
+       })
+       .catch((error) => console.error('!!!!!!!!', error));
+   }
+   function loadcheck(){
+    if(formstatus=="Form Fetched"){
+        if(luseraccess.includes(uid)||luseraccess.includes(loggeduorp)||luseraccess==""){
 
 
           var echeck = false;
@@ -71,14 +81,14 @@ console.log(idvalue)
           console.log(loggedname)
           console.log(echeck)
           console.log(echeck&&validresponse)
-          console.log(data)
+          console.log(ldata)
           if(echeck&&validresponse){
             alert("You already responded to this form.");
  
  document.getElementById("frqa").style.display="none";
  document.getElementById("ll").textContent="You already responded to this form.";
           }
-          else if (data == "Live"){
+          else if (ldata == "Live"){
    console.log("ok")
 
    document.getElementById("frqa").style.display="initial";
@@ -86,17 +96,17 @@ console.log(idvalue)
    document.getElementById("previewlink").style.display="none";
    
                }
-               else if (data == "Inactive"){
+               else if (ldata == "Inactive"){
                  document.getElementById("frqa").style.display="none";
                  window.location='end.html';
                }
-               else if (data == "Created"){
+               else if (ldata == "Created"){
                 document.getElementById("ll").textContent="Form is not published till now";
                 document.getElementById("previewlink").href="https://pcniftemt.pages.dev/preview-form/?form="+idvalue
                 document.getElementById("previewlink").style.display="initial";
                 document.getElementById("frqa").style.display="none";
                }
-               else if (data == "Not Found"){
+               else if (ldata == "Not Found"){
     alert("Form not found")
   }
 }
@@ -107,10 +117,9 @@ else{
   document.getElementById("ll").textContent="Request access form "+owner+" for this form";
 }
         }
-       })
-       .catch((error) => console.error('!!!!!!!!', error));
    }
    setInterval(() => {
+    loadcheck();
     getstatus();
   
 }, 1000);
