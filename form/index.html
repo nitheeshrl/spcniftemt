@@ -71,6 +71,7 @@ console.log(idvalue)
           console.log(loggedname)
           console.log(echeck)
           console.log(echeck&&validresponse)
+          console.log(data)
           if(echeck&&validresponse){
             alert("You already responded to this form.");
  
@@ -140,18 +141,17 @@ else{
         <span class="q">Name *</span>
    <input readonly required type="text" name="Name" id="Auto-Name" placeholder="Enter the Name"/>
     </div>`;
+
             if(data[0]!==null){
               console.log(data[6])
               if (data[6]){
                 console.log(autoff)
-                document.getElementById("formquestions").innerHTML=autoff + data[1];     
-                var logname =  localStorage.getItem("loggedname");
-document.getElementById("Auto-Name").value=logname;      
+                document.getElementById("formquestions").innerHTML=autoff + data[1];           
               }
               else{
                 document.getElementById("formquestions").innerHTML=data[1];
               }
-
+              console.log(document.getElementById("formquestions").innerHTML)
 document.getElementById("Form Name").textContent=data[2];
 document.getElementById("formtitle").textContent=data[2]
 console.log(data[3])
@@ -164,6 +164,10 @@ formstatus = "Form Fetched";
 owner = data[5];
 respondents = data[7];
 validresponse = data[8];
+var logname =  localStorage.getItem("loggedname");
+if (data[6]){
+  document.getElementById("Auto-Name").value=logname;        
+              }
 
   }
   else{
