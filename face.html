@@ -114,6 +114,20 @@ var userdetails = result1.data2;
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
+  if(userdetails[0]=="Requested"){
+ // alert("Your account is not activated. Please contact the admin")
+ showLoader("Your registration is in process");
+setTimeout(function () {
+  hideLoader();
+}, 2000);
+}
+
+else if (userdetails[0] =="Deactivated"){
+showLoader("Your account is deactivated. Please contact the admin");
+setTimeout(function () {
+  hideLoader();
+}, 2000);
+}
 //passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
 localStorage.setItem("loggedname",userdetails[2]);
 localStorage.setItem("loggeduorp", userdetails[3]);

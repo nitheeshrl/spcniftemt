@@ -139,6 +139,20 @@ var userdetails = result1.data2;
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
+  if(userdetails[0]=="Requested"){
+ // alert("Your account is not activated. Please contact the admin")
+ showLoader("Your registration is in process");
+setTimeout(function () {
+  hideLoader();
+}, 2000);
+}
+
+else if (userdetails[0] =="Deactivated"){
+showLoader("Your account is deactivated. Please contact the admin");
+setTimeout(function () {
+  hideLoader();
+}, 2000);
+}
 //passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
 localStorage.setItem("loggedname",userdetails[2]);
   localStorage.setItem("loggeduorp", userdetails[3]);
@@ -165,6 +179,7 @@ else{
 }
  },2000);
 }
+
 else if (userdetails[0]=="Not Found"){
   alert("User not found")
   document.getElementById("load").style.display="none";
@@ -395,7 +410,22 @@ console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
   var password = "Niftem@iac";
-  if (pass == password&&userdetails[0]==""){
+if(userdetails[0]=="Requested"){
+ // alert("Your account is not activated. Please contact the admin")
+ showLoader("Your registration is in process");
+setTimeout(function () {
+  hideLoader();
+}, 2000);
+}
+
+else if (userdetails[0] =="Deactivated"){
+showLoader("Your account is deactivated. Please contact the admin");
+setTimeout(function () {
+  hideLoader();
+}, 2000);
+}
+
+  else   if (pass == password&&userdetails[0]==""){
     sessionStorage.setItem("setname",user);
     var suserdetails = JSON.stringify(userdetails)
     sessionStorage.setItem("setuserdetails",suserdetails);
@@ -435,9 +465,16 @@ getdehash();
 }
 }
 else if (userdetails[0]=="Not Found"){
+  //alert("User not found")
+showLoader("User not found");
+setTimeout(function () {
+  hideLoader();
+}, 2000);
+}
+/*else if (userdetails[0]=="Not Found"){
   alert("User not found")
   document.getElementById("load").style.display="none";
-}
+}*/
       })
 
       .catch(function (error) {
@@ -448,7 +485,22 @@ else if (userdetails[0]=="Not Found"){
         document.getElementById("message").style.display = "block";
       });
     }
-  
+ function showLoader(message) {
+    if (elements.load) elements.load.style.display = "initial";
+    if (elements.loader) elements.loader.style.display = "block";
+    if (elements.message) elements.message.textContent = message || "";
+}
+const elements = {
+    load: document.getElementById("load"),
+    loader: document.getElementById("loader"),
+    message: document.getElementById("message")
+};
+// Hide loading indicator
+function hideLoader() {
+    if (elements.load) elements.load.style.display = "none";
+    if (elements.loader) elements.loader.style.display = "none";
+    if (elements.message) elements.message.textContent = "";
+} 
 function login(){
   var enusername = document.getElementById("Username").value.toUpperCase().replaceAll(" ","");
   console.log(enusername)
