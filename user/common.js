@@ -61,7 +61,7 @@ function getuserdetailsonload(user){
           }
         })
         .then(async function (data) {
-          getuserdetailsonload(uid+"/2")
+        
           
           const result1 = await data.json();
   var userdetails = result1.data2;
@@ -84,6 +84,7 @@ setTimeout(function () {
   alllogout()
 }, 2000);*/
 }
+  getuserdetailsonload(uid+"/2")
 //console.log(userdetails)
   var udata = userdetails[7];
  //console.log(udata)

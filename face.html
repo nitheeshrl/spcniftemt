@@ -76,6 +76,11 @@ else {
 return uniqueID;
 }
 }
+ function showLoader(message,loading) {
+    if (elements.load) elements.load.style.display = "initial";
+    if (elements.loader) elements.loader.style.display = loading || "block";
+    if (elements.message) elements.message.textContent = message || "";
+}
 function getuserdetailspasskey(user){
 
 
@@ -114,19 +119,19 @@ var userdetails = result1.data2;
 console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
-  if(userdetails[0]=="Requested"){
+if(userdetails[0]=="Requested"){
  // alert("Your account is not activated. Please contact the admin")
- showLoader("Your registration is in process");
+ showLoader("Your registration is in process","none");
 setTimeout(function () {
   hideLoader();
-}, 2000);
+}, 5000);
 }
 
 else if (userdetails[0] =="Deactivated"){
-showLoader("Your account is deactivated. Please contact the admin");
+showLoader("Your account is deactivated. Please contact the admin","none");
 setTimeout(function () {
   hideLoader();
-}, 2000);
+}, 5000);
 }
 //passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
 localStorage.setItem("loggedname",userdetails[2]);
