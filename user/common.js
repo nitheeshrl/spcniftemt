@@ -67,20 +67,22 @@ function getuserdetailsonload(user){
   var userdetails = result1.data2;
   if(userdetails[0]=="Requested"){
   alert("Your registration is in process. Please wait for the admin to approve your request");
- showLoader("Your registration is in process. Please wait for the admin to approve your request");
+  alllogout()
+ /*showLoader("Your registration is in process. Please wait for the admin to approve your request");
 setTimeout(function () {
   hideLoader();
   alllogout()
-}, 2000);
+}, 2000);*/
 }
 
 else if (userdetails[0] =="Deactivated"){
     alert("Your account is deactivated. Please contact the admin");
-showLoader("Your account is deactivated. Please contact the admin");
+    alllogout()
+/*showLoader("Your account is deactivated. Please contact the admin");
 setTimeout(function () {
   hideLoader();
   alllogout()
-}, 2000);
+}, 2000);*/
 }
 //console.log(userdetails)
   var udata = userdetails[7];
