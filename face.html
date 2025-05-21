@@ -64,7 +64,7 @@
     class="message"
       ></div>
   </div> 
-  <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+<script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
 <script>
 const  GetUniqueID = () =>{
 const uniqueID = localStorage.getItem("Passkey-uniqueID");
@@ -187,7 +187,7 @@ document.getElementById("load").style.display="none";
 
 async function passkey(){
     var passkeysss ={};
-    const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+        const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
 var fetchurl = "https://passkey-5ev6.onrender.com";
 
 
