@@ -141,7 +141,7 @@ console.log(userdetails)
 if (userdetails[0]!=="Not Found"){
  if(userdetails[0]=="Requested"){
  // alert("Your account is not activated. Please contact the admin")
- showLoader("Your registration is in process","none");
+ showLoader("Your registration is in process. Please wait for the alloted member to approve your request","none");
 setTimeout(function () {
   hideLoader();
 }, 5000);
@@ -421,7 +421,7 @@ if (userdetails[0]!=="Not Found"){
   var password = "Niftem@iac";
  if(userdetails[0]=="Requested"){
  // alert("Your account is not activated. Please contact the admin")
- showLoader("Your registration is in process","none");
+ showLoader("Your registration is in process. Please wait for the alloted member to approve your request","none");
 setTimeout(function () {
   hideLoader();
 }, 5000);
