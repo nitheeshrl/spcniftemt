@@ -148,11 +148,19 @@ setTimeout(function () {
 }
 
 else if (userdetails[0] =="Deactivated"){
-showLoader("Your account is deactivated. Please contact the admin","none");
+showLoader("Your account is deactivated. Please contact your alloted member","none");
 setTimeout(function () {
   hideLoader();
 }, 5000);
 }
+
+else if (userdetails[0] =="Declined"){
+showLoader("Your registration is declined. Please contact your alloted member","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+else {
 //passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
 localStorage.setItem("loggedname",userdetails[2]);
   localStorage.setItem("loggeduorp", userdetails[3]);
@@ -178,6 +186,7 @@ else{
     sessionStorage.removeItem("lastpage");
 }
  },2000);
+}
 }
 
 else if (userdetails[0]=="Not Found"){
@@ -410,7 +419,7 @@ console.log(userdetails)
 
 if (userdetails[0]!=="Not Found"){
   var password = "Niftem@iac";
-if(userdetails[0]=="Requested"){
+ if(userdetails[0]=="Requested"){
  // alert("Your account is not activated. Please contact the admin")
  showLoader("Your registration is in process","none");
 setTimeout(function () {
@@ -419,11 +428,19 @@ setTimeout(function () {
 }
 
 else if (userdetails[0] =="Deactivated"){
-showLoader("Your account is deactivated. Please contact the admin","none");
+showLoader("Your account is deactivated. Please contact your alloted member","none");
 setTimeout(function () {
   hideLoader();
 }, 5000);
 }
+
+else if (userdetails[0] =="Declined"){
+showLoader("Your registration is declined. Please contact your alloted member","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+
 
   else   if (pass == password&&userdetails[0]==""){
     sessionStorage.setItem("setname",user);
