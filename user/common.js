@@ -66,7 +66,7 @@ function getuserdetailsonload(user){
           const result1 = await data.json();
   var userdetails = result1.data2;
   if(userdetails[0]=="Requested"){
-  alert("Your registration is in process. Please wait for the admin to approve your request");
+  alert("Your registration is in process. Please wait for the alloted member to approve your request");
   alllogout()
  /*showLoader("Your registration is in process. Please wait for the admin to approve your request");
 setTimeout(function () {
@@ -76,13 +76,17 @@ setTimeout(function () {
 }
 
 else if (userdetails[0] =="Deactivated"){
-    alert("Your account is deactivated. Please contact the admin");
+    alert("Your account is deactivated. Please contact the alloted member");
     alllogout()
 /*showLoader("Your account is deactivated. Please contact the admin");
 setTimeout(function () {
   hideLoader();
   alllogout()
 }, 2000);*/
+}
+else if(userdetails[0] =="Declined"){
+    alert("Your registration is declined. Please contact the alloted member");
+    alllogout()
 }
   getuserdetailsonload(uid+"/2")
 //console.log(userdetails)
