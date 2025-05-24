@@ -86,7 +86,7 @@
                                 <div class="form-element">
                 <span class="q">Placement Preference</span>
             
-                <select required name="Placement Preference" >
+                <select required name="Placement Preference" onchange="otherplacementdec(this)">
                   <option value="">Select the Placement Preference</option>
                   <option value="Entrepreneurship">Entrepreneurship</option>
                   <option value="Higher Studies">Higher Studies</option>
@@ -149,11 +149,20 @@ Proceed
     <span><b>Placement Preference : </b></span>  
           <span id="confirm_choice"></span>
     </div><br>
-  
-   
-    <label for="declaration">
+
+       <label for="declaration">
       <input type="checkbox"  name="Declaration" value="Accepted">
       <span>I confirm that the details provided above are accurate and given with a clear mind. I guarantee that I will not make any further modifications.</span>
+      
+      </label>    
+      <label for="declaration"><br><br>
+      <input type="checkbox"  name="Declaration other than placement" value="Accepted">
+      <span>I accept this choice as final and will not sit for placements/ request for placement in the last minute/ (will be held responsible for my own choices).</span>
+      
+      </label><br><br>
+    <label for="declaration">
+      <input type="checkbox"  name="Declaration of activities participation" value="Accepted">
+      <span>I will participate in all the discussions/programmes organized by the placement cell.</span>
       
       </label>
       <label for="declaration"><br><br>
@@ -204,6 +213,21 @@ Submit
   </div> 
 </div>
 <script>
+
+function otherplacementdec(btn){
+  var choice = btn;
+  var otherplacement = document.querySelector('input[name="Declaration other than placement"]');
+if(choice.value =="Placement"){
+
+  otherplacement.checked = false;
+  otherplacement.parentElement.style.display="none";
+}
+else{
+  otherplacement.parentElement.style.display="initial";
+ 
+}
+}
+
 var lasthash = [];
 var students_details = [];
 var name_list = [];
@@ -302,8 +326,10 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
         // Collect the form data
 var declaration = document.querySelector('input[name="Declaration"]:checked');
+var declarationother = document.querySelector('input[name="Declaration other than placement"]:checked');
+var declarationparticapate = document.querySelector('input[name="Declaration of activities participation"]:checked');
 var declarationrules = document.querySelector('input[name="Declaration for rules"]:checked');
-if(declaration == null || declarationrules == null){
+if(declaration == null || declarationrules == null || declarationother == null || declarationparticapate == null){
   alert("Please accept the declaration and rules and regulations");
   document.getElementById("bt3").disabled = false;
   hideLoader();
@@ -315,6 +341,8 @@ showLoader("Submitting the form. Please wait...","block");
   document.getElementById("bt3").style.display="none";
         console.log(declaration,declarationrules)
         confirm_data.push([declaration.name,declaration.value]);
+        confirm_data.push([declarationother.name,declarationother.value]);
+        confirm_data.push([declarationparticapate.name,declarationparticapate.value]);
         confirm_data.push([declarationrules.name,declarationrules.value]);
         confirm_data.push(["Account Status","Entered"]);
         if(confirm_data[0][1].includes("B.Tech")){
