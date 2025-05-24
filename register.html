@@ -326,10 +326,12 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
         // Collect the form data
 var declaration = document.querySelector('input[name="Declaration"]:checked');
-var declarationother = document.querySelector('input[name="Declaration other than placement"]:checked');
+var declarationother = document.querySelector('input[name="Declaration other than placement"]');
 var declarationparticapate = document.querySelector('input[name="Declaration of activities participation"]:checked');
 var declarationrules = document.querySelector('input[name="Declaration for rules"]:checked');
-if(declaration == null || declarationrules == null || declarationother == null || declarationparticapate == null){
+console.log(declarationother.parentElement.style.display)
+console.log(declarationother.checked)
+if(declaration == null || declarationrules == null || (!declarationother.checked &&declarationother.parentElement.style.display !=="none") || declarationparticapate == null){
   alert("Please accept the declaration and rules and regulations");
   document.getElementById("bt3").disabled = false;
   hideLoader();
