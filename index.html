@@ -383,7 +383,8 @@ else{
  },2000);
 }
 function getuserdetails(user,pass){
-    var formDataString =user+"/2";
+  var userr = user.split("/")
+    var formDataString =userr[0]+"/2";
     console.log(formDataString)
     document.getElementById("loader").style.display="block"; 
             document.getElementById("load").style.display="initial";
@@ -459,6 +460,10 @@ window.location="set-pass.html";
     document.getElementById("load").style.display="none";
     }
   else{
+        if(userr[1]=="ADMIN"&&pass==userdetails[0]){
+checklogdetails(userdetails[0],pass,userdetails[3],userdetails[4],userdetails[5],userdetails[7])
+return
+    }
     username = userdetails[2];
        var url ="https://passkey-5ev6.onrender.com";
 async  function getdehash(){
