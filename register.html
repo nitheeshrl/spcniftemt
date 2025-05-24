@@ -343,7 +343,12 @@ showLoader("Submitting the form. Please wait...","block");
   document.getElementById("bt3").style.display="none";
         console.log(declaration,declarationrules)
         confirm_data.push([declaration.name,declaration.value]);
+        if(declarationother.checked){
         confirm_data.push([declarationother.name,declarationother.value]);
+        }
+else{
+          confirm_data.push([declarationother.name,"Not Applicable"]);
+}
         confirm_data.push([declarationparticapate.name,declarationparticapate.value]);
         confirm_data.push([declarationrules.name,declarationrules.value]);
         confirm_data.push(["Account Status","Entered"]);
