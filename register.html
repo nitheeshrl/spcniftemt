@@ -609,7 +609,11 @@ function matchnameid(){
     }
     else if(old_students[old_index][2]=="Active"){
       showLoader("Your registration has been already accepted. You will been redirected to login page.","none");
+           setTimeout(function () {
+     hideLoader();
       window.location="index.html";
+      }, 4000);
+     
       return
     }
     else if(old_students[old_index][2]=="Requested"){
