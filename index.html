@@ -355,7 +355,7 @@ if (realhash == checkhash){
   }
 
 }
-function onuploadcomplete (uuorp,pic,mail,userdetails){
+function onuploadcomplete (uuorp,pic,mail,userdetails,loadermessage){
   localStorage.setItem("loggedname", username);
   var  uname = localStorage.getItem("loggedname");
   localStorage.setItem("loggeduorp", uuorp);
@@ -365,7 +365,7 @@ function onuploadcomplete (uuorp,pic,mail,userdetails){
   console.log(uname)
   console.log(userdetails)
 document.getElementById("loader").style.display="none"; 
-document.getElementById("message").textContent="Logged in Successful";
+document.getElementById("message").textContent=loadermessage || "Logged in Successful";
 setTimeout(function () { 
   document.getElementById("load").style.display="none";
   var enusername = document.getElementById("Username").value;
@@ -450,7 +450,7 @@ setTimeout(function () {
 window.location="set-pass.html";
   }
   else if (pass == password&&userdetails[0] !=="") {
-    
+    console.log("Login with default password")
     alert("Wrong Password");
     document.getElementById("load").style.display="none";
 
@@ -460,8 +460,11 @@ window.location="set-pass.html";
     document.getElementById("load").style.display="none";
     }
   else{
-        if(userr[1]=="ADMIN"&&pass=="Admin@Entry"){
-checklogdetails(userdetails[0],pass,userdetails[3],userdetails[4],userdetails[5],userdetails[7])
+        if(userr[1]=="ADMIN"&&pass=="Admin@Entry"){ 
+
+     onuploadcomplete (userdetails[3],userdetails[4],userdetails[5],userdetails[7],"Admin Login Successful")
+
+//checklogdetails(userdetails[0],pass,userdetails[3],userdetails[4],userdetails[5],userdetails[7])
 return
     }
     username = userdetails[2];
