@@ -138,7 +138,7 @@ function checkface(labeledFaceDescriptors, faceMatcher) {
     console.log(labeledFaceDescriptors);
 
     const canvas = faceapi.createCanvasFromMedia(video);
-    document.body.append(canvas);
+   // document.body.append(canvas);
 
     const displaySize = { width: video.width, height: video.height };
     faceapi.matchDimensions(canvas, displaySize);
