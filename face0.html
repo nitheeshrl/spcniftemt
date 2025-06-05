@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+    <title>Face Recognition</title>  
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      var oldname = localStorage.getItem("loggedname");
+      console.log(oldname)
+      if(oldname !== null){
+        window.location="user/dashboard.html"
+      }
+    </script>
+</head>    
+<body>
+<section class="header1">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section id="login" name="login">
+  <div class="formb-container">
+    <h1 style="text-align: center;"> Face Recognition </h1>
+    <div class="form-element">
+      <span class="q">Username</span>
+        <input style="width: 100%;" type="text" name="Username" id="Username" required placeholder="Enter your Username"/> 
+      </div>
+      <button name="btl" type="submit" onclick="login()" type="button" ><div class="btn-text">Verify Face</div></button>
+     <span class="horline"><span><a style="margin-top: 20px; text-decoration: none;color: #182d8b;" href="register.html" target="_blank">Register</a> Or Login using</span></span>
+    <div class="topic-in">
+      
+      <a  href="index.html" >
+        <div class="topics 1">
+          <img style="width: 30px;  filter: invert(1);" src="pass.svg" alt="" srcset="">
+       <span><b>Password</b></span> 
+      </div>
+      </a>
+    </div>
+    <div class="topic-in">
+      
+      <a  onclick="passkey()" >
+        <div class="topics 1">
+        <img style=" width: 30px; filter: invert(1);" src="passkey.webp" alt="" srcset="">
+       <span><b>Passkey</b></span> 
+      </div>
+      </a>
+    </div>
+    <span class="horline" style="margin-top: 20px;"><span> <a style="margin-top: 20px; text-decoration: none;color: #182d8b;" href="http://pcniftemt.pages.dev/" target="_blank">Click here for login to Members Portal</a></span></span>
+  </div>
+ 
+</section>
+<div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+<script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+<script>
+  const elements = {
+    load: document.getElementById("load"),
+    loader: document.getElementById("loader"),
+    message: document.getElementById("message")
+};
+function hideLoader() {
+    if (elements.load) elements.load.style.display = "none";
+    if (elements.loader) elements.loader.style.display = "none";
+    if (elements.message) elements.message.textContent = "";
+} 
+const  GetUniqueID = () =>{
+const uniqueID = localStorage.getItem("Passkey-uniqueID");
+if (uniqueID == undefined){
+const newUniqueID = "Not"
+return newUniqueID;
+}
+else {
+return uniqueID;
+}
+}
+ function showLoader(message,loading) {
+    if (elements.load) elements.load.style.display = "initial";
+    if (elements.loader) elements.loader.style.display = loading || "block";
+    if (elements.message) elements.message.textContent = message || "";
+}
+function getuserdetailspasskey(user){
+
+
+var formDataString =user+"/2";
+console.log(formDataString)
+document.getElementById("loader").style.display="block"; 
+        document.getElementById("load").style.display="initial";
+        document.getElementById("message").textContent="Logging in....";
+fetch(
+  "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
+  {
+    redirect: "follow",
+    method: "POST",
+    body: formDataString,
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+  }
+)
+
+  .then(function (response) {
+
+    // Check if the request was successful
+    if (response) {
+ 
+      return response; // Assuming your script returns JSON response
+    } else {
+      throw new Error("Failed to verify credentials");
+    }
+  })
+  .then(async function (data) {
+    const result1 = await data.json();
+var userdetails = result1.data2;
+
+
+console.log(userdetails)
+
+if (userdetails[0]!=="Not Found"){
+ if(userdetails[0]=="Requested"){
+ // alert("Your account is not activated. Please contact the admin")
+ showLoader("Your registration is in process. Please wait for the alloted member to approve your request","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+
+else if (userdetails[0] =="Deactivated"){
+showLoader("Your account is deactivated. Please contact your alloted member","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+
+else if (userdetails[0] =="Declined"){
+showLoader("Your registration is declined. Please contact your alloted member","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+else {
+//passkey(userdetails[2],passdevuniid,userdetails[3],userdetails[4],userdetails[5],userdetails[7]);
+localStorage.setItem("loggedname",userdetails[2]);
+localStorage.setItem("loggeduorp", userdetails[3]);
+localStorage.setItem("loggedpic", userdetails[4]);
+localStorage.setItem("loggedmail", userdetails[5]);
+localStorage.setItem("loggeduserdetails", userdetails[7]);
+var  uname = localStorage.getItem("loggedname");
+console.log(uname)
+document.getElementById("loader").style.display="none"; 
+document.getElementById("message").textContent="Logged in Successful";
+setTimeout(function () { 
+document.getElementById("load").style.display="none";
+var enusername = document.getElementById("Username").value;
+
+
+
+var lastpage = sessionStorage.getItem("lastpage");
+if (lastpage==undefined||lastpage==""){
+window.location="user/dashboard.html"
+}
+else{
+window.location=lastpage;
+sessionStorage.removeItem("lastpage");
+}
+},2000);
+}
+}
+else if (userdetails[0]=="Not Found"){
+alert("User not found")
+document.getElementById("load").style.display="none";
+}
+  })
+
+  .catch(function (error) {
+    // Handle errors, you can display an error message here
+    console.error(error);
+    document.getElementById("message").textContent =
+      "An error occurred while verify credentials";
+    document.getElementById("message").style.display = "block";
+  });
+}  
+
+
+
+async function passkey(){
+    var passkeysss ={};
+        const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
+var fetchurl = "https://passkey-5ev6.onrender.com";
+
+
+document.getElementById("loader").style.display="block"; 
+        document.getElementById("load").style.display="initial";
+        document.getElementById("message").textContent="Verifying PassKey....";
+       
+       var weburl = location.hostname;
+       console.log(weburl)
+       const response = await fetch(fetchurl+'/login-challenge', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({  weburl })
+       })
+
+       const challengeResult = await response.json()
+       const { options } = challengeResult // Server side challenge
+   
+       var urlorigin= location.protocol+"//"+location.host;
+        console.log(urlorigin)
+       const authenticationResult = await startAuthentication({optionsJSON: options})
+       console.log(authenticationResult)
+
+       var veruser = await fetch(fetchurl+'/login-verify', {
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({ cred: authenticationResult, challenge: options.challenge, weburl, urlorigin})
+       })
+       const verifyuserResult = await veruser.json()
+       console.log(verifyuserResult)
+if (verifyuserResult.success){
+
+getuserdetailspasskey( verifyuserResult.userId)
+}
+else{
+alert("Wrong PassKey. Try Again")
+document.getElementById("load").style.display="none";
+}
+   
+
+
+}
+  function getuserdetails(user){
+    var formDataString =user+"/2";
+    console.log(formDataString)
+    document.getElementById("loader").style.display="block"; 
+            document.getElementById("load").style.display="initial";
+            document.getElementById("message").textContent="Verifying....";
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyAPLvMM2LW60vQRVYc6Uy6doDJumHO1eVDZ36IZQY25z4eTLhkc2y3NARQ09p818bo/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: formDataString,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      }
+    )
+
+      .then(function (response) {
+
+        // Check if the request was successful
+        if (response) {
+     
+          return response; // Assuming your script returns JSON response
+        } else {
+          throw new Error("Failed to verify credentials");
+        }
+      })
+      .then(async function (data) {
+        const result1 = await data.json();
+var userdetails = result1.data2;
+
+
+console.log(userdetails)
+
+if (userdetails[0]!=="Not Found"){
+   if(userdetails[0]=="Requested"){
+ // alert("Your account is not activated. Please contact the admin")
+ showLoader("Your registration is in process. Please wait for the alloted member to approve your request","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+
+else if (userdetails[0] =="Deactivated"){
+showLoader("Your account is deactivated. Please contact your alloted member","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+
+else if (userdetails[0] =="Declined"){
+showLoader("Your registration is declined. Please contact your alloted member","none");
+setTimeout(function () {
+  hideLoader();
+}, 5000);
+}
+else {
+  console.log(userdetails[2]);
+  var suserdetails = JSON.stringify(userdetails)
+  sessionStorage.setItem("checkname",suserdetails)
+
+window.location ="check face/index.html";
+}
+}
+else if (userdetails[0]=="Not Found"){
+  alert("User not found")
+  document.getElementById("load").style.display="none";
+}
+      })
+
+      .catch(function (error) {
+        // Handle errors, you can display an error message here
+        console.error(error);
+        document.getElementById("message").textContent =
+          "An error occurred while verify credentials";
+        document.getElementById("message").style.display = "block";
+      });
+    }
+  function login(){
+    var enusername = document.getElementById("Username").value;
+    if (enusername!==""){
+      getuserdetails(enusername);
+    }
+    else{
+      alert("Enter the username")
+    }
+  }
+</script>
+<script src="scriptform.js"></script>
+</body>
+</html>
