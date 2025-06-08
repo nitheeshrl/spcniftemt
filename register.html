@@ -318,7 +318,7 @@ var doptions = "";
 function docgenerate(refid){
 showLoader("Registeration request is created. Generating your documents....","block");
      fetch(
-          "https://script.google.com/macros/s/AKfycbyzmA3ZXunAGl0Gqmr3CswmD6wgkHbMJffT86hJlDgiil7oOSyrMzLr4572xD_Gp1zIqg/exec",
+          "httsps://script.google.com/macros/s/AKfycbyzmA3ZXunAGl0Gqmr3CswmD6wgkHbMJffT86hJlDgiil7oOSyrMzLr4572xD_Gp1zIqg/exec",
           {
             redirect: "follow",
             method: "POST",
@@ -375,13 +375,15 @@ showLoader("Registeration request is created. Generating your documents....","bl
             }, 2600);
  }
             else if (result1.data2[4] !== "Success"){
+              sessionStorage.setItem("refid", refid);
               alert("Document geneartion failed. Please try again later or contact the alloted member for further assistance.");
-              window.location='index.html';
+             window.location='failed_reg.html';
             }
           })
           .catch(function (error) {
             // Handle errors, you can display an error message here
             console.error(error);
+            sessionStorage.setItem("refid", refid);
             document.getElementById("message").textContent =
               "Document geneartion failed.";
             document.getElementById("message").style.display = "block";

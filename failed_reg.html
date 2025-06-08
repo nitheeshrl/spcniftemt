@@ -23,7 +23,7 @@
 
     <h1 style="text-align: center;">Your registration request created successfully</h1>
     <div   id="dfiled" style="align-content:normal; margin-left: 0px;margin-right: auto; margin-top: 30px;"><p style="text-align: center  ;">
-        Your registration request has been created successfully, but error occurred during generating your documents. To generate it again<a href="get_documents.html" style="background: none; color: green;">click here.</a><br> Also, your registration request is not reviewed unless your registration documents are generated and submitted.</p></div>
+        Your registration request has been created successfully, but error occurred during generating your documents.<br> Your registration reference for generating is <span id="refid"></span>. To generate it again<a href="get_documents.html" style="background: none; color: green;">click here.</a><br> Also, your registration request is not reviewed unless your registration documents are generated and submitted.</p></div>
 
         <div id="load" class="load" > 
             <div class="loader" id="loader"> 
@@ -38,5 +38,10 @@
 
 
 </section>
+<script>
+  var refid = sessionStorage.getItem("refid");
+  var do_html = document.getElementById("refid");
+  do_html.innerHTML ="<b>" + refid + "</b>";
+</script>
 </body>
 </html>
