@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widthdevice-width, initial-scale=1">
+    <link rel="icon" href="white_logo.png" type="image/x-icon">
+    <title>Students Portal Registration</title>  
+    <link rel="stylesheet" href="style.css" />
+
+</head>    
+<body>
+<section class="header1">
+<div>
+<img src="white_logo.png" alt="">
+</div>
+<div>
+<h1>NIFTEM-T Placement Cell</h1>
+</div>
+</section>
+<section >
+<div class="form-container">
+<script type="text/javascript">var submitted=false </script>
+<form id="form" class="container m-4 pl-4"  style="margin-top:0px;" >
+<h1 style="text-align: center;"> Students Portal Registration </h1>
+<div id="frqa" class="frqa">
+  <section class="step1" id="step1">
+                <div class="form-element">
+                <span class="q">Degree</span>
+                <select id="sel-degree" onchange="nameadd()" required name="Degree" >
+                  <option value="">Select the Degree</option>
+                </select>
+                </div>
+                
+                <div class="form-element">
+                <span class="q">Batch</span>
+                  <select  onchange="nameadd()"  id="sel-batch" required name="Batch" >
+                  <option value="">Select the Batch</option>
+                </select>
+                </div>
+                <div class="form-element" style="margin-top: 20px;margin-bottom: 20px;">
+                     <span class="q">Upload your photo</span>
+                <div style="background-color: rgb(237, 235, 235); border-radius: 110px;height: 110px;width: 110px;margin-top: 0px;margin-left: auto;margin-right: auto;display: flex;align-items: center;justify-content: center;">
+                  <img  style=" border-radius: 50px; width: 100px; height: 100px; object-fit: cover;margin-top: 0px;" src="" alt="" srcset="">
+                   </div>
+                
+  <input style="margin-top: 10px;" type="file" accept=".JPG,.jpg,.JPEG,.jpeg,.PNG,.png" onclick="formfileupload(this)"/>
+  <input  required type="hidden" name="Profile Pic" class="1lz0E2hzYz0x1Z2GVVwYQlgAAJVk6paTx" value=""/>
+   <span></span>
+  
+               
+              </div>  
+<div class="form-element">
+<span class="q">Name</span>
+<select name="Name" id="Name" onchange="matchnameid()" required placeholder="Select your name">
+<option  id="sel-name" value="">Select your name</option>
+
+
+</select>
+
+</div>
+<div class="form-element">
+<span class="q">ID Number</span>
+<input readonly type="text" name="ID Number" id="ID Number" required placeholder="Enter your ID number" />
+</div>
+<div class="form-element">
+<span class="q">Email address</span>
+<input type="email" name="Email ID" id="Email address" required placeholder="Enter your email"/>
+</div>
+                <div class="form-element">
+                <span class="q">Alloted Member</span>
+                  <select readonly id="sel-alloted-member" required name="Alloted Member" >
+                  <option value="">Select the Alloted Member</option>
+                </select>
+                </div>
+
+                
+                <div class="form-element">
+                <span class="q">Internship Preference</span>
+                <select required name="Internship Preference" >
+                  <option value="">Select the Internship Preference</option>
+                  <option value="Internship through Institute ">Internship through Institute </option>
+                  <option value="Internship by own">Internship by own</option>
+                </select>
+                </div>
+                                <div class="form-element">
+                <span class="q">Placement Preference</span>
+            
+                <select required name="Placement Preference" onchange="otherplacementdec(this)">
+                  <option value="">Select the Placement Preference</option>
+                  <option value="Entrepreneurship">Entrepreneurship</option>
+                  <option value="Higher Studies">Higher Studies</option>
+                  <option value="Placement">Placement</option>
+                </select>
+                </div>
+
+
+<div style="font-size: 14px;">
+<span>*This response will be considered final. Please make your choice wisely.</span><br>
+<span >
+  All individuals must follow the guidelines,<a id="rules-link" style="background: none; color: blue;font-size: 14px;padding: 0px;" target="_blank" href="https://drive.google.com/file/d/1ZKBOEvVUB-Q2h5ukq5VfMpvZ9WjT2GC9/view?usp=share_link">rules, and regulations</a> issued by the Placement Cell. The same must be signed to proceed with internships or placements through the NIFTEM-T Placement Cell.</span>
+</div> 
+<button style="margin-top: 20px;"  type="button" id="bt1" onclick="stepto2()"> 
+Proceed
+</button> 
+
+
+  </section>
+  <section class="step2" id="step2" style="display: none;">
+    <h1 style="text-align: center;">Confirmation Details</h1><br>
+
+    <div class="confirm_details">
+    <span><b>Degree : </b></span>  
+    <span id="confirm_Degree"></span>
+    </div><br>
+        <div class="confirm_details">
+    <span><b>Batch : </b></span>  
+    <span id="confirm_Batch"></span>
+    </div><br>
+                        <div class="form-element" style="margin-top: 20px;margin-bottom: 20px;">
+                     <span class="q">Profile photo</span>
+                <div class="confirm_details" style="background-color: rgb(237, 235, 235); border-radius: 110px;height: 110px;width: 110px;margin-top: 0px;margin-left: auto;margin-right: auto;display: flex;align-items: center;justify-content: center;">
+                  <img  style=" border-radius: 50px; width: 100px; height: 100px; object-fit: cover;margin-top: 5px;" src="" alt="" srcset="">
+                   </div>
+              </div>  
+        <div class="confirm_details">
+    <span><b>Name : </b></span>  
+    <span id="confirm_name"></span>
+    </div><br>
+    <div class="confirm_details">
+    <span><b>ID Number : </b></span>  
+    <span id="confirm_id"></span>
+    </div><br>
+
+    <div class="confirm_details">
+    <span><b>Email Address : </b></span>  
+    <span id="confirm_email"></span>
+    </div><br>
+        <div class="confirm_details">
+    <span><b>Alloted Member : </b></span>  
+    <span id="confirm_Alloted_Member"></span>
+    </div><br>
+    <div class="confirm_details">
+    <span><b>Internship Preference : </b></span>  
+    <span id="confirm_choice"></span>
+    </div><br>
+
+    <div style="height: auto;" class="confirm_details">
+    <span><b>Placement Preference : </b></span>  
+          <span id="confirm_choice"></span>
+    </div><br>
+
+       <label for="declaration">
+      <input type="checkbox"  name="Declaration" value="Accepted">
+      <span>I confirm that the details provided above are accurate and given with a clear mind. I guarantee that I will not make any further modifications.</span>
+      
+      </label>    
+      <label for="declaration"><br><br>
+      <input type="checkbox"  name="Declaration other than placement" value="Accepted">
+      <span>I accept this choice as final and will not sit for placements/ request for placement in the last minute/ (will be held responsible for my own choices).</span>
+      
+      </label><br><br>
+    <label for="declaration">
+      <input type="checkbox"  name="Declaration of activities participation" value="Accepted">
+      <span>I will participate in all the discussions/programmes organized by the placement cell.</span>
+      
+      </label>
+      <label for="declaration"><br><br>
+      <input type="checkbox"  name="Declaration for rules" value="Accepted">
+      <span>I agree to the rules and regulations established by the NIFTEM-T Placement Cell. I understand that if I engage in any misconduct or disciplinary activities, the NIFTEM-T Placement Cell has the authority to take appropriate actions against me.</span>
+      
+      </label>
+      <div style="display: flex; flex-direction: row;">
+      </form>
+    <button style="margin-top: 20px ;" type="button" id="bt2" onclick="stepto1()"> 
+Back
+</button> 
+<button style="margin-top: 20px; margin-left: 20px;" type="submit" id="bt3"> 
+Submit
+</button> 
+</div>
+
+  </section>
+  <section class="step3" id="step3">
+    <h1 style="text-align: center;">Successfully Submitted</h1>
+    <div style="margin-top: 50px;margin-bottom: 50px;">
+  <span><b>Reference Number : </b></span>  
+  <span id="ref"></span>
+  </div>
+    <span>The form and the rules and regulations can be downloaded from the links provided below. Please submit the signed hard copy, endorsed by both you and the placement coordinator, to the NIFTEM-T Placement Cell. Your registration is under review. Once it is reviewed, you can login into your Students Portal and your default password will be "Niftem@iac". Once you can login in, change it to other password.</span><br><br>
+    <div   id="dfiled" style="align-content:normal; margin-left: auto;margin-right: auto; margin-top: 30px;"><p style="text-align: left;">
+      </p><span>Declaration Form</span><br><br>
+   <a style="text-decoration: none; padding: 10px;margin-top: 50px;" id="Downloadfiledec" href="">Download Here</a></div> </p>
+      <div   id="dfilei" style="align-content: normal; margin-left: auto;margin-right: auto; margin-top: 30px;display: none;"><p style="text-align: left;">
+    <span>Internship Rules and Regulation</span><br><br>
+ <a style="text-decoration: none; padding: 10px;margin-top: 50px;" id="Downloadfilei" href="">Download Here</a></div> </p>
+   <div   id="dfilep" style="align-content: normal; margin-left: auto;margin-right: auto; margin-top: 30px;display: none;"><p style="text-align: left;">
+    <span>Placement Rules and Regulation</span><br><br>
+ <a style="text-decoration: none; padding: 10px;margin-top: 50px;" id="Downloadfilep" href="">Download Here</a></div> </p>
+ </p>
+  </div><br>
+    </section>
+  
+  </div> 
+  <div id="load" class="load" > 
+  <div class="loader" id="loader"> 
+
+    </div> 
+    <div
+      id="message"
+    class="message"
+      ></div>
+  </div> 
+</div>
+<script>
+
+function otherplacementdec(btn){
+  var choice = btn;
+  var otherplacement = document.querySelector('input[name="Declaration other than placement"]');
+if(choice.value =="Placement"){
+
+  otherplacement.checked = false;
+  otherplacement.parentElement.style.display="none";
+}
+else{
+  otherplacement.parentElement.style.display="initial";
+ 
+}
+}
+
+var lasthash = [];
+var students_details = [];
+var name_list = [];
+var old_students = [];
+function getuserdetailsonload(){
+    console.log("Registration Details Fetching....")
+
+
+      var formDataString ="/2";
+      //console.log(formDataString)
+  
+      fetch(
+        "https://script.google.com/macros/s/AKfycbz7miaJBVi38DCpWlCW8w82vE-q1gC0aL-nujKvbXmvueRVaeYyUiFsmJ86Ibd25Bo4/exec",
+        {
+          redirect: "follow",
+          method: "POST",
+          body: formDataString,
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        }
+      )
+  
+        .then(function (response) {
+  
+          // Check if the request was successful
+          if (response) {
+       
+            return response; // Assuming your script returns JSON response
+          } else {
+            throw new Error("Failed to fetch");
+          }
+        })
+        .then(async function (data) {
+          getuserdetailsonload();
+          const result1 = await data.json();
+  var userdetails = result1.data2;
+  //console.log(userdetails);
+  
+ var batchs = userdetails.batch;
+  var degrees = userdetails.degree;
+   var students = userdetails.students;
+students_details = students;
+old_students = userdetails.old_students;
+        // console.log(old_students)
+   var degree_select = document.getElementById("sel-degree");
+    var batch_select = document.getElementById("sel-batch");
+    var boptions = "";
+    batchs.forEach(function (batch) { 
+      
+var option = '<option value="' + batch + '">' + batch + "</option>";
+      boptions += option;
+     // console.log(options,batch);
+      
+    })
+var doptions = "";
+    degrees.forEach(function (degree) {
+      
+      var option = '<option value="' + degree + '">' + degree + "</option>";
+      doptions += option;
+      
+    })
+    if(lasthash != JSON.stringify(userdetails)&&batch_select.value == "" && degree_select.value == ""){
+        batch_select.innerHTML = `<option value="">Select the Batch</option>` + boptions;
+    degree_select.innerHTML = `<option value="">Select the Degree</option>` + doptions;
+    lasthash = JSON.stringify(userdetails);
+    console.log("Select Options Updated");
+    }
+    else{
+      console.log("Select Options Not Updated");
+    }
+        })
+  
+        .catch(function (error) {
+          // Handle errors, you can display an error message here
+          console.error(error);
+          getuserdetailsonload();
+        });
+      }
+
+  window.onload= function() {
+    getuserdetailsonload();
+  }
+
+function docgenerate(refid){
+showLoader("Registeration request is created. Generating your documents....","block");
+     fetch(
+          "https://script.google.com/macros/s/AKfycbyzmA3ZXunAGl0Gqmr3CswmD6wgkHbMJffT86hJlDgiil7oOSyrMzLr4572xD_Gp1zIqg/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: refid,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+          .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(async function (data) {
+            const result1 = await data.json();
+            console.log(result1.data2);
+            if (result1.data2[4] == "Success"){
+                           // Display a success message
+     //       console.log(confirm_data[8][1])
+            console.log(result1.data2[1])
+            document.getElementById("bt1").disabled = false;
+            document.getElementById("form").reset();
+        //    var links = result1.data2[0].split("=nam=");  
+            console.log(result1.data2);
+            if (result1.data2[3] !== "No"){
+              document.getElementById("Downloadfiledec").href=result1.data2[1];
+              document.getElementById("Downloadfilep").href=result1.data2[3]; 
+              document.getElementById("dfilep").style.display="initial";
+            }
+            else{
+              document.getElementById("Downloadfiledec").href=result1.data2[1];
+ document.getElementById("dfilep").style.display="none";
+            }
+            if(result1.data2[2] !== "No"){
+              document.getElementById("dfilei").style.display="initial";
+              document.getElementById("Downloadfilei").href=result1.data2[2];
+            }
+            else{
+              document.getElementById("dfilei").style.display="none";
+            }
+            
+            document.getElementById("ref").textContent = result1.data2[0];
+            document.getElementById("step1").style.display="none";
+            document.getElementById("step2").style.display="none";
+            document.getElementById("step3").style.display="initial";
+            document.getElementById("load").style.display="none";
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);
+ }
+            else if (result1.data2[4] !== "Success"){
+              alert("Document geneartion failed. Please try again later or contact the alloted member for further assistance.");
+              window.location='index.html';
+            }
+          })
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "Document geneartion failed.";
+            document.getElementById("message").style.display = "block";
+                      setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+              window.location='failed_reg.html';
+            }, 2600);
+          });
+        }
+
+var confirm_data = [];
+let form = document.querySelector("form");
+form.addEventListener('submit',()=>{ {
+  document.getElementById("load").style.display="initial";
+  document.getElementById("loader").style.display="block"; 
+ 
+}})
+document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+       
+
+        // Collect the form data
+var declaration = document.querySelector('input[name="Declaration"]:checked');
+var declarationother = document.querySelector('input[name="Declaration other than placement"]');
+var declarationparticapate = document.querySelector('input[name="Declaration of activities participation"]:checked');
+var declarationrules = document.querySelector('input[name="Declaration for rules"]:checked');
+console.log(declarationother.parentElement.style.display)
+console.log(declarationother.checked)
+if(declaration == null || declarationrules == null || (!declarationother.checked &&declarationother.parentElement.style.display !=="none") || declarationparticapate == null){
+  alert("Please accept the declaration and rules and regulations");
+  document.getElementById("bt3").disabled = false;
+  hideLoader();
+  return
+}
+else{
+showLoader("Submitting the form. Please wait...","block");
+ document.getElementById("bt3").disabled = true;
+  document.getElementById("bt3").style.display="none";
+        console.log(declaration,declarationrules)
+        confirm_data.push([declaration.name,declaration.value]);
+        if(declarationother.checked){
+        confirm_data.push([declarationother.name,declarationother.value]);
+        }
+else{
+          confirm_data.push([declarationother.name,"Not Applicable"]);
+}
+        confirm_data.push([declarationparticapate.name,declarationparticapate.value]);
+        confirm_data.push([declarationrules.name,declarationrules.value]);
+        confirm_data.push(["Account Status","Entered"]);
+        if(confirm_data[0][1].includes("B.Tech")){
+          confirm_data.push(["UG or PG","B.Tech"]);
+        }
+        else if(confirm_data[0][1].includes("M.Tech")){
+          confirm_data.push(["UG or PG","M.Tech"]);
+        }
+  
+console.log(confirm_data)
+        var formDataString = JSON.stringify(confirm_data);
+        
+        console.log(formDataString);
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbww1OBw7OgyNubMOnRz_hxYP8I40KzxrP4dTx5DK9zmTZXECIugerkMavY_PGZLWU-H/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+          .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(async function (data) {
+            const result1 = await data.json();
+            console.log(result1.data2);
+            if (result1.data2[0] !== "Already Registered"){
+              docgenerate(result1.data2[0]);
+ }
+            else if (result1.data2[0] == "Already Registered"){
+              alert("You have already submitted the form. Please contact the alloted member for further assistance.");
+              window.location='index.html';
+            }
+          })
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+        }
+      });
+    
+</script>
+<script>
+  step1 = document.getElementById("step1");
+  step2 = document.getElementById("step2");
+  step3 = document.getElementById("step3");
+bt1 = document.getElementById("bt1");
+bt2 = document.getElementById("bt2");
+bt3 = document.getElementById("bt3");
+
+confirmname = document.getElementById("confirm_name");
+confirmid = document.getElementById("confirm_id");
+confirmemail = document.getElementById("confirm_email");
+confirmchoice = document.getElementById("confirm_choice");
+confirmdegree = document.getElementById("confirm_degree");
+
+
+function stepto2() {
+  var check = true;
+  let step1 = document.getElementById("step1");
+  let step1inputs = step1.querySelectorAll("input[type=text],input[type=number],input[type=email],input[type=hidden],select");
+let confirm_details = document.getElementsByClassName("confirm_details");
+confirm_data = [];
+//console.log(confirm_details);
+  for (i=0;i<step1inputs.length;i++){
+   // console.log(step1inputs[i],confirm_details[i]);
+  if(step1inputs[i].value == ""){
+  // console.log( step1inputs[i].tagName)
+   check = false;
+   if(step1inputs[i].tagName == "SELECT"){
+    step1inputs[i].style.borderColor = "red";
+    alert("Select the "+step1inputs[i].name);
+return
+  }
+  else if(step1inputs[i].type == "hidden"){
+    step1inputs[i].previousElementSibling.style.borderColor = "red";
+    alert("Upload your Profile Picture");
+    return
+  }
+
+  else{
+    step1inputs[i].style.borderColor = "red";
+    alert("Enter the "+step1inputs[i].name);
+    return
+  }
+  }
+  else{
+    step1inputs[i].style.borderColor = "black";
+ if(step1inputs[i].type == "email"){
+  var email = step1inputs[i].value;
+  var atpos = email.indexOf("@");
+  var dotpos = email.lastIndexOf(".");
+  if (atpos < 1 || (dotpos - atpos < 2)) {
+    alert("Please enter a valid email address");
+    step1inputs[i].style.borderColor = "red";
+    return
+  }
+  else if (!email.includes("@niftem-t.ac.in") && !email.includes("@iifpt.edu.in")){
+    alert("Please enter a valid NIFTEM-T email address");
+    step1inputs[i].style.borderColor = "red";
+    return
+  }
+  else{
+    step1inputs[i].style.borderColor = "black";
+  }
+ }
+   // console.log(confirm_details[i].children[1].tagName)
+   var tagnumber = (i==2) ? 0 : 1;
+    var type = confirm_details[i].children[tagnumber].tagName;
+  
+    if (type == "SPAN"){
+      var question = confirm_details[i].children[0].textContent;
+      confirm_details[i].children[1].textContent = step1inputs[i].value;
+      if(question == "Alloted Member : "){
+        confirm_details[i].children[1].textContent = step1inputs[i].options[step1inputs[i].selectedIndex].textContent;
+         confirm_data.push ([step1inputs[i].name ,step1inputs[i].value]);
+      }
+      else{
+      confirm_data.push ([step1inputs[i].name ,step1inputs[i].value]);
+      }
+    }
+    else if (type == "IMG"){
+      var photo = step1inputs[i].value;
+      var src = step1inputs[i].parentElement.children[1].children[0].src;
+    //  console.log(step1inputs[i].parentElement.children[1].children[0].src);
+      confirm_details[i].children[0].src = src  ;
+      confirm_data.push ([step1inputs[i].name ,step1inputs[i].value]);
+    }
+ 
+    
+//sconfirm_details[i].children[1].textContent = step1inputs[i].value;
+  }
+}
+  if(check){
+//console.log(confirm_data)
+  
+step1.style.display="none";
+step2.style.display="initial"
+bt1.style.display="none";
+bt2.style.display="initial";
+bt3.style.display="initial";
+
+}
+
+
+
+      
+}
+function stepto1() {
+step1.style.display="initial";
+step2.style.display="none";
+bt1.style.display="initial";
+bt2.style.display="none";
+bt3.style.display="none";
+}
+
+function nameadd(){
+  let batch = document.getElementById('sel-batch');
+  let degree = document.getElementById('sel-degree');
+  var batch_name = batch.value + " / "+degree.value;
+
+  //students_details.indexOf(batch_name);
+  const index = students_details.findIndex(user => user[1] === batch_name);
+  var names = students_details[index];
+  var rule_link = students_details[index][0];
+  //console.log(names); 
+  //console.log(rule_link)
+  name_list = names;
+  name_list.splice(0, 2);
+  //console.log(name_list);
+   
+  var name = document.getElementById('Name');
+  var nameoptions = `<option value="">Select your name</option>`;
+  for (var i = 0; i < names.length; i++) {
+    var option = '<option value="' + names[i][0] + '">' + names[i][0] + "</option>";
+    nameoptions += option;
+  }
+  name.innerHTML = nameoptions;
+  name.value = "";
+  document.getElementById("rules-link").href =  rule_link;
+  console.log("Name Options Updated");
+}
+ function showLoader(message,loading) {
+    if (elements.load) elements.load.style.display = "initial";
+    if (elements.loader) elements.loader.style.display = loading || "block";
+    if (elements.message) elements.message.textContent = message || "";
+}
+const elements = {
+    load: document.getElementById("load"),
+    loader: document.getElementById("loader"),
+    message: document.getElementById("message")
+};
+function hideLoader() {
+    if (elements.load) elements.load.style.display = "none";
+    if (elements.loader) elements.loader.style.display = "none";
+    if (elements.message) elements.message.textContent = "";
+} 
+function matchnameid(){
+  let id = document.getElementById('ID Number');
+  let allot = document.getElementById('sel-alloted-member');
+  let name = document.getElementById('Name').value;
+   const index = name_list.findIndex(user => user[0] === name);
+   const old_index = old_students.findIndex(user => user[1] === name_list[index][1]);
+   if(old_index !== -1){
+    if(old_students[old_index][2]=="Declined"){
+      showLoader("Your registration request has been declined. Please consult the alloted member and properly register again.","none");
+ 
+      setTimeout(function () {
+     hideLoader();
+      }, 4000);
+    
+    }
+    else if(old_students[old_index][2]=="Active"){
+      showLoader("Your registration has been already accepted. You will been redirected to login page.","none");
+           setTimeout(function () {
+     hideLoader();
+      window.location="index.html";
+      }, 4000);
+     
+      return
+    }
+    else if(old_students[old_index][2]=="Requested"){
+      showLoader("You have already submitted the form and your registration is under review. Please contact the alloted member for further assistance.","none");
+      document.getElementById("Name").value = "";      
+      setTimeout(function () {
+     hideLoader();
+      }, 4000);
+      return
+    }
+    else if(old_students[old_index][2]=="Deactivated"){
+      showLoader("You have already submitted the form and your account has been deactivated. Please contact the alloted member for further assistance.","none");
+      document.getElementById("Name").value = "";      
+      setTimeout(function () {
+     hideLoader();
+      }, 4000);
+      return
+    }
+   }
+
+   //console.log(index);
+id.value = name_list[index][1];
+allot.innerHTML = `<option value="">Select the Alloted Member</option>`+'<option selected value="' + name_list[index][3] + '">' + name_list[index][2] + "</option>";
+}
+
+ function formfileupload(button){
+        let file1 = button;
+    
+        let fileurl1 = button.parentElement.children[3];
+        let fileurl1status = button.parentElement.children[4];
+        console.log(fileurl1status,fileurl1);
+        var fol = fileurl1.className;
+        file1.addEventListener('change',()=>{
+        let fr = new FileReader();
+        var filebytes = file1.files[0].size;
+        if (filebytes > 1000000) {
+            alert("File size exceeds 1MB. Please upload a smaller file.");
+            file1.value = "";
+            return;
+        } 
+       // console.log(file1.files[0].size)
+        //console.log(file1.value)
+        var rawformats = file1.accept;
+        //console.log(rawformats)
+    var formats = rawformats.split(",");
+    //console.log(formats)
+    var supformat = false;
+    for(var i=0;i<formats.length;i++){
+      if(file1.value.includes(formats[i])){
+        supformat = true;
+      }
+    }
+    //console.log(supformat)
+        if (supformat){
+      //    document.getElementById("load").style.display="initial";
+        //   document.getElementById("loader").style.display="block"; 
+           fileurl1status.textContent = "Uploading....";
+             //   document.getElementById("loader").style.display="block"; 
+            //    document.getElementById("load").style.display="initial";
+             //   document.getElementById("message").textContent="Uploading....";
+                fr.addEventListener('loadend',()=>{
+                    let res = fr.result;
+                    let v =  (fileurl1.value.includes("drive.google.com")&&!fileurl1.value.includes("drive.google.com/thumbnail")) ? fileurl1.value.replace("/"+fol,"") : "";
+                  //  let v =  fileurl1.value.replace("/"+fol,"");
+                    let folder = "15GgsPpNztp41g7Sw7s7LOT0vhnYnViei";
+            
+                    let spt = res.split("base64,")[1];
+                    let obj = {
+                        base64:spt,
+                        type:file1.files[0].type,
+                        name:file1.files[0].name,
+                        folder,
+                        v
+            
+                    }
+                    fetch("https://script.google.com/macros/s/AKfycbzjsZZ7VB5r1_XZUhWvkyDUDIvQM7qVQYu7gtZhChTMhiAyjfXGuHAQg21flXWsg-IOSg/exec",{
+                        method:"POST",
+                        body:JSON.stringify(obj)
+                    })
+                    .then(r=>r.text())
+              
+                    .then(data=>fileurl1.value=(data+"/"+fol))
+                    .then(data=>console.log(fileurl1.value)&(onuploadcomplete (data,button)))
+                    .then(console.log(v) )
+                })
+                fr.readAsDataURL(file1.files[0])
+                     
+        }
+        else{
+            alert("Upload the file in correct format");
+            button.value="";
+        }
+        }
+    ) 
+    
+    }
+    
+    function onuploadcomplete (img,btn){
+      let fileurl1status = btn.parentElement.children[4];
+  var imgsplit = img.split("/");
+  var imgid = imgsplit[5];
+        document.getElementById("loader").style.display="none"; 
+        fileurl1status.textContent="Uploaded";
+        btn.previousElementSibling.children[0].src = "https://drive.google.com/thumbnail?id="+imgid+"&sz=w1000";
+        setTimeout(function () {  fileurl1status.textContent=""; },2000);
+    }
+  </script>
+
+</section>
+</body>
+</html>
