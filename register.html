@@ -313,6 +313,7 @@ var doptions = "";
 
   window.onload= function() {
     getuserdetailsonload();
+      
   }
 
 function docgenerate(refid){
@@ -669,7 +670,15 @@ function matchnameid(){
       return
     }
     else if(old_students[old_index][2]=="Requested"){
-      showLoader("You have already submitted the form and your registration is under review. You can get your generated documents from link in top of the form. Also, please contact the alloted member for further assistance.","none");
+     showLoader("You have already submitted the form and your registration is under review. You can get your generated documents from link in top of the form.","none");
+      document.getElementById("Name").value = "";      
+      setTimeout(function () {
+     hideLoader();
+      }, 4000);
+      return
+    }
+        else if(old_students[old_index][2]=="Job List Added"){
+     showLoader("Sorry for the inconvenience during your last registration. You can get your generated documents from link in top of the form.","none");
       document.getElementById("Name").value = "";      
       setTimeout(function () {
      hideLoader();
