@@ -207,6 +207,7 @@ else if(userdetails[0] =="Declined"){
           </button>
         <ul class="sub-menu">
           <div>
+          <li><a href="documents.html">Documents</a></li>
             <li><a href="change-pass-1.html">Change Password</a></li>
             <li><a onclick="passkey1()">Create PassKey</a></li>
             <li><a onclick="alllogoutPopup()" >Logout</a></li>
